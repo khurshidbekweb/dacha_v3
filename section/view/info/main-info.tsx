@@ -35,10 +35,8 @@ const MainInfo = ({ cottage }: mainInfo) => {
             <div className="flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
                 <div className="flex flex-col space-y-3 w-full md:w-[70%]">
                     <div className="about-cottage flex flex-col space-y-2">
-
                         <h3 className='text-2xl md:text-3xl font-mediu'>{t('about_cottage')}</h3>
                         <p className='text-base md:text-lg whitespace-pre-wrap break-words'>{cottage.description}</p>
-
                         <div className="flex mt-5  flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
                             <span className='flex gap-x-2 items-center text-[16px] md:text-[18px]'><UsersRound size={22} strokeWidth={1.75} /> {t('guests')}: {cottage?.maxGuests} ta</span>
                             <span className='flex gap-x-2 items-center md:text-[18px]'><DoorOpen size={22} strokeWidth={1.75} /> {t('bedrooms')}: {cottage?.numberOfRooms} ta</span>
