@@ -138,6 +138,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     </div>
                 </div>
             </div>
+            
             <GoogleMap link={mapLink as string} />
         </>
     );
