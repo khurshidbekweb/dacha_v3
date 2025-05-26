@@ -20,5 +20,7 @@ export const QUERY_KEYS = {
     tariff: "tariffs",
     cottageUserAllId: "cottageUserIdAll",
     userCottageUser: "UserCottageUser",
-    order: "orders"
+    order: "orders",
+    cottage_by_isTop: "cottage_top_byId",
+    cottage_by_recommended: "cottage_recom_byId"
 };
