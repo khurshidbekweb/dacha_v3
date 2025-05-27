@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { ChildProps } from "@/types";
-import RootLayout from "@/components/provider/root-provider";
 import { dir } from "i18next";
+import RootLayout from "@/components/provider/root-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,18 +20,18 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ locale: 'uz' }, { locale: 'ru' }, { locale: 'en' }]
+  return [{ locale: 'uz' }, { locale: 'ru' }, { locale: 'en' }];
 }
 
 export default function Layout({
   children,
   params: { locale }
 }: {
-  children: React.ReactNode
-  params: { locale: string }
+  children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang={locale} dir={dir(locale)} suppressHydrationWarning={true}>
+    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <RootLayout>
           {children}

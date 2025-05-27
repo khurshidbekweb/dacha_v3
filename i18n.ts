@@ -1,27 +1,33 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import commonUz from './public/locales/uz/common.json';
-import commonRu from './public/locales/ru/common.json';
-import commonEn from './public/locales/en/common.json';
+const resources = {
+  uz: {
+    translation: {
+      welcome: "Xush kelibsiz",
+      language: "Til"
+    }
+  },
+  ru: {
+    translation: {
+      welcome: "Добро пожаловать",
+      language: "Язык"
+    }
+  },
+  en: {
+    translation: {
+      welcome: "Welcome",
+      language: "Language"
+    }
+  }
+};
 
 i18n
   .use(initReactI18next)
   .init({
-    resources: {
-      uz: {
-        common: commonUz,
-      },
-      ru: {
-        common: commonRu,
-      },
-      en: {
-        common: commonEn,
-      },
-    },
+    resources,
     lng: 'uz',
     fallbackLng: 'uz',
-    defaultNS: 'common',
     interpolation: {
       escapeValue: false,
     },

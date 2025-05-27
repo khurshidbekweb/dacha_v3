@@ -12,7 +12,8 @@ const RootLayout = ({ children }: ChildProps) => {
 
     useEffect(() => {
         setIsClient(true);
-        if (!safeLocalStorage.getItem("language")) safeLocalStorage.setItem("language", "uz");
+        const currentLang = safeLocalStorage.getItem("language") || "uz";
+        i18n.changeLanguage(currentLang);
     }, []);
 
     if (!isClient) {
