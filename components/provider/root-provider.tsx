@@ -20,7 +20,7 @@ const RootLayoutClient = ({ children }: ChildProps) => {
     }
 
     return (
-        <div>
+        <>
             <QueryClientProvider client={queryClient}>
                 <ThemeProvider
                     attribute="class"
@@ -30,7 +30,7 @@ const RootLayoutClient = ({ children }: ChildProps) => {
                     {children}
                 </ThemeProvider>
             </QueryClientProvider>
-        </div>
+        </>
     );
 };
 
