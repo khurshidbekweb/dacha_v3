@@ -3,29 +3,34 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from './theme-provider';
 import { ChildProps } from '@/types';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '@/i18n';
 
 const RootLayout = ({ children }: ChildProps) => {
     const queryClient = new QueryClient();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true);  // Klientda ekanligimizni belgilaymiz
+        setIsClient(true);
         if (!safeLocalStorage.getItem("language")) safeLocalStorage.setItem("language", "uz");
     }, []);
 
     if (!isClient) {
-        return null; // serverda bo'lgan paytda hech narsa render qilmaydi
+        return null;
     }
+    
     return (
         <div>
             <QueryClientProvider client={queryClient}>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange>
-                    {children}
-                </ThemeProvider>
+                <I18nextProvider i18n={i18n}>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange>
+                        {children}
+                    </ThemeProvider>
+                </I18nextProvider>
             </QueryClientProvider>
         </div>
     );

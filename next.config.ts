@@ -1,10 +1,8 @@
+import { i18n } from './next-i18next.config.js'
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  i18n: {
-    defaultLocale: 'uz',
-    locales: ['uz', 'ru', 'en'],
-  }
+  i18n,
 };
 
 export default nextConfig;
