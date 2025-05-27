@@ -18,6 +18,7 @@ const RootLayoutClient = ({ children }: ChildProps) => {
     if (!isClient) {
         return children;
     }
+
     return (
         <div>
             <QueryClientProvider client={queryClient}>
