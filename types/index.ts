@@ -1,7 +1,6 @@
 export interface ChildProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
-
 export interface language {
   image: string,
   id: string,

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, } from "next/font/google";
 import "./globals.css";
 import { ChildProps } from "@/types";
+import RootLayoutClient from "@/components/provider/root-provider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -19,14 +22,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: ChildProps) {
+
+
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang='en' suppressHydrationWarning={true}>
       <body cz-shortcut-listen="true"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <RootLayout>
+        <RootLayoutClient>
           {children}
-        </RootLayout>
+        </RootLayoutClient>
       </body>
     </html>
   );

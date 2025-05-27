@@ -1,20 +1,22 @@
+'use client'
 import { safeLocalStorage } from '@/utils/safeLocalstorge';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from './theme-provider';
 import { ChildProps } from '@/types';
+import '../../i18n'
 
-const RootLayout = ({ children }: ChildProps) => {
+const RootLayoutClient = ({ children }: ChildProps) => {
     const queryClient = new QueryClient();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true);  // Klientda ekanligimizni belgilaymiz
+        setIsClient(true);
         if (!safeLocalStorage.getItem("language")) safeLocalStorage.setItem("language", "uz");
     }, []);
 
     if (!isClient) {
-        return null; // serverda bo'lgan paytda hech narsa render qilmaydi
+        return children;
     }
     return (
         <div>
@@ -31,4 +33,4 @@ const RootLayout = ({ children }: ChildProps) => {
     );
 };
 
-export default RootLayout;
+export default RootLayoutClient;
