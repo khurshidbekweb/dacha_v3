@@ -1,14 +1,8 @@
-'use client'
+import { HomePage } from '@/section/home';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-    const { t } = useTranslation()
-    return (
-        <div className='p-3'>
-            {t('welcome')}
-        </div>
-    );
+    return <HomePage />
 };
 
 export default Home;

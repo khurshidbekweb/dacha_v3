@@ -1,10 +1,12 @@
+'use client'
+
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import React from 'react';
 import { ModeToggle } from './mode-toggle';
-import { navLink } from '@/constants/main-data';
 import MobileMenu from './mobile-menu';
 import { usePathname } from 'next/navigation';
+import { navLink } from '@/constants';
 
 const Navbar = () => {
     const pathname = usePathname()
@@ -12,7 +14,7 @@ const Navbar = () => {
         <div className='mx-auto px-2 md:px-10 xl:px-14 fixed w-screen z-50 top-0 backdrop-blur-md'>
             <div className="flex justify-between items-center h-[60px]">
                 <Link href={'/'} className="text-xl font-bold">
-                    Khurshid Dev
+                    DachaOL
                 </Link>
                 <div className="nav w-[40%] md:flex justify-between items-center hidden">
                     {navLink.map((el: { id: number, name: string, path: string }) => (
