@@ -1,4 +1,3 @@
-
 import Navbar from '@/app/(root)/_components/navbar';
 import React from 'react';
 

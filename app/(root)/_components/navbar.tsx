@@ -7,9 +7,12 @@ import { ModeToggle } from './mode-toggle';
 import MobileMenu from './mobile-menu';
 import { usePathname } from 'next/navigation';
 import { navLink } from '@/constants';
+import { useTranslation } from 'react-i18next';
+import ChangeLanguage from './change-language';
 
 const Navbar = () => {
     const pathname = usePathname()
+    const { t } = useTranslation()
     return (
         <div className='mx-auto px-2 md:px-10 xl:px-14 fixed w-screen z-50 top-0 backdrop-blur-md'>
             <div className="flex justify-between items-center h-[60px]">
@@ -19,10 +22,11 @@ const Navbar = () => {
                 <div className="nav w-[40%] md:flex justify-between items-center hidden">
                     {navLink.map((el: { id: number, name: string, path: string }) => (
                         <Link className={`hover:bg-[#44bd32] dark:hover:bg-[#F0A500] hover:text-white px-2 p-1 rounded-md transition-colors ${pathname == el.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`} key={el.id} href={el.path}>
-                            {el.name}
+                            {t(`${el.name}`)}
                         </Link>
                     ))}
                     <ModeToggle />
+                    <ChangeLanguage />
                 </div>
                 <div className="flex md:hidden items-center gap-x-3">
                     <ModeToggle />

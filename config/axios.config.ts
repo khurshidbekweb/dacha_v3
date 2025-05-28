@@ -1,6 +1,6 @@
 import axios from "axios";
 import { authUtils } from "../utils/auth.utils";
-import { BASE_URL_SERVER } from "@/constants/server";
+import { BASE_URL_SERVER } from "@/constants";
 
 const custimAxios = axios.create({
   baseURL: BASE_URL_SERVER,

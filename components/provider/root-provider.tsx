@@ -6,17 +6,17 @@ import { ThemeProvider } from './theme-provider';
 import { ChildProps } from '@/types';
 import '../../i18n'
 
-const RootLayoutClient = ({ children }: ChildProps) => {
-    const queryClient = new QueryClient();
-    const [isClient, setIsClient] = useState(false);
+const queryClient = new QueryClient();
 
+const RootLayoutClient = ({ children }: ChildProps) => {
+    const [isClient, setIsClient] = useState(false);
     useEffect(() => {
         setIsClient(true);
         if (!safeLocalStorage.getItem("language")) safeLocalStorage.setItem("language", "uz");
     }, []);
 
     if (!isClient) {
-        return children;
+        return null;
     }
 
     return (
