@@ -16,20 +16,22 @@ const Navbar = () => {
     return (
         <div className='mx-auto px-2 md:px-10 xl:px-14 fixed w-screen z-50 top-0 backdrop-blur-md'>
             <div className="flex justify-between items-center h-[60px]">
-                <Link href={'/'} className="text-xl font-bold">
+                <Link href={'/'} className="font-bold text-4xl">
                     DachaOL
                 </Link>
-                <div className="nav w-[40%] md:flex justify-between items-center hidden">
+                <div className="w-[30%] md:flex justify-between items-center hidden gap-x-5">
                     {navLink.map((el: { id: number, name: string, path: string }) => (
-                        <Link className={`hover:bg-[#44bd32] dark:hover:bg-[#F0A500] hover:text-white px-2 p-1 rounded-md transition-colors ${pathname == el.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`} key={el.id} href={el.path}>
+                        <Link className={`hover:bg-[#44bd32] dark:hover:bg-[#F0A500] hover:text-white px-2 p-1 text-xl rounded-md transition-colors ${pathname == el.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`} key={el.id} href={el.path}>
                             {t(`${el.name}`)}
                         </Link>
                     ))}
-                    <ModeToggle />
-                    <ChangeLanguage />
                 </div>
-                <div className="flex md:hidden items-center gap-x-3">
+                <div className='gap-x-3 hidden md:flex'>
+                    <ChangeLanguage />
                     <ModeToggle />
+                </div>
+                <div className="flex md:hidden gap-x-3 border items-center">
+                    <ChangeLanguage />
                     <MobileMenu />
                 </div>
             </div>

@@ -28,14 +28,14 @@ const ChangeLanguage = () => {
     return (
         <div className="block">
             <DropdownMenu>
-                <DropdownMenuTrigger type="button" className="outline-none">
-                    <div className="relative w-[30px] h-[40px]">
+                <DropdownMenuTrigger type="button" className="outline-none flex items-center justify-center">
+                    <div className="relative w-[33px] h-[28px] md:w-[38px] md:h-[35px] ">
                         <Image
                             sizes="(max-width: 48px) 30px, 40px"
                             src={`${IMG_BASE_URL}${activeLang?.image}`}
                             alt="language"
                             fill
-                            className="object-contain"
+                            className="object-cover"
                             priority
                         />
                     </div>
