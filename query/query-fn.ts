@@ -12,7 +12,7 @@ import { TariffUtils } from "../utils/tariff.utilis";
 import { OrderUtils } from "../utils/order.utils";
 import { safeLocalStorage } from "@/utils/safeLocalstorge";
 import { QUERY_KEYS } from "./query-key";
-import { comfort, cottage, cottageType, language, order, place, region, services, tariff, user } from "@/types";
+import { comfort, cottage, cottageTop, cottageType, language, order, place, region, services, tariff, user } from "@/types";
 
 // Type definitions (misol uchun, o'zingizning real typelar bilan to'ldiring)
 
@@ -22,7 +22,7 @@ export const ALL_DATA = {
             queryKey: [QUERY_KEYS.cottages],
             queryFn: cottageUtils.getCottage,
         }),
-    useCottageTop: (): UseQueryResult<cottage[]> =>
+    useCottageTop: (): UseQueryResult<cottageTop[]> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottageTop],
             queryFn: cottageUtils.getCottageTop,
