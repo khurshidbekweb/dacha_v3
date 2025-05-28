@@ -1,11 +1,14 @@
 import Navbar from '@/app/(root)/_components/navbar';
 import React from 'react';
+import { Banner } from './banner/banner';
 
 export const HomePage = () => {
     return (
         <div>
             <Navbar />
-            <div className="bg-green-600"></div>
+            <div className="mt-24">
+                <Banner />
+            </div>
         </div>
     );
 };

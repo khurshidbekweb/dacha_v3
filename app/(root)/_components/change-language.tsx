@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { ALL_DATA } from "@/query/query-fn";
 import { IMG_BASE_URL } from "@/constants";
 import useLanguageStore from "@/store/language-store";
+import uzb from '@/public/image/uzb.png'
 
 const ChangeLanguage = () => {
     const { i18n } = useTranslation()
@@ -32,7 +33,7 @@ const ChangeLanguage = () => {
                     <div className="relative w-[33px] h-[28px] md:w-[38px] md:h-[35px] ">
                         <Image
                             sizes="(max-width: 48px) 30px, 40px"
-                            src={`${IMG_BASE_URL}${activeLang?.image}`}
+                            src={activeLang?.image ? `${IMG_BASE_URL}${activeLang?.image}` : uzb}
                             alt="language"
                             fill
                             className="object-cover"

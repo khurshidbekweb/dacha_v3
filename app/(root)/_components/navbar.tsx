@@ -26,11 +26,11 @@ const Navbar = () => {
                         </Link>
                     ))}
                 </div>
-                <div className='gap-x-3 hidden md:flex'>
+                <div className='gap-x-3 hidden md:flex items-center'>
                     <ChangeLanguage />
                     <ModeToggle />
                 </div>
-                <div className="flex md:hidden gap-x-3 border items-center">
+                <div className="flex md:hidden gap-x-3 items-center">
                     <ChangeLanguage />
                     <MobileMenu />
                 </div>
