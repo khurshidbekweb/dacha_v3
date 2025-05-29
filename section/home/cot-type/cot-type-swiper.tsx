@@ -26,17 +26,15 @@ export function CottageTypeSwiper({ cottageType }: placeProps) {
             <CarouselContent>
                 {cottageType?.length && cottageType.map((place) => (
                     <CarouselItem key={place.id} className="basis-1/2.5 md:basis-1/3.5 lg:basis-1/4">
-                        <div className="w-[170px] h-[80px] md:w-[220px] md:h-[110px] xl:w-[350px] xl:h-[145px] relative">
-                            <div className="relative w-full h-full rounded-lg overflow-hidden">
-                                <Image
-                                    sizes="(max-width: 250px) 1500px, 190px"
-                                    fill
-                                    priority
-                                    src={`${IMG_BASE_URL}${place.image}`}
-                                    alt={place.name}
-                                    className="object-cover"
-                                />
-                            </div>
+                        <div className="w-[170px] h-[80px] md:w-[220px] md:h-[110px] xl:w-[350px] xl:h-[145px] relative rounded-lg overflow-hidden">
+                            <Image
+                                sizes="(max-width: 250px) 1500px, 190px"
+                                fill
+                                priority
+                                src={`${IMG_BASE_URL}${place.image}`}
+                                alt={place.name}
+                                className="object-cover"
+                            />
                         </div>
                     </CarouselItem>
                 ))}

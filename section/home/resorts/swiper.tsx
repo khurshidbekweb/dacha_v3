@@ -37,7 +37,6 @@ export function ResortsSwiper({ places }: placeProps) {
                                     alt={place.name}
                                     className="object-cover w-full h-full"
                                 />
-
                             </div>
                             <div className="absolute bg-[var(--background)] bottom-[-2px] text-[14px] w-full overflow-hidden text-center pb-[5px] font-semibold md:pb-3 md:text-xl md:font-bold line-clamp-1">
                                 {place.name}
