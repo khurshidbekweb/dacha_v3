@@ -6,9 +6,9 @@ import React from 'react';
 const TopCottage = () => {
     const { data: cottages } = ALL_DATA.useCottageRecommended()
     return (
-        <div className='mx-auto px-2 md:px-5 xl:px-14'>
+        <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
             <h2 className='text-3xl font-semibold'>Top E`lonlar </h2>
-            <div className="grid mt-3 grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-3 xl:gap-4 justify-items-center md:justify-between items-center mx-auto">
+            <div className="grid mt-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3 xl:gap-4 justify-items-center md:justify-between items-center mx-auto">
                 {cottages?.length && cottages.map(cottage => (
                     <PremiumDachaCard dacha={cottage} key={cottage.id} />
                 ))}

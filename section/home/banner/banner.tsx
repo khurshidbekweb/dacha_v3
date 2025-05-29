@@ -10,7 +10,7 @@ export function Banner() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true }
     const cottageTop = ALL_DATA.useCottageTop()?.data || [];
     return (
-        <div>
+        <div className="mx-auto">
             <EmblaCarousel slides={cottageTop} options={OPTIONS} />
         </div>
     )
