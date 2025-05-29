@@ -11,12 +11,20 @@ import {
     type CarouselApi,
 } from "@/components/ui/carousel"
 import Image from "next/image"
-import dacha from '@/public/image/dacha.jpg'
+import { cottage, } from "@/types"
+import { IMG_BASE_URL } from "@/constants"
 
-export function CardSwiper() {
+
+interface swiperImage {
+    dacha: cottage
+}
+
+export function CardSwiper({ dacha }: swiperImage) {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
+    console.log(dacha);
+
 
     React.useEffect(() => {
         if (!api) {
@@ -60,10 +68,10 @@ export function CardSwiper() {
         <div className="mx-auto">
             <Carousel setApi={setApi} className="w-full  relative border rounded-4xl overflow-hidden">
                 <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
+                    {dacha?.images?.length && dacha?.images.map((img, index) => (
                         <CarouselItem key={index}>
                             <div className="relative w-full h-[250px]">
-                                <Image src={dacha} alt="dacha" fill sizes="(max-width: 320px) 300px 280px" priority className="object-cover" />
+                                <Image src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" priority className="object-cover" />
                             </div>
                         </CarouselItem>
                     ))}

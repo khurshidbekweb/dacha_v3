@@ -1,4 +1,4 @@
-import { MapPin, Users, DoorOpen, Star, Heart, Crown } from "lucide-react";
+import { MapPin, Users, DoorOpen, Star, Heart, Crown, Eye, Phone, MoveUpRight } from "lucide-react";
 import { CardSwiper } from "@/section/home/top-cottage/swiper-card";
 import { useLikeStore } from "@/store/like-card";
 import { premiumCottage } from "@/types";
@@ -16,17 +16,17 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
     const handleLikeClick = (id: string) => {
         toggleLike(id);
     };
-    console.log(dacha.cottage.id);
+    console.log(dacha);
 
     return (
         <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative" key={dacha.id}>
-            <CardSwiper />
+            <CardSwiper dacha={dacha.cottage} />
 
             <div className="p-2">
-                <h3 className="font-medium text-lg">Oilaviy Dala Hovli, Xo`jakent</h3>
+                <h3 className="font-medium text-lg">{dacha.cottage.name}</h3>
                 <div className="flex items-center text-sm text-gray-600 mt-1">
                     <MapPin className="w-4 h-4 mr-1" />
-                    <span>Toshkent v., Bo`stonlid t., Ho`jakent</span>
+                    <span>{dacha.cottage.region.name.slice(0, 12)}., {dacha.cottage.place.name}</span>
                 </div>
             </div>
 
@@ -42,16 +42,23 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                     </div>
                 </div>
 
-                <div className="flex items-center text-sm text-gray-600">
-                    <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
-                    <span>0</span>
-                    <span className="mx-1">●</span>
-                    <span>0 Sharhlar</span>
+                <div className="flex justify-between items-end">
+                    <div className="flex items-center text-sm text-gray-600">
+                        <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
+                        <span>0</span>
+                        <span className="mx-1">●</span>
+                        <span>0 Sharhlar</span>
+                    </div>
+                    <div className="flex items-center gap-x-5">
+                        <span className="flex items-center gap-x-1 text-[12px]"><Eye size={16} /> 257</span>
+                        <span className="flex items-center gap-x-1 text-[12px]"><Phone size={15} /> 23</span>
+                    </div>
                 </div>
             </div>
 
-            <div className="p-2 pt-0">
-                <p className="text-lg font-semibold text-primary">1 500 000 so`m</p>
+            <div className="p-2 pt-0 flex justify-between items-center">
+                <p className="text-lg font-semibold text-primary">{dacha.cottage.price.toLocaleString()} so`m</p>
+                <Button className="p-2 rounded-lg bg-primary">Batafsil <MoveUpRight /></Button>
             </div>
             <Button onClick={() => handleLikeClick(dacha.id)} variant='link' className='absolute  top-2 right-0'>
                 <span className='overflow-hidden bg-[#ffffff75] p-[6px] rounded-full' ><Heart className={cn('overflow-hidden text-black/50', isLiked && 'transition-colors fill-amber-400 text-yellow-500 ')} size={35} /></span>

@@ -14,7 +14,7 @@ export function DachaCard(dacha: cottage) {
     };
     return (
         <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative">
-            <CardSwiper />
+            <CardSwiper dacha={dacha} />
 
             <div className="p-2">
                 <h3 className="font-medium text-lg">Oilaviy Dala Hovli, Xo`jakent</h3>
