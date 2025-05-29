@@ -22,9 +22,7 @@ interface swiperImage {
 export function CardSwiper({ dacha }: swiperImage) {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
-    const [count, setCount] = React.useState(0)
-    console.log(dacha);
-
+    const [count, setCount] = React.useState(0);
 
     React.useEffect(() => {
         if (!api) {
@@ -71,7 +69,7 @@ export function CardSwiper({ dacha }: swiperImage) {
                     {dacha?.images?.length && dacha?.images.map((img, index) => (
                         <CarouselItem key={index}>
                             <div className="relative w-full h-[250px]">
-                                <Image src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" priority className="object-cover" />
+                                <Image loading="lazy" src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
                             </div>
                         </CarouselItem>
                     ))}

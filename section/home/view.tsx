@@ -4,6 +4,8 @@ import { Banner } from './banner/banner';
 import Resorts from './resorts/resorts';
 import TopCottage from './top-cottage/top-cottage';
 import CottageType from './cot-type/cottage-type';
+import RecentlyCot from './cottage/recently-cot';
+import Cottage from './cottage/cottage';
 
 export const HomePage = () => {
     return (
@@ -22,6 +24,10 @@ export const HomePage = () => {
                 <CottageType />
             </div>
             <div className='mt-5 md:mt-16'>
+                <RecentlyCot />
+            </div>
+            <div className='mt-5 md:mt-16'>
+                <Cottage />
             </div>
         </div>
     );

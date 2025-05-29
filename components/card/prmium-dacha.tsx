@@ -12,7 +12,7 @@ interface premiumCottageProps {
 export function PremiumDachaCard({ dacha }: premiumCottageProps) {
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
-    const isLiked = likedCards.includes(dacha.id);
+    const isLiked = likedCards.includes(dacha.cottage.id);
     const handleLikeClick = (id: string) => {
         toggleLike(id);
     };

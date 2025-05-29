@@ -5,7 +5,11 @@ import { cottage } from "@/types";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
-export function DachaCard(dacha: cottage) {
+interface DachaProps {
+    dacha: cottage
+}
+
+export function DachaCard({ dacha }: DachaProps) {
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
     const isLiked = likedCards.includes(dacha.id);
@@ -13,14 +17,14 @@ export function DachaCard(dacha: cottage) {
         toggleLike(id);
     };
     return (
-        <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative">
+        <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative" key={dacha.id}>
             <CardSwiper dacha={dacha} />
 
             <div className="p-2">
-                <h3 className="font-medium text-lg">Oilaviy Dala Hovli, Xo`jakent</h3>
+                <h3 className="font-medium text-lg line-clamp-1">{dacha.name}</h3>
                 <div className="flex items-center text-sm text-gray-600 mt-1">
                     <MapPin className="w-4 h-4 mr-1" />
-                    <span>Toshkent v., Bo`stonlid t., Ho`jakent</span>
+                    <span>{dacha.region.name}., {dacha.place.name}</span>
                 </div>
             </div>
 
@@ -46,10 +50,10 @@ export function DachaCard(dacha: cottage) {
             </div>
 
             <div className="p-2 pt-0">
-                <p className="text-lg font-semibold text-primary">1 500 000 so`m</p>
+                <p className="text-lg font-semibold text-primary">{dacha.price.toLocaleString()} so`m</p>
             </div>
-            <Button onClick={() => handleLikeClick(dacha.id)} variant='link' className='absolute  top-0 right-0'>
-                <span className={cn('overflow-hidden text-white', isLiked && 'transition-colors text-red-700')}><Heart size={20} /></span>
+            <Button onClick={() => handleLikeClick(dacha.id)} variant='link' className='absolute  top-2 right-0'>
+                <span className='overflow-hidden bg-[#ffffff75] p-[6px] rounded-full' ><Heart className={cn('overflow-hidden text-black/50', isLiked && 'transition-colors fill-amber-400 text-yellow-500 ')} size={35} /></span>
             </Button>
         </div>
     );
