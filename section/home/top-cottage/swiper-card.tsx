@@ -28,7 +28,6 @@ export function CardSwiper({ dacha }: swiperImage) {
         if (!api) {
             return
         }
-
         setCount(api.scrollSnapList().length)
         setCurrent(api.selectedScrollSnap())
 
@@ -36,6 +35,10 @@ export function CardSwiper({ dacha }: swiperImage) {
             setCurrent(api.selectedScrollSnap())
         })
     }, [api])
+    const handlePointerDown = (e: React.PointerEvent) => {
+        e.stopPropagation()
+    }
+
     const windowSize = 5; // 3 yoki 5 nuqta ko'rsatish
     const halfWindow = Math.floor(windowSize / 2);
 
@@ -64,8 +67,14 @@ export function CardSwiper({ dacha }: swiperImage) {
 
     return (
         <div className="mx-auto">
-            <Carousel setApi={setApi} className="w-full  relative border rounded-4xl overflow-hidden">
-                <CarouselContent>
+            <Carousel
+                setApi={setApi}
+                className="w-full relative border rounded-4xl overflow-hidden"
+                id={`inner-carousel-${dacha.id}`}
+                key={`inner-carousel-${dacha.id}`}
+                onPointerDownCapture={handlePointerDown}
+            >
+                <CarouselContent className="[&>.embla__viewport]:pointer-events-none [&>.embla__viewport>*>*]:pointer-events-auto">
                     {dacha?.images?.length && dacha?.images.map((img, index) => (
                         <CarouselItem key={index}>
                             <div className="relative w-full h-[250px]">

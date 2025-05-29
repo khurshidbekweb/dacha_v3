@@ -17,35 +17,40 @@ export function DachaCard({ dacha }: DachaProps) {
         toggleLike(id);
     };
     return (
-        <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative" key={dacha.id}>
-            <CardSwiper dacha={dacha} />
+        <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative flex flex-col" key={dacha.id}>
 
-            <div className="p-2">
-                <h3 className="font-medium text-lg line-clamp-1">{dacha.name}</h3>
-                <div className="flex items-center text-sm text-gray-600 mt-1">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    <span>{dacha.region.name}., {dacha.place.name}</span>
-                </div>
+            <div className="flex-shrink-0">
+                <CardSwiper dacha={dacha} />
             </div>
 
-            <div className="p-2 pt-0">
-                <div className="flex gap-4 text-sm mb-3">
-                    <div className="flex items-center">
-                        <Users className="w-4 h-4 mr-1 text-gray-600" />
-                        <span>8 kishilik</span>
-                    </div>
-                    <div className="flex items-center">
-                        <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
-                        <span>4 xonalik</span>
+            <div className="flex-grow">
+                <div className="p-2">
+                    <h3 className="font-medium text-lg line-clamp-1">{dacha.name}</h3>
+                    <div className="flex items-center text-sm text-gray-600 mt-1">
+                        <MapPin className="w-4 h-4 mr-1" />
+                        <span>{dacha.region.name}., {dacha.place.name}</span>
                     </div>
                 </div>
 
-                {/* Rating */}
-                <div className="flex items-center text-sm text-gray-600">
-                    <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
-                    <span>0</span>
-                    <span className="mx-1">●</span>
-                    <span>0 Sharhlar</span>
+                <div className="p-2 pt-0">
+                    <div className="flex gap-4 text-sm mb-3">
+                        <div className="flex items-center">
+                            <Users className="w-4 h-4 mr-1 text-gray-600" />
+                            <span>8 kishilik</span>
+                        </div>
+                        <div className="flex items-center">
+                            <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
+                            <span>4 xonalik</span>
+                        </div>
+                    </div>
+
+                    {/* Rating */}
+                    <div className="flex items-center text-sm text-gray-600">
+                        <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
+                        <span>0</span>
+                        <span className="mx-1">●</span>
+                        <span>0 Sharhlar</span>
+                    </div>
                 </div>
             </div>
 
