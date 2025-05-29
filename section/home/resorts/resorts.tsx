@@ -7,9 +7,9 @@ import { ALL_DATA } from '@/query/query-fn';
 const Resorts = () => {
     const { data: places } = ALL_DATA.usePlace()
     return (
-        <div className='mx-auto px-2 md:px-5 xl:px-14'>
-            <h2 className='text-3xl font-semibold'>Dam olish maskanlari </h2>
-            <div className="mt-4 overflow-hidden">
+        <div className='mx-auto md:px-5 xl:px-14'>
+            <h2 className='text-3xl font-semibold px-2 '>Dam olish maskanlari </h2>
+            <div className="mt-4 outline-hidden md:pl-1 xl:pl-0">
                 <ResortsSwiper places={places!} />
             </div>
         </div>

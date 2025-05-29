@@ -111,4 +111,12 @@ export interface order {
   userId: string,
 }
 
-
+export interface premiumCottage {
+  cottage: cottage,
+  cottageId: string
+  createdAt: string
+  expireAt: string
+  id: string
+  priority: number
+  serviceCode: string
+}

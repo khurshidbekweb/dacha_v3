@@ -26,28 +26,28 @@ export function ResortsSwiper({ places }: placeProps) {
         >
             <CarouselContent>
                 {places?.length && places.map((place) => (
-                    <CarouselItem key={place.id} className="basis-1/3 md:basis-1/4 lg:basis-1/6 ">
-                        <div className="w-[115px] h-[110px] md:w-[150px] md:h-[150px] xl:w-[200px] xl:h-[195px] rounded-full overflow-hidden relative">
-                            <div className="relative w-full h-full">
+                    <CarouselItem key={place.id} className="basis-1/4 md:basis-1/5 lg:basis-1/7">
+                        <div className="w-[90px] h-[89px] md:w-[150px] md:h-[150px] xl:w-[150px] xl:h-[145px] rounded-full relative">
+                            <div className="relative w-full h-full rounded-full overflow-hidden">
                                 <Image
                                     sizes="(max-width: 80px) 80px, 90px"
                                     fill
                                     priority
                                     src={`${IMG_BASE_URL}${place.image}`}
                                     alt={place.name}
-                                    className="object-cover"
+                                    className="object-cover w-full h-full"
                                 />
 
                             </div>
-                            <div className="absolute bg-black/80 text-white bottom-0 w-full overflow-hidden text-center pb-[9px] font-semibold md:pb-5 md:text-2xl md:font-bold line-clamp-1">
+                            <div className="absolute bg-[var(--background)] bottom-[-2px] text-[14px] w-full overflow-hidden text-center pb-[5px] font-semibold md:pb-3 md:text-xl md:font-bold line-clamp-1">
                                 {place.name}
                             </div>
                         </div>
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-1" />
-            <CarouselNext className="absolute right-1" />
+            <CarouselPrevious className="absolute left-1 md:left-0" />
+            <CarouselNext className="absolute right-1 md:right-0" />
         </Carousel>
     )
 }

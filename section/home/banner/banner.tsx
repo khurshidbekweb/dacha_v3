@@ -9,8 +9,6 @@ import { ALL_DATA } from "@/query/query-fn"
 export function Banner() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true }
     const cottageTop = ALL_DATA.useCottageTop()?.data || [];
-    console.log(cottageTop);
-
     return (
         <div>
             <EmblaCarousel slides={cottageTop} options={OPTIONS} />
