@@ -78,7 +78,7 @@ export function CardSwiper({ dacha }: swiperImage) {
                     {dacha?.images?.length && dacha?.images.map((img, index) => (
                         <CarouselItem key={index}>
                             <div className="relative w-full h-[250px]">
-                                <Image loading="lazy" src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
+                                <Image priority src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
                             </div>
                         </CarouselItem>
                     ))}
