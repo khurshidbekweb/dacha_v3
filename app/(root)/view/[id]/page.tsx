@@ -1,11 +1,61 @@
-import React from 'react';
+import { Metadata } from 'next';
+import { cottageUtils } from '@/utils/cottage.utils';
+import { cottage, image } from '@/types';
+import { IMG_BASE_URL } from '@/constants';
+import Info from '../info';
 
-const ViewDacha = () => {
+interface PageParams {
+    params: {
+        id: string;
+    };
+}
+
+
+export async function generateMetadata(
+    { params }: PageParams
+): Promise<Metadata> {
+    const cottages = await cottageUtils.getCottage();
+    const suitableCottage = cottages?.find((e: cottage) => e.id === params.id);
+    const mainImage = suitableCottage?.images.find((img: image) => img.isMainImage);
+
+    return {
+        title: suitableCottage?.name || 'Dacha ko‘rish',
+        description: suitableCottage?.description || 'Dacha haqida ma’lumot',
+        openGraph: {
+            title: suitableCottage?.name,
+            description: suitableCottage?.description,
+            images: [
+                {
+                    url: mainImage ? `${IMG_BASE_URL}${mainImage.image}` : 'https://your-site.com/default.jpg',
+                    width: 800,
+                    height: 600,
+                    alt: suitableCottage?.name || 'Dacha rasmi',
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: suitableCottage?.name || '',
+            description: suitableCottage?.description || '',
+            images: [mainImage ? `${IMG_BASE_URL}${mainImage.image}` : 'https://your-site.com/default.jpg'],
+        },
+    };
+}
+
+export default async function View({
+    params,
+}: PageParams) {
+    const cottage = await cottageUtils.getCottage();
+    const suitableCottage = await cottageUtils.getSuitableCottage(params.id);
+
     return (
-        <div>
-            salom
-        </div>
-    );
-};
+        <>
 
-export default ViewDacha;
+            <Info
+                cottage={cottage}
+                paramsId={params?.id}
+                suitableCottage={suitableCottage}
+            />
+        </>
+    );
+}

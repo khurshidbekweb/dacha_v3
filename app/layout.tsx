@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, } from "next/font/google";
 import "./globals.css";
 import { ChildProps } from "@/types";
 import RootLayoutClient from "@/components/provider/root-provider";
-
+import NextTopLoader from 'nextjs-toploader';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +30,7 @@ export default function RootLayout({ children }: ChildProps) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <RootLayoutClient>
+          <NextTopLoader showSpinner={false} />
           {children}
         </RootLayoutClient>
       </body>
