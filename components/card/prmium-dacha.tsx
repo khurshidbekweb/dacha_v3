@@ -1,5 +1,5 @@
 import { MapPin, Users, DoorOpen, Star, Heart, Crown, Eye, Phone, MoveUpRight } from "lucide-react";
-import { CardSwiper } from "@/section/home/top-cottage/swiper-card";
+import { CardSwiper } from "@/components/swiper/swiper-card";
 import { useLikeStore } from "@/store/like-card";
 import { premiumCottage } from "@/types";
 import { Button } from "../ui/button";
@@ -19,8 +19,10 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
     console.log(dacha);
 
     return (
-        <div className="w-[350px] md:w-[320px] overflow-hidden transition-shadow p-0 relative" key={dacha.id}>
+        <div className="w-[390px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
+
             <CardSwiper dacha={dacha.cottage} />
+
 
             <div className="p-2">
                 <h3 className="font-medium text-lg">{dacha.cottage.name}</h3>
@@ -60,10 +62,10 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                 <p className="text-lg font-semibold text-primary">{dacha.cottage.price.toLocaleString()} so`m</p>
                 <Button className="p-2 rounded-lg bg-primary">Batafsil <MoveUpRight /></Button>
             </div>
-            <Button onClick={() => handleLikeClick(dacha.id)} variant='link' className='absolute  top-2 right-0'>
+            <Button onClick={() => handleLikeClick(dacha.id)} variant='link' className='absolute  top-3 right-1'>
                 <span className='overflow-hidden bg-[#ffffff75] p-[6px] rounded-full' ><Heart className={cn('overflow-hidden text-black/50', isLiked && 'transition-colors fill-amber-400 text-yellow-500 ')} size={35} /></span>
             </Button>
-            <div className="absolute top-2 left-2 flex gap-x-2 items-center rounded-full p-1 text-yellow-500 bg-[#ffffff76]">
+            <div className="absolute top-3 left-3 flex gap-x-2 items-center rounded-full p-1 text-yellow-500 bg-[#ffffff76]">
                 <Crown size={20} />
                 <p>Premium</p>
             </div>

@@ -15,7 +15,6 @@ interface swiperProps {
 }
 
 export function MobileSwiper({ cottages }: swiperProps) {
-
     return (
         <Carousel
             opts={{
@@ -24,9 +23,10 @@ export function MobileSwiper({ cottages }: swiperProps) {
             className="w-full"
             key={`outer-carousel`}
         >
-            <CarouselContent>
+            <CarouselContent
+            >
                 {cottages?.length && cottages.map((data) => (
-                    <CarouselItem key={data.id} className="basis-1/1.2 md:basis-1/3.5 lg:basis-1/4">
+                    <CarouselItem key={data.id} className="basis-1/1.2 md:basis-1/3.5 lg:basis-1/4 ">
                         <DachaCard dacha={data} />
                     </CarouselItem>
                 ))}

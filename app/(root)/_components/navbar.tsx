@@ -14,7 +14,7 @@ const Navbar = () => {
     const pathname = usePathname()
     const { t } = useTranslation()
     return (
-        <div className='mx-auto px-2 md:px-5 xl:px-14 fixed w-screen z-50 top-0 backdrop-blur-md'>
+        <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14 z-50 '>
             <div className="flex justify-between items-center h-[60px]">
                 <Link href={'/'} className="font-bold text-4xl">
                     DachaOL

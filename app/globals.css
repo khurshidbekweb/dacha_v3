@@ -123,3 +123,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.inner-swiper * {
+  touch-action: pan-y;
+}

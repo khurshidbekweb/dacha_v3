@@ -35,9 +35,6 @@ export function CardSwiper({ dacha }: swiperImage) {
             setCurrent(api.selectedScrollSnap())
         })
     }, [api])
-    const handlePointerDown = (e: React.PointerEvent) => {
-        e.stopPropagation()
-    }
 
     const windowSize = 5; // 3 yoki 5 nuqta ko'rsatish
     const halfWindow = Math.floor(windowSize / 2);
@@ -54,11 +51,11 @@ export function CardSwiper({ dacha }: swiperImage) {
                         key={index}
                         onClick={() => api?.scrollTo(index)}
                         className={`
-              transition-all duration-300
-              rounded-full
-              ${isActive ? 'bg-blue-600 w-3 h-2' : 'bg-gray-400 w-2 h-2 opacity-50'}
-              ${isVisible ? 'scale-100' : 'scale-0'}
-            `}
+                                        transition-all duration-300
+                                        rounded-full
+                                        ${isActive ? 'bg-blue-600 w-3 h-2' : 'bg-gray-400 w-2 h-2 opacity-50'}
+                                        ${isVisible ? 'scale-100' : 'scale-0'}
+                                    `}
                     />
                 );
             })}
@@ -69,15 +66,14 @@ export function CardSwiper({ dacha }: swiperImage) {
         <div className="mx-auto">
             <Carousel
                 setApi={setApi}
-                className="w-full relative border rounded-4xl overflow-hidden"
+                className="w-full relative border rounded-4xl overflow-hidden pointer-events-none "
                 id={`inner-carousel-${dacha.id}`}
                 key={`inner-carousel-${dacha.id}`}
-                onPointerDownCapture={handlePointerDown}
             >
-                <CarouselContent className="[&>.embla__viewport]:pointer-events-none [&>.embla__viewport>*>*]:pointer-events-auto">
-                    {dacha?.images?.length && dacha?.images.map((img, index) => (
-                        <CarouselItem key={index}>
-                            <div className="relative w-full h-[250px]">
+                <CarouselContent className="z-3 pointer-events-auto">
+                    {dacha?.images?.length && dacha?.images.map((img) => (
+                        <CarouselItem key={img.id}>
+                            <div className="relative w-full h-[250px]" >
                                 <Image priority src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
                             </div>
                         </CarouselItem>
