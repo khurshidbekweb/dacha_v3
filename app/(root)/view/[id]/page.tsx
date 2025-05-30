@@ -10,19 +10,28 @@ interface PageParams {
     };
 }
 
+// static params generatsiya qilish
+export async function generateStaticParams() {
+    const cottages = await cottageUtils.getCottage();
+
+    return cottages.map((cottage: cottage) => ({
+        id: cottage.id.toString(),
+    }));
+}
 
 export async function generateMetadata(
     { params }: PageParams
 ): Promise<Metadata> {
     const cottages = await cottageUtils.getCottage();
-    const suitableCottage = cottages?.find((e: cottage) => e.id === params.id);
+    const awaitedParams = await params;
+    const suitableCottage = cottages.find((e: cottage) => e.id === awaitedParams.id);
     const mainImage = suitableCottage?.images.find((img: image) => img.isMainImage);
 
     return {
         title: suitableCottage?.name || 'Dacha ko‘rish',
         description: suitableCottage?.description || 'Dacha haqida ma’lumot',
         openGraph: {
-            title: suitableCottage?.name,
+            title: suitableCottage?.name || 'DachaOL',
             description: suitableCottage?.description,
             images: [
                 {
@@ -46,14 +55,14 @@ export default async function View({
     params,
 }: PageParams) {
     const cottage = await cottageUtils.getCottage();
-    const suitableCottage = await cottageUtils.getSuitableCottage(params.id);
+    const awaitedParams = await params; // await kerak emas
+    const suitableCottage = await cottageUtils.getSuitableCottage(awaitedParams.id);
 
     return (
         <>
-
             <Info
                 cottage={cottage}
-                paramsId={params?.id}
+                paramsId={params.id}
                 suitableCottage={suitableCottage}
             />
         </>
