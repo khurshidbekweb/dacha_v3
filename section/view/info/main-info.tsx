@@ -39,7 +39,9 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <div className="comforts">
                         <h3 className='text-3xl font-mediu'>Qulayliklar</h3>
                         <div className="grid grid-cols-3">
-                            <div className=""></div>
+                            <div className="">
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
