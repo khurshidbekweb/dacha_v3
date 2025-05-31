@@ -37,7 +37,7 @@ export function ImageDacha({ images }: imageProps) {
     }, [api])
 
     return (
-        <div className="mx-auto w-full overflow-hidden">
+        <div className="mx-auto w-full overflow-hidden md:hidden">
             <Carousel setApi={setApi} className="w-full p-0 relative border">
                 <CarouselContent>
                     {images.images?.length && images?.images?.map((img) => (
