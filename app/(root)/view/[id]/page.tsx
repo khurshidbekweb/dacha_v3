@@ -57,11 +57,11 @@ export default async function View({
     const cottage = await cottageUtils.getCottage();
     const awaitedParams = await params; // await kerak emas
     const suitableCottage = await cottageUtils.getSuitableCottage(awaitedParams.id);
-
+    const cottageView: cottage = cottage && cottage?.find((e: cottage) => e.id === awaitedParams.id)
     return (
         <>
             <Info
-                cottage={cottage}
+                cottage={cottageView}
                 paramsId={params.id}
                 suitableCottage={suitableCottage}
             />

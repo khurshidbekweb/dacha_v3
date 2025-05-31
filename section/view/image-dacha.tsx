@@ -1,9 +1,16 @@
+import { image } from '@/types';
 import React from 'react';
+interface imgesprops {
+    images: image[]
+}
 
-const ImageDacha = () => {
+
+const ImageDacha = ({ images }: imgesprops) => {
+    console.log(images);
+
     return (
         <div>
-            
+            Image
         </div>
     );
 };
