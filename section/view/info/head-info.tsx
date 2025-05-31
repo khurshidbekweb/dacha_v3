@@ -64,7 +64,7 @@ const HeadInfo = ({ cottage }: headINfo) => {
                     </div>
                 </div>
             </div>
-            <div className={`w-full flex justify-between items-center md:hidden fixed z-2  px-1 ${isScrolled ? 'bg-white -mt-1 py-1 transition-all' : "mt-[6px]"}`}>
+            <div className={`w-full flex justify-between items-center md:hidden fixed z-2  px-1 ${isScrolled ? 'bg-secondary -mt-1 py-2 transition-all' : "mt-[6px]"}`}>
                 <Button className='rounded-full p-2 py-5 shadow-lg' variant='outline'><MoveLeft size={28} strokeWidth={1.75} /> </Button>
                 <div className="flex gap-x-3 items-center justify-between">
                     <Button className='rounded-full py-5 shadow-lg' onClick={copyLinkText} variant='outline'> <Share2 size={28} strokeWidth={1.75} /></Button>

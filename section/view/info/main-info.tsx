@@ -26,35 +26,35 @@ const MainInfo = ({ cottage }: mainInfo) => {
                 </div>
                 <Separator className='my-2' />
             </div>
-            <Separator className='mt-10' />
-            <div className="md:flex justify-between items-start w-full mt-10 hidden relative gap-3">
-                <div className="flex flex-col space-y-3 w-[70%] ">
+            <Separator className='mt-10 md:block hidden' />
+            <div className="md:flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
+                <div className="flex flex-col space-y-3 w-full md:w-[70%]">
                     <div className="about-cottage flex flex-col space-y-2">
-                        <h3 className='text-3xl font-mediu'>Dacha haqida</h3>
-                        <p>{cottage.description}</p>
-                        <div className="flex justify-between items-center">
+                        <h3 className='text-2xl md:text-3xl font-mediu'>Dacha haqida</h3>
+                        <p className='text-base md:text-lg whitespace-pre-wrap break-words'>{cottage.description}</p>
+                        <div className="flex flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
                             <span className='flex gap-x-2 items-center text-xl'><UsersRound size={28} strokeWidth={1.75} /> Mehmonlar</span>
                             <span className='flex gap-x-2 items-center text-xl'><DoorOpen size={28} strokeWidth={1.75} /> Yotoq xonalar</span>
                             <span className='flex gap-x-2 items-center text-xl'><BedSingle size={28} strokeWidth={1.75} /> Yotoqlar</span>
                             <span className='flex gap-x-2 items-center text-xl'><BedDouble size={28} strokeWidth={1.75} /> 2 o`rinli yotoqlar</span>
                         </div>
-                        <Separator className='mt-10' />
+                        <Separator className='mt-5 md:mt-10' />
                     </div>
                     <div className="comforts">
-                        <h3 className='text-3xl font-mediu'>Qulayliklar</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>Qulayliklar</h3>
                         <div className="grid grid-cols-3 gap-2 mt-5">
                             {cottage.comforts.map(comfort => (
                                 <span className="flex gap-x-2 items-center" key={comfort.id}>
                                     <Image width={30} height={30} src={`${IMG_BASE_URL}${comfort.image}`} alt={cottage.name} />
-                                    {comfort.name}
+                                    <p className='line-clamp-1'>{comfort.name}</p>
                                 </span>
                             ))}
                         </div>
-                        <Separator className='mt-10' />
+                        <Separator className='mt-5 md:mt-10' />
                     </div>
                     <div className="rule flex flex-col space-y-2 mt-5">
-                        <h3 className='text-3xl font-mediu'>Qoidalar</h3>
-                        <div className="border p-3 rounded-lg mt-3">
+                        <h3 className='text-2xl md:text-3xl font-mediu'>Qoidalar</h3>
+                        <div className="border p-2 md:p-3 rounded-lg mt-1 md:mt-3">
                             <div className="flex items-center justify-between border-b py-2">
                                 <LogIn size={28} strokeWidth={1.75} />
                                 <p className='text-xl font-normal'>10:00/19:00</p>
@@ -75,14 +75,14 @@ const MainInfo = ({ cottage }: mainInfo) => {
                                 <LogIn size={28} strokeWidth={1.75} />
                                 <p className='text-xl font-normal'>10:00/19:00</p>
                             </div>
-                            <div className="flex items-center justify-between py-4">
+                            <div className="flex items-center justify-between py-3">
                                 <LogIn size={28} strokeWidth={1.75} />
                                 <p className='text-xl font-normal'>10:00/19:00</p>
                             </div>
                         </div>
                     </div>
                     <div className="review mt-5 flex flex-col space-y-2">
-                        <h3 className='text-3xl font-mediu'>Mehmonlar sharhlari</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>Mehmonlar sharhlari</h3>
                         <div className="flex flex-col space-y-3">
                             <div className="flex flex-col space-y-2">
                                 <div className="user flex gap-x-2 items-center">
@@ -114,7 +114,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     </div>
                     <Separator className='mt-10' />
                 </div>
-                <div className="sticky w-full flex-1 border p-2 top-10 rounded-lg">
+                <div className="sticky w-full flex-1 border p-2 top-10 rounded-lg hidden md:block">
                     <h3 className='text-xl font-mediu'>Dacha egasi bilan bog`lanish</h3>
                     <Separator className='mt-5' />
                     <div className="flex flex-col items-start justify-start py-5">
@@ -144,7 +144,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} sum</p>
                         </div>
 
-                        <Link className='w-full bg-secondary p-2 rounded-full flex items-center justify-center mt-7 gap-x-3 text-center' href={`tel:+998971082004`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>
+                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:+998971082004`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>
                     </div>
                 </div>
             </div>
