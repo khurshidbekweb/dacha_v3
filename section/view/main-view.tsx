@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageDacha from './image-dacha';
 import { cottage } from '@/types';
+import { ImageDacha } from './image/image-dacha-mobile';
 
 
 interface dachaView {
@@ -13,7 +13,7 @@ const MainView = ({ cottage, suitableCottage }: dachaView) => {
 
     return (
         <div>
-            <ImageDacha images={cottage?.images} />
+            <ImageDacha images={cottage} />
         </div>
     );
 };
