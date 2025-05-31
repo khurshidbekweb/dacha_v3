@@ -40,7 +40,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <h3 className='text-3xl font-mediu'>Qulayliklar</h3>
                         <div className="grid grid-cols-3">
                             <div className="">
-                                <span></span>
+                                <span className=''></span>
                             </div>
                         </div>
                     </div>
