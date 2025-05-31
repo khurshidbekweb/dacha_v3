@@ -15,10 +15,11 @@ import Image from "next/image"
 import { IMG_BASE_URL } from "@/constants"
 
 interface imageProps {
-    images: cottage
+    images: cottage,
+    onOpenSheet: () => void
 }
 
-export function ImageDacha({ images }: imageProps) {
+export function ImageDacha({ images, onOpenSheet }: imageProps) {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0)
@@ -42,7 +43,7 @@ export function ImageDacha({ images }: imageProps) {
                 <CarouselContent>
                     {images.images?.length && images?.images?.map((img) => (
                         <CarouselItem key={img.id}>
-                            <div className="relative w-full h-[260px]">
+                            <div className="relative w-full h-[260px]" onClick={onOpenSheet}>
                                 <Image
                                     src={`${IMG_BASE_URL}${img.image}`}
                                     alt={images.name}

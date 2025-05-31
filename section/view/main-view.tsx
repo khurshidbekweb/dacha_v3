@@ -10,7 +10,6 @@ interface dachaView {
 }
 
 const MainView = ({ cottage, suitableCottage }: dachaView) => {
-    console.log(suitableCottage);
 
     return (
         <>
