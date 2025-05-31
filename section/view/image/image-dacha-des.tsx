@@ -14,7 +14,7 @@ const ImageDachaDes = ({ images, onOpenSheet }: imageProps) => {
     console.log(mainImageCard);
 
     return (
-        <div className='hidden md:flex justify-between rounded-4xl overflow-hidden gap-2 mt-10 h-[450px] relative'>
+        <div className='hidden md:flex justify-between rounded-4xl overflow-hidden gap-2 mt-4 h-[450px] relative'>
             <div className="relative w-[40%] h-full flex-shrink-0" onClick={onOpenSheet}>
                 <Image
                     src={`${IMG_BASE_URL}${mainImageCard[0]?.image}`}

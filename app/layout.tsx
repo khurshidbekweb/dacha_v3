@@ -4,6 +4,7 @@ import "./globals.css";
 import { ChildProps } from "@/types";
 import RootLayoutClient from "@/components/provider/root-provider";
 import NextTopLoader from 'nextjs-toploader';
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: ChildProps) {
         <RootLayoutClient>
           <NextTopLoader showSpinner={false} />
           {children}
+          <Toaster position="top-center" />
         </RootLayoutClient>
       </body>
     </html>

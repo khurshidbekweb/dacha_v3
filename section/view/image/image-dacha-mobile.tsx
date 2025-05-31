@@ -43,7 +43,7 @@ export function ImageDacha({ images, onOpenSheet }: imageProps) {
                 <CarouselContent>
                     {images.images?.length && images?.images?.map((img) => (
                         <CarouselItem key={img.id}>
-                            <div className="relative w-full h-[260px]" onClick={onOpenSheet}>
+                            <div className="relative w-full h-[280px]" onClick={onOpenSheet}>
                                 <Image
                                     src={`${IMG_BASE_URL}${img.image}`}
                                     alt={images.name}
@@ -58,7 +58,7 @@ export function ImageDacha({ images, onOpenSheet }: imageProps) {
                 </CarouselContent>
                 <CarouselPrevious className="absolute left-1" />
                 <CarouselNext className="absolute right-1" />
-                <div className="absolute right-1 text-white bottom-0 text-center text-[14px]">
+                <div className="absolute right-2 text-white bottom-1 text-center text-[16px]">
                     {current}/{count}
                 </div>
             </Carousel>
