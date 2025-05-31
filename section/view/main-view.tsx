@@ -8,6 +8,7 @@ import BreadCrumbs from '@/components/share/bredcrambs';
 import { useTranslation } from 'react-i18next';
 import HeadInfo from './info/head-info';
 import MainInfo from './info/main-info';
+import SuitableCottage from './suitable-cottage';
 
 
 interface dachaView {
@@ -17,8 +18,6 @@ interface dachaView {
 
 const MainView = ({ cottage, suitableCottage }: dachaView) => {
     const { t } = useTranslation()
-    console.log(suitableCottage);
-
     return (
         <>
             <div className="w-full hidden md:block">
@@ -29,6 +28,7 @@ const MainView = ({ cottage, suitableCottage }: dachaView) => {
                 <HeadInfo cottage={cottage} />
                 <DachaImages cottage={cottage} />
                 <MainInfo cottage={cottage} />
+                <SuitableCottage cottages={suitableCottage} />
             </div>
         </>
     );

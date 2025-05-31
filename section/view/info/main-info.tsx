@@ -6,6 +6,7 @@ import { BadgePercent, BedDouble, BedSingle, Clock, DoorOpen, Dot, House, LogIn,
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import GoogleMap from './google-map';
 
 
 interface mainInfo {
@@ -13,6 +14,10 @@ interface mainInfo {
 }
 
 const MainInfo = ({ cottage }: mainInfo) => {
+    const mapLink =
+        cottage?.latitude &&
+        cottage?.longitude &&
+        `https://www.google.com/maps/embed/v1/place?key=AIzaSyCOoxM7bD8Eg8G0lvGlE_xJOo1D5Yj5odY&q=${cottage?.longitude},${cottage?.latitude}&zoom=13`;
     return (
         <>
             <div className="flex flex-col space-y-2 items-start justify-start px-3 md:hidden">
@@ -27,7 +32,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                 <Separator className='my-2' />
             </div>
             <Separator className='mt-10 md:block hidden' />
-            <div className="md:flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
+            <div className="flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
                 <div className="flex flex-col space-y-3 w-full md:w-[70%]">
                     <div className="about-cottage flex flex-col space-y-2">
                         <h3 className='text-2xl md:text-3xl font-mediu'>Dacha haqida</h3>
@@ -114,7 +119,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     </div>
                     <Separator className='mt-10' />
                 </div>
-                <div className="sticky w-full flex-1 border p-2 top-10 rounded-lg hidden md:block">
+                <div className="sticky w-full flex-1 border p-2 top-10 bottom-5 rounded-lg hidden md:block">
                     <h3 className='text-xl font-mediu'>Dacha egasi bilan bog`lanish</h3>
                     <Separator className='mt-5' />
                     <div className="flex flex-col items-start justify-start py-5">
@@ -148,6 +153,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     </div>
                 </div>
             </div>
+            <GoogleMap link={mapLink!} />
         </>
     );
 };
