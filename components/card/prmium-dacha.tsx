@@ -16,8 +16,6 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
     const handleLikeClick = (id: string) => {
         toggleLike(id);
     };
-    console.log(dacha);
-
     return (
         <div className="w-[390px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
 
