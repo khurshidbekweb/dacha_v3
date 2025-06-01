@@ -4,7 +4,7 @@ import { safeLocalStorage } from "./safeLocalstorge";
 interface EditUserParams {
   id: string;
   name: string;
-  image: File;
+  image: File | null;
 }
 
 export const userUtils = {
@@ -38,7 +38,9 @@ export const userUtils = {
   editUser: async ({ id, name, image }: EditUserParams) => {
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("image", image);
+    if (image) {
+      formData.append("image", image);
+    }
 
     const { data } = await custimAxios.patch(`user/edit/${id}`, formData, {
       headers: {

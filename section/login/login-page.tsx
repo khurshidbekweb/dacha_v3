@@ -4,21 +4,21 @@ import React, { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { authUtils } from '@/utils/auth.utils';
-import { useRouter } from 'next/navigation';
 import SmsCode from './sms-code';
 import Navbar from '@/app/(root)/_components/navbar';
 import PhoneNumber from './phone-number';
 import SetName from './set-name';
 
 const LoginPage = () => {
-    const [step, setStep] = useState<number>(0)
-    const navigate = useRouter()
+    const [step, setStep] = useState<number>(2)
     const [phoneNumber, setPhoneNumber] = useState('')
+    const [userId, setUserId] = useState('')
     const phone = useMutation({
         mutationFn: authUtils.smsAuth,
         onSuccess: (data) => {
             toast.success('a');
-            console.log(data);
+            console.log(data, 'userrrrr');
+            setUserId(data.userId)
             setTimeout(() => {
                 setStep(1)
             }, 500);
@@ -33,8 +33,7 @@ const LoginPage = () => {
     const login = useMutation({
         mutationFn: authUtils.loginAuth,
         onSuccess: () => {
-            toast.success('a');
-            navigate.push("/profile");
+            setStep(2)
         },
         onError: (err) => {
             console.log(err, "login");
@@ -42,7 +41,7 @@ const LoginPage = () => {
     });
 
 
-    const handleAuth = (e: { preventDefault: () => void; }) => {
+    const handleAuth = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         phone.mutate({
             phone: phoneNumber.replaceAll(" ", "").slice(3),
@@ -52,8 +51,8 @@ const LoginPage = () => {
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const smsCode: string[] = []
-        const code = smsCode.join('');
+        const form = e.target as HTMLFormElement;
+        const code = form.smscode.value
         const truthCode = phone?.data?.smsCode;
 
         if (code === truthCode) {
@@ -81,7 +80,7 @@ const LoginPage = () => {
                 return <SmsCode backOneHandle={backOneHandle} handleLogin={handleLogin} phoneNumber={phoneNumber} />
             };
             case 2: {
-                return <SetName />
+                return <SetName userId={userId} />
             }
         }
     }
