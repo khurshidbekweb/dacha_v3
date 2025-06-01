@@ -4,6 +4,7 @@ import { userUtils } from '@/utils/user.utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 interface userName {
     userId: string
@@ -18,7 +19,10 @@ const SetName = ({ userId }: userName) => {
         mutationFn: userUtils.editUser,
         onSuccess: async () => {
             queryClinet.invalidateQueries({ queryKey: [QUERY_KEYS.users] })
-            router.push('/profile')
+            toast.success('Muaffaqiyatli')
+            setTimeout(() => {
+                router.push('profile')
+            }, 200)
         }
     })
 
@@ -32,7 +36,7 @@ const SetName = ({ userId }: userName) => {
 
     return (
         <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-start">
                 Kirish
             </h2>
             <form>

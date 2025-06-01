@@ -10,7 +10,7 @@ import PhoneNumber from './phone-number';
 import SetName from './set-name';
 
 const LoginPage = () => {
-    const [step, setStep] = useState<number>(2)
+    const [step, setStep] = useState<number>(0)
     const [phoneNumber, setPhoneNumber] = useState('')
     const [userId, setUserId] = useState('')
     const phone = useMutation({
