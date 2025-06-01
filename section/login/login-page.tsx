@@ -1,0 +1,99 @@
+'use client'
+
+import React, { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
+import { authUtils } from '@/utils/auth.utils';
+import { useRouter } from 'next/navigation';
+import SmsCode from './sms-code';
+import Navbar from '@/app/(root)/_components/navbar';
+import PhoneNumber from './phone-number';
+import SetName from './set-name';
+
+const LoginPage = () => {
+    const [step, setStep] = useState<number>(0)
+    const navigate = useRouter()
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const phone = useMutation({
+        mutationFn: authUtils.smsAuth,
+        onSuccess: (data) => {
+            toast.success('a');
+            console.log(data);
+            setTimeout(() => {
+                setStep(1)
+            }, 500);
+            // console.log(data.smsCode)
+        },
+        onError: (err) => {
+            console.log(err);
+            toast.error('a');
+        },
+    });
+
+    const login = useMutation({
+        mutationFn: authUtils.loginAuth,
+        onSuccess: () => {
+            toast.success('a');
+            navigate.push("/profile");
+        },
+        onError: (err) => {
+            console.log(err, "login");
+        },
+    });
+
+
+    const handleAuth = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        phone.mutate({
+            phone: phoneNumber.replaceAll(" ", "").slice(3),
+            languageCode: 'uz'
+        });
+    };
+
+    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const smsCode: string[] = []
+        const code = smsCode.join('');
+        const truthCode = phone?.data?.smsCode;
+
+        if (code === truthCode) {
+            login.mutate({
+                smsCode: code,
+                userId: phone?.data?.userId,
+            });
+        } else {
+            toast.error('');
+        }
+    };
+
+    const backOneHandle = () => {
+        setTimeout(() => {
+            setStep(0)
+        }, 500);
+    }
+
+    function authLOgin(step: number) {
+        switch (step) {
+            case 0: {
+                return <PhoneNumber handleAuth={handleAuth} setPhoneNumber={setPhoneNumber} />
+            };
+            case 1: {
+                return <SmsCode backOneHandle={backOneHandle} handleLogin={handleLogin} phoneNumber={phoneNumber} />
+            };
+            case 2: {
+                return <SetName />
+            }
+        }
+    }
+
+    return (
+        <div className="">
+            <Navbar />
+            <div className="flex items-center justify-center mt-20">
+                {authLOgin(step)}
+            </div>
+        </div>
+    );
+}
+
+export default LoginPage;
