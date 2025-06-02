@@ -120,3 +120,30 @@ export interface premiumCottage {
   priority: number
   serviceCode: string
 }
+
+export interface postCottage {
+  cottageName: string;
+  description: string;
+  images: File[];
+  regionId: string;
+  placeId: string;
+  price: number;
+  priceWeekend: number;
+  cottageType: string[]; // Bu sizning misolingizda ["c4c301b1-4719-499e-bde2-2c36715fae9e"]
+  comforts: string[];
+  latitude: string;
+  longitude: string;
+  doubleBedCount: number;
+  entranceTime: string;
+  exitTime: string;
+  maxGuests: number;
+  numberOfRooms: number;
+  singleBedCount: number;
+  familyOnly: boolean;
+  noAlcohol: boolean;
+  noLoudMusic: boolean;
+  noParty: boolean;
+  noPets: boolean;
+  noSmoking: boolean;
+  quiteHours: string;
+};
