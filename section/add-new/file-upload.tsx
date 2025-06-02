@@ -80,13 +80,13 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                     <div className="w-[220px] relative h-[150px] mx-auto">
                         <Image priority sizes="(max-width: 768px) 100vw, 500px" className='object-fill' fill src={UploadImage} alt='upload image' />
                     </div>
-                    <div className="flex flex-col items-start justify-start border">
+                    <div className="flex flex-col items-start justify-start">
                         <span className="text-sm text-muted-foreground"> PNG, JPG yoki GIF (max: 5MB)</span>
                         <span className="text-sm text-muted-foreground">Rasmlar soni 3ta dan kam bo`lmasligi kerak(max: 15 ta).</span>
                     </div>
                 </div>
                 <Separator className='my-3' />
-                <div className={`grid w-full grid-cols-3 md:grid-cols-3 xl:grid-cols-5 gap-1 h-[170px] overflow-hidden  ${previews?.length > 5 ? 'overflow-y-scroll' : ''}`}>
+                {previews?.length ? <div className={`grid w-full grid-cols-3 md:grid-cols-3 xl:grid-cols-5 gap-1 overflow-hidden  ${previews?.length > 5 ? 'overflow-y-scroll h-[170px]' : ''}`}>
                     {previews.map((src, index) => (
                         <div key={index} className="relative max-w-[140px] md:max-w-[250px] h-[80px]">
                             <Image
@@ -104,7 +104,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                             </button>
                         </div>
                     ))}
-                </div>
+                </div> : ''}
             </div>
         </div>
     );
