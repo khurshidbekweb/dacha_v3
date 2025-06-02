@@ -17,10 +17,8 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
         toggleLike(id);
     };
     return (
-        <div className="w-[390px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
-
+        <div className="w-[360px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
             <CardSwiper dacha={dacha.cottage} />
-
 
             <div className="p-2">
                 <h3 className="font-medium text-lg">{dacha.cottage.name}</h3>

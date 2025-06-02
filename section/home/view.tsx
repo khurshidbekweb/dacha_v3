@@ -6,6 +6,7 @@ import TopCottage from './top-cottage/top-cottage';
 import CottageType from './cot-type/cottage-type';
 import RecentlyCot from './cottage/recently-cot';
 import Cottage from './cottage/cottage';
+import MobileNov from '@/app/(root)/_components/mobile-nov';
 
 export const HomePage = () => {
     return (
@@ -26,9 +27,10 @@ export const HomePage = () => {
             <div className='mt-5 md:mt-16'>
                 <RecentlyCot />
             </div>
-            <div className='mt-5 md:mt-16'>
+            <div className='mt-5 mb-16 md:mt-16'>
                 <Cottage />
             </div>
+            <MobileNov />
         </div>
     );
 };
