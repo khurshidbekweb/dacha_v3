@@ -1,13 +1,14 @@
 import MobileNov from '@/app/(root)/_components/mobile-nov';
 import React from 'react';
 
-const ProfilePage = () => {
+const FovaritePage = () => {
     return (
         <div>
-            Profile page
+            Fovarite
+
             <MobileNov />
         </div>
     );
 };
 
-export default ProfilePage;
+export default FovaritePage;

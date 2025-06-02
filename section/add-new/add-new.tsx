@@ -1,13 +1,13 @@
 import MobileNov from '@/app/(root)/_components/mobile-nov';
 import React from 'react';
 
-const ProfilePage = () => {
+const AddNewPage = () => {
     return (
         <div>
-            Profile page
+            Add new
             <MobileNov />
         </div>
     );
 };
 
-export default ProfilePage;
+export default AddNewPage;

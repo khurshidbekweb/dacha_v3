@@ -13,7 +13,7 @@ custimAxios.interceptors.response.use(
     if (err?.response?.status === 406) {
       try {
         await authUtils.refreshAuth();
-        window.location.reload(); // Refresh muvaffaqiyatli bo'lsa qayta yuklash
+        window.location.reload();
       } catch (refreshErr) {
         console.error("Auth refresh failed:", refreshErr);
       }
