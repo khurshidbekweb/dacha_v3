@@ -1,30 +1,37 @@
+'use client'
+
 import { useState, useRef } from "react";
 import { GoogleMap, LoadScript, Autocomplete, Marker } from "@react-google-maps/api";
-import { useTranslation } from "react-i18next";
-const mapContainerStyle = { height: "300px", width: "100%" };
+const mapContainerStyle = { height: "70%", width: "100%" };
 const defaultCenter = { lat: 41.2995, lng: 69.2401 }; // Toshkent koordinatalari
 import { Libraries } from '@react-google-maps/api';
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { ChevronLeft, MapPinned } from "lucide-react";
+import { postCottage } from "@/types";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+interface infoProps {
+    cottage: postCottage;
+    setCottage: React.Dispatch<React.SetStateAction<postCottage>>;
+}
 
 
-
-export const DachaMap = () => {
+export const DachaMap = ({ setCottage, cottage }: infoProps) => {
     const libraries: Libraries = ['places'];
-
+    const [open, setOpen] = useState(false)
     const [coordinates, setCoordinates] = useState(defaultCenter);
-    const autocompleteRef = useRef(null);
-    const { t } = useTranslation()
+    const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
     const onPlaceSelected = () => {
         if (autocompleteRef.current) {
             const place = autocompleteRef.current.getPlace();
             if (place.geometry) {
                 const newCoordinates = {
-                    lat: place.geometry.location.lat(),
-                    lng: place.geometry.location.lng(),
+                    lat: place.geometry.location!.lat(),
+                    lng: place.geometry.location!.lng(),
                 };
                 setCoordinates(newCoordinates);
-                onLocationSelect(newCoordinates); // 📡 Ota komponentaga jo‘natish
+                setCottage({ ...cottage, latitude: String(newCoordinates.lat), longitude: String(newCoordinates.lng) }); // 📡 Ota komponentaga jo‘natish
             }
         }
     };
@@ -41,7 +48,7 @@ export const DachaMap = () => {
                         lng: position.coords.longitude,
                     };
                     setCoordinates(newCoordinates);
-                    onLocationSelect(newCoordinates); // 📡 Ota komponentaga jo‘natish
+                    setCottage({ ...cottage, latitude: String(newCoordinates.lat), longitude: String(newCoordinates.lng) });
                 },
                 (error) => console.error("Geolocation error:", error)
             );
@@ -51,38 +58,49 @@ export const DachaMap = () => {
     };
 
     return (
-        <Drawer>
-            <DrawerTrigger className="w-full flex items-center gap-x-3"><MapPinned size={25} /> Xaritadan belgilash</DrawerTrigger>
+        <Drawer onOpenChange={setOpen} open={open}>
+            <DrawerTrigger className="w-full flex items-center gap-x-3 border rounded-lg justify-center p-[6px] cursor-pointer bg-transparent dark:bg-input/30"><MapPinned size={25} /> Xaritadan belgilash</DrawerTrigger>
             <DrawerContent className='!h-[100vh]'>
-                <DrawerTitle className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
-
+                <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>
-                    {isMapLoad ? <div>
+                    {isMapLoad ? <div className="w-full h-full">
                         <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} onPlaceChanged={onPlaceSelected}>
-                            <input type="text" placeholder="Dacha joyini qidiring..." style={{ width: "100%", padding: "10px", fontSize: "16px" }} />
+                            <Input type="text" className="my-2 p-2" placeholder="Dacha joyini qidiring..." style={{ width: "100%", padding: "10px", fontSize: "16px" }} />
                         </Autocomplete>
 
-                        <button onClick={getCurrentLocation} type="button" style={{ margin: "10px", padding: "8px", background: "blue", color: "white", border: "none", cursor: "pointer" }}>
-                            📍 {t('my_location')}
-                        </button>
+                        <Button className="rounded-lg mb-2" onClick={getCurrentLocation} type="button">
+                            📍 Joylashuvimni olish
+                        </Button>
 
                         <GoogleMap
                             mapContainerStyle={mapContainerStyle}
                             center={coordinates}
                             zoom={14}
                             onClick={(e) => {
-                                const newCoordinates = { lat: e.latLng.lat(), lng: e.latLng.lng() };
-                                setCoordinates(newCoordinates);
-                                onLocationSelect(newCoordinates); // 📡 Ota komponentaga jo‘natish
+                                if (e.latLng) {
+                                    const newCoordinates = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+                                    setCoordinates(newCoordinates);
+                                    setCottage({
+                                        ...cottage,
+                                        latitude: String(newCoordinates.lat),
+                                        longitude: String(newCoordinates.lng),
+                                    });
+                                }
                             }}
                         >
                             <Marker
                                 position={coordinates}
                                 draggable={true}
                                 onDragEnd={(e) => {
-                                    const newCoordinates = { lat: e.latLng.lat(), lng: e.latLng.lng() };
-                                    setCoordinates(newCoordinates);
-                                    onLocationSelect(newCoordinates); // 📡 Ota komponentaga jo‘natish
+                                    if (e.latLng) {
+                                        const newCoordinates = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+                                        setCoordinates(newCoordinates);
+                                        setCottage({
+                                            ...cottage,
+                                            latitude: String(newCoordinates.lat),
+                                            longitude: String(newCoordinates.lng),
+                                        });
+                                    }
                                 }}
                             />
                         </GoogleMap>

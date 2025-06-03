@@ -106,7 +106,7 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                                         numericOnly: true,
                                     }}
                                     placeholder="Phone number"
-                                    className="w-full p-2 border bg-transparent dark:bg-input/30 text-[15px] md:text-xl  rounded-md"
+                                    className="w-full p-2 border bg-transparent dark:bg-input/30 text-[15px] md:text-xl rounded-md"
                                     name="phonenumber"
                                     inputMode="numeric"
                                     onChange={(e) => {

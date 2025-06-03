@@ -80,7 +80,7 @@ const PlaceMap = ({ cottage, setCottage }: infoProps) => {
                     </FormItem>
                 )}
             />
-            <DachaMap/>
+            <DachaMap cottage={cottage} setCottage={setCottage} />
         </div>
     );
 };

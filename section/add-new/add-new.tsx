@@ -55,7 +55,6 @@ const AddNewPage = () => {
             priceWeekend: 0,
             cottageType: ["c4c301b1-4719-499e-bde2-2c36715fae9e"],
             comforts: [],
-
             doubleBedCount: 0,
             contactPhone: '',
             entranceTime: '',
