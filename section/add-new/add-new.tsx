@@ -88,9 +88,9 @@ const AddNewPage = () => {
                 <FormProvider {...methods}>
                     <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
                         <FileUpload cottage={cottage} setCottage={setCottage} />
-                        <PlaceMap />
-                        <MainInfo />
-                        <PriceRuleComforts />
+                        <PlaceMap cottage={cottage} setCottage={setCottage} />
+                        <MainInfo cottage={cottage} setCottage={setCottage} />
+                        <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
                         <Button type='submit'>Submit</Button>
                     </form>
                 </FormProvider>
