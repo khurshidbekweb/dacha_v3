@@ -186,10 +186,10 @@ export const ALL_DATA = {
             queryFn: OrderUtils.getOrder,
         }),
 
-    usePlaceById: (id: string): UseQueryResult<place> =>
+    usePlaceById: (id: string): UseQueryResult<place[]> =>
         useQuery({
             queryKey: [QUERY_KEYS.place_by_id, id],
             queryFn: () => placeUtils.getPlaceById(id),
-            enabled: Boolean(id),
+            enabled: !!id,
         }),
 };

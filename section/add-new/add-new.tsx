@@ -55,8 +55,7 @@ const AddNewPage = () => {
             priceWeekend: 0,
             cottageType: ["c4c301b1-4719-499e-bde2-2c36715fae9e"],
             comforts: [],
-            latitude: '',
-            longitude: '',
+
             doubleBedCount: 0,
             contactPhone: '',
             entranceTime: '',
@@ -70,7 +69,9 @@ const AddNewPage = () => {
             noParty: false,
             noPets: false,
             noSmoking: false,
-            quiteHours: ''
+            quiteHours: '',
+            latitude: '',
+            longitude: '',
         },
     });
 
@@ -93,7 +94,7 @@ const AddNewPage = () => {
                         <MainInfo cottage={cottage} setCottage={setCottage} />
                         <PlaceMap cottage={cottage} setCottage={setCottage} />
                         <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
-                        <Button type='submit'>Submit</Button>
+                        <Button className='w-full py-3' type='submit'>Submit</Button>
                     </form>
                 </FormProvider>
             </div>
