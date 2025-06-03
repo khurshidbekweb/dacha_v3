@@ -132,6 +132,7 @@ export interface postCottage {
   cottageType: string[]; // Bu sizning misolingizda ["c4c301b1-4719-499e-bde2-2c36715fae9e"]
   comforts: string[];
   latitude: string;
+  contactPhone: string,
   longitude: string;
   doubleBedCount: number;
   entranceTime: string;

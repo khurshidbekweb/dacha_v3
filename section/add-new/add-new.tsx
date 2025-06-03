@@ -22,6 +22,7 @@ const AddNewPage = () => {
         regionId: '',
         placeId: '',
         price: 0,
+        contactPhone: '',
         priceWeekend: 0,
         cottageType: ["c4c301b1-4719-499e-bde2-2c36715fae9e"],
         comforts: [],
@@ -57,6 +58,7 @@ const AddNewPage = () => {
             latitude: '',
             longitude: '',
             doubleBedCount: 0,
+            contactPhone: '',
             entranceTime: '',
             exitTime: '',
             maxGuests: 0,
@@ -84,12 +86,12 @@ const AddNewPage = () => {
         <>
             <Navbar />
             <BreadCrumbs data={[{ slug: '/', title: 'Home' }]} page='E`lon qo`shsih' />
-            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16'>
+            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0'>
                 <FormProvider {...methods}>
                     <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
                         <FileUpload cottage={cottage} setCottage={setCottage} />
-                        <PlaceMap cottage={cottage} setCottage={setCottage} />
                         <MainInfo cottage={cottage} setCottage={setCottage} />
+                        <PlaceMap cottage={cottage} setCottage={setCottage} />
                         <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
                         <Button type='submit'>Submit</Button>
                     </form>
