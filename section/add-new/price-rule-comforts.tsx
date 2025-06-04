@@ -7,6 +7,7 @@ import { useFormContext } from 'react-hook-form';
 import { TimePicker } from './time-picer';
 import Cleave from 'cleave.js/react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { ALL_DATA } from '@/query/query-fn';
 
 interface infoProps {
     cottage: postCottage;
@@ -72,6 +73,9 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
             name: 'priceWeekend',
             title: 'Dam olish kunlari'
         }]
+
+    const { data: comforts } = ALL_DATA.useComforts()
+    console.log(comforts);
 
     return (
         <div className="flex flex-col space-y-5">
@@ -165,6 +169,10 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                         />
                     ))}
                 </div>
+            </div>
+            <div className='px-2 flex flex-col space-y-3'>
+                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Qulayliklar</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3"></div>
             </div>
         </div>
     );

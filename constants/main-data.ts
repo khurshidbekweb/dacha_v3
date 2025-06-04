@@ -52,5 +52,4 @@ export const cottageSchema = z.object({
     longitude: z.string(),
 });
 
-// Type’ni ham olamiz
 export type CottageFormValues = z.infer<typeof cottageSchema>;
