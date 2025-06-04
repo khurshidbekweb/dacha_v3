@@ -73,6 +73,7 @@ export interface user {
   phone: string,
   image: string | null,
   password: string | null,
+  orders: order[]
 }
 
 export interface breadcrambs {

@@ -38,6 +38,26 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                 />
                 <FormField
                     control={control}
+                    name="maxGuests"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Mexmonlar soni</FormLabel>
+                            <FormControl>
+                                <Input value={field.value === 0 ? '' : Number(field.value)} type='tel' placeholder="Mexmonlar soni"
+                                    onChange={(e) => {
+                                        const inputValue = e.target.value;
+                                        const numeric = Number(inputValue);
+                                        field.onChange(inputValue === '' ? 0 : (isNaN(numeric) ? 0 : numeric));
+                                        setCottage({ ...cottage, maxGuests: numeric })
+                                    }}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={control}
                     name="numberOfRooms"
                     render={({ field }) => (
                         <FormItem>

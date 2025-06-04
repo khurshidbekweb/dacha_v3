@@ -4,7 +4,7 @@ import { safeLocalStorage } from "./safeLocalstorge";
 interface EditUserParams {
   id: string;
   name: string;
-  image: File | null;
+  image: File | string | null;
 }
 
 export const userUtils = {
