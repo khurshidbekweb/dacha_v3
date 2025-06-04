@@ -77,8 +77,6 @@ const AddNewPage = () => {
 
     const onSubmit = (data: CottageFormValues) => {
         console.log("Form data:", data);
-        console.log(1);
-
     };
     console.log(cottage);
 
@@ -88,12 +86,18 @@ const AddNewPage = () => {
             <BreadCrumbs data={[{ slug: '/', title: 'Home' }]} page='E`lon qo`shsih' />
             <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0'>
                 <FormProvider {...methods}>
-                    <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
-                        <FileUpload cottage={cottage} setCottage={setCottage} />
-                        <MainInfo cottage={cottage} setCottage={setCottage} />
-                        <PlaceMap cottage={cottage} setCottage={setCottage} />
-                        <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
-                        <Button className='w-full py-3' type='submit'>Submit</Button>
+                    <form onSubmit={methods.handleSubmit(onSubmit)}>
+                        <div className="space-y-4 md:space-y-0 flex flex-col md:flex-row justify-between">
+                            <div className='w-full flex flex-col space-y-4 md:space-y-0'>
+                                <FileUpload cottage={cottage} setCottage={setCottage} />
+                                <MainInfo cottage={cottage} setCottage={setCottage} />
+                            </div>
+                            <div className="w-full flex flex-col space-y-4 md:space-y-0">
+                                <PlaceMap cottage={cottage} setCottage={setCottage} />
+                                <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
+                            </div>
+                        </div>
+                        <Button className='w-full md:w-[450px] mx-auto block my-10' type='submit'>E`lonni joylash</Button>
                     </form>
                 </FormProvider>
             </div>

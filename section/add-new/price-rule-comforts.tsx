@@ -8,6 +8,7 @@ import { TimePicker } from './time-picer';
 import Cleave from 'cleave.js/react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ALL_DATA } from '@/query/query-fn';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface infoProps {
     cottage: postCottage;
@@ -29,7 +30,6 @@ interface priceDacha {
 const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
     const { control } = useFormContext();
     const [data, setDate] = useState<Date | undefined>(undefined)
-    console.log(data);
     const dataRule: ruleData[] = [
         {
             id: 1,
@@ -73,47 +73,47 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
             name: 'priceWeekend',
             title: 'Dam olish kunlari'
         }]
-
     const { data: comforts } = ALL_DATA.useComforts()
-    console.log(comforts);
 
     return (
-        <div className="flex flex-col space-y-5">
+        <div className="flex flex-col space-y-5 w-full">
             <div className='px-2 flex flex-col space-y-3'>
                 <h2 className='text-xl md:text-2xl font-semibold'>Narxlar</h2>
-                {price.map(el => (
-                    <FormField
-                        key={el.id}
-                        control={control}
-                        name={el.name}
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>{el.title}</FormLabel>
-                                <FormControl>
-                                    <div className="relative w-full h-[40px] overflow-hidden rounded-lg">
-                                        <Cleave
-                                            options={{
-                                                numeral: true,
-                                                numeralThousandsGroupStyle: 'thousand',
-                                            }}
-                                            name="price"
-                                            placeholder='Bir kunlik narx'
-                                            className="bg-transparent dark:bg-input/30 h-[40px] border w-full rounded-md px-4 py-2"
-                                            onChange={(e) => {
-                                                const inputValue = e.target.value;
-                                                const numeric = String(inputValue);
-                                                field.onChange(inputValue === '' ? 0 : numeric);
-                                                setCottage({ ...cottage, [el.name]: Number(numeric) })
-                                            }}
-                                        />
-                                        <span className='absolute p-2 px-4 bg-gray-600 text-white rounded-end top-0 right-0'> SUM</span>
-                                    </div>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                ))}
+                <div className="w-full flex flex-col md:flex-row justify-between gap-x-2">
+                    {price.map(el => (
+                        <FormField
+                            key={el.id}
+                            control={control}
+                            name={el.name}
+                            render={({ field }) => (
+                                <FormItem className='w-full'>
+                                    <FormLabel>{el.title}</FormLabel>
+                                    <FormControl className='w-full'>
+                                        <div className="relative w-full h-[40px] overflow-hidden rounded-lg">
+                                            <Cleave
+                                                options={{
+                                                    numeral: true,
+                                                    numeralThousandsGroupStyle: 'thousand',
+                                                }}
+                                                name="price"
+                                                placeholder='Bir kunlik narx'
+                                                className="bg-transparent dark:bg-input/30 h-[40px] border w-full rounded-md px-4 py-2"
+                                                onChange={(e) => {
+                                                    const inputValue = e.target.value;
+                                                    const numeric = Number(inputValue.replace(/,/g, ""));
+                                                    field.onChange(inputValue === '' ? 0 : numeric);
+                                                    setCottage({ ...cottage, [el.name]: Number(numeric) })
+                                                }}
+                                            />
+                                            <span className='absolute p-2 px-4 bg-gray-600 text-white rounded-end top-0 right-0'> SUM</span>
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    ))}
+                </div>
             </div>
             <div className='px-2 flex flex-col space-y-3'>
                 <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Vaqt</h2>
@@ -172,7 +172,40 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
             </div>
             <div className='px-2 flex flex-col space-y-3'>
                 <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Qulayliklar</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3"></div>
+                <FormField
+                    control={control}
+                    name="comforts"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <div className="grid grid-cols-2 gap-3 md:grid-cols-3 w-full">
+                                    {comforts?.length && comforts?.map((comfort) => (
+                                        <FormItem
+                                            key={comfort.id}
+                                            className="flex flex-row items-center comfort.ids-start space-y-0 w-full"
+                                        >
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value?.includes(comfort.id)}
+                                                    onCheckedChange={(checked) => {
+                                                        const isChecked = checked === true;
+                                                        if (isChecked) {
+                                                            field.onChange([...(field.value || []), comfort.id]);
+                                                        } else {
+                                                            field.onChange((field.value || []).filter((val: string) => val !== comfort.id));
+                                                        }
+                                                    }}
+                                                />
+                                            </FormControl>
+                                            <FormLabel className="font-normal line-clamp-1">{comfort.name}</FormLabel>
+                                        </FormItem>
+                                    ))}
+                                </div>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
             </div>
         </div>
     );

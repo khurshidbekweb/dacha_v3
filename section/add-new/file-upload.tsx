@@ -66,7 +66,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
 
 
     return (
-        <div className="flex flex-col items-start px-2 mt-5 md:mt-10 ">
+        <div className="flex flex-col items-start px-2 mt-5 md:mt-10 w-full mx-auto">
             <Input
                 type="file"
                 accept="image/*"
@@ -75,7 +75,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                 ref={fileInputRef}
                 onChange={handleImageChange}
             />
-            <div className='flex flex-col w-full border border-dashed p-1 shadow-lg rounded-lg md:p-5 md:w-[50%] gap-x-3 h-auto'>
+            <div className='flex flex-col w-full border border-dashed p-1 shadow-lg rounded-lg md:p-5  gap-x-3 h-auto'>
                 <div className="w-full flex flex-col md:flex-row justify-center items-center" onClick={() => fileInputRef.current?.click()}>
                     <div className="w-[220px] relative h-[150px] mx-auto">
                         <Image priority sizes="(max-width: 768px) 100vw, 500px" className='object-fill' fill src={UploadImage} alt='upload image' />
