@@ -62,6 +62,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
             title: 'Bazm qilishga ruhsat'
         },
     ]
+
     const price: priceDacha[] = [
         {
             id: 1,
@@ -189,11 +190,18 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                                                     checked={field.value?.includes(comfort.id)}
                                                     onCheckedChange={(checked) => {
                                                         const isChecked = checked === true;
+
+                                                        let newValues;
                                                         if (isChecked) {
-                                                            field.onChange([...(field.value || []), comfort.id]);
+                                                            newValues = [...(field.value || []), comfort.id];
                                                         } else {
-                                                            field.onChange((field.value || []).filter((val: string) => val !== comfort.id));
+                                                            newValues = (field.value || []).filter(
+                                                                (val: string) => val !== comfort.id
+                                                            );
                                                         }
+
+                                                        field.onChange(newValues);
+                                                        setCottage({ ...cottage, comforts: newValues });
                                                     }}
                                                 />
                                             </FormControl>

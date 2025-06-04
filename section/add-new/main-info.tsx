@@ -25,7 +25,12 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                         <FormItem>
                             <FormLabel>Dacha nomi</FormLabel>
                             <FormControl>
-                                <Input placeholder="Cottage Name" {...field} />
+                                <Input placeholder="Cottage Name" {...field}
+                                    onChange={(e) => {
+                                        const inputValue = e.target.value;
+                                        field.onChange(inputValue);
+                                        setCottage({ ...cottage, cottageName: inputValue })
+                                    }} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -43,6 +48,7 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
                                         field.onChange(inputValue === '' ? 0 : (isNaN(numeric) ? 0 : numeric));
+                                        setCottage({ ...cottage, numberOfRooms: numeric })
                                     }}
                                 />
                             </FormControl>
@@ -62,6 +68,7 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
                                         field.onChange(inputValue === '' ? 0 : (isNaN(numeric) ? 0 : numeric));
+                                        setCottage({ ...cottage, singleBedCount: numeric })
                                     }}
                                 />
                             </FormControl>
@@ -81,6 +88,7 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
                                         field.onChange(inputValue === '' ? 0 : (isNaN(numeric) ? 0 : numeric));
+                                        setCottage({ ...cottage, doubleBedCount: numeric })
                                     }}
                                 />
                             </FormControl>
@@ -130,7 +138,11 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                         <FormItem>
                             <FormLabel>Dacha haqida qisqacha tavsif</FormLabel>
                             <FormControl>
-                                <Textarea className='w-full h-[100px] md:h-[150px]' placeholder="Dacha haqida tavsif" {...field} />
+                                <Textarea className='w-full h-[100px] md:h-[150px]' placeholder="Dacha haqida tavsif" {...field} onChange={(e) => {
+                                    const inputValue = e.target.value;
+                                    field.onChange(inputValue);
+                                    setCottage({ ...cottage, description: inputValue })
+                                }} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

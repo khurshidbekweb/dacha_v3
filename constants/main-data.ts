@@ -33,7 +33,7 @@ export const cottageSchema = z.object({
     price: z.number().min(1, "Price cannot be negative"),
     priceWeekend: z.number().min(1, "Weekend price cannot be negative"),
     cottageType: z.array(z.string()).min(1, "At least one cottage type required"),
-    comforts: z.array(z.string()).optional(),
+    comforts: z.array(z.string()).min(1),
     entranceTime: z.string(),
     exitTime: z.string(),
     contactPhone: z.string().min(17, '+998 97 123 45 67'),
