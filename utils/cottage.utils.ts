@@ -8,18 +8,32 @@ type FilterType = {
 }
 
 type PostCottagePayload = {
-    comforts: string[]
-    cottageType: string[]
-    description: string
-    mainImage: File
-    images: File[]
-    name: string
-    placeId: string
-    price: string
-    priceWeekend: string
-    regionId: string
-    latitude: string
-    longitude: string
+    name: string;
+    description: string;
+    images: string[];
+    regionId: string;
+    placeId: string;
+    price: number | '';
+    priceWeekend: number | '';
+    cottageType: string[]; // Bu sizning misolingizda ["c4c301b1-4719-499e-bde2-2c36715fae9e"]
+    comforts: string[];
+    latitude: string;
+    contactPhone: string,
+    longitude: string;
+    doubleBedCount: number | '';
+    entranceTime: string;
+    exitTime: string;
+    maxGuests: number | '';
+    numberOfRooms: number | '';
+    singleBedCount: number | '';
+    familyOnly: boolean | '';
+    noAlcohol: boolean | '';
+    noLoudMusic: boolean | '';
+    noParty: boolean | '';
+    noPets: boolean | '';
+    noSmoking: boolean | '';
+    quiteHours: string;
+    mainImage: string
 }
 
 type AddCottageImagePayload = {
@@ -219,6 +233,20 @@ export const cottageUtils = {
         regionId,
         latitude,
         longitude,
+        contactPhone,
+        doubleBedCount,
+        entranceTime,
+        exitTime,
+        familyOnly,
+        maxGuests,
+        noAlcohol,
+        noLoudMusic,
+        noParty,
+        noPets,
+        noSmoking,
+        numberOfRooms,
+        quiteHours,
+        singleBedCount
     }: PostCottagePayload) => {
         const formData = new FormData()
         comforts.forEach(el => formData.append('comforts', el))
@@ -228,12 +256,26 @@ export const cottageUtils = {
         formData.append('mainImage', mainImage)
         formData.append('placeId', placeId)
         formData.append('regionId', regionId)
-        formData.append('price', price)
-        formData.append('priceWeekend', priceWeekend)
+        formData.append('price', String(price))
+        formData.append('priceWeekend', String(priceWeekend))
         formData.append('description', description)
         formData.append('longitude', longitude)
         formData.append('latitude', latitude)
-        const { data } = await custimAxios.post('cottage/add', formData, {
+        formData.append('contactPhone', contactPhone)
+        formData.append('doubleBedCount', String(doubleBedCount))
+        formData.append('entranceTime', entranceTime)
+        formData.append('exitTime', exitTime)
+        formData.append('familyOnly', String(familyOnly))
+        formData.append('maxGuests', String(maxGuests))
+        formData.append('noAlcohol', String(noAlcohol))
+        formData.append('noLoudMusic', String(noLoudMusic))
+        formData.append('noParty', String(noParty))
+        formData.append('noPets', String(noPets))
+        formData.append('noSmoking', String(noSmoking))
+        formData.append('numberOfRooms', String(numberOfRooms))
+        formData.append('quiteHours', String(quiteHours))
+        formData.append('singleBedCount', String(singleBedCount))
+        const { data } = await custimAxios.post('https://test-api.dachaol.uz/api/v1/cottage/add', formData, {
             headers: {
                 Authorization: `Bearer ${safeLocalStorage.getItem('accessToken')}`,
             },

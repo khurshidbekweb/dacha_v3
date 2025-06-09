@@ -13,6 +13,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from 'react-hook-form';
 import { CottageFormValues, cottageSchema } from '@/constants';
 import { Button } from '@/components/ui/button';
+import { useMutation } from '@tanstack/react-query';
+import { cottageUtils } from '@/utils/cottage.utils';
+import { toast } from 'sonner';
 
 const AddNewPage = () => {
     const [cottage, setCottage] = useState<postCottage>({
@@ -74,11 +77,55 @@ const AddNewPage = () => {
         },
     });
 
+    const addNewCottage = useMutation({
+        mutationFn: cottageUtils.postCottage,
+        onSuccess: (data) => {
+            toast.success(data.message)
 
-    const onSubmit = (data: CottageFormValues) => {
-        console.log("Form data:", data);
+        },
+        onError: (err) => {
+            console.log(err);
+        }
+    })
+
+
+    const onSubmit = () => {
+        console.log(1);
+
+        addNewCottage.mutate({
+            comforts: cottage.comforts,
+            cottageType: cottage.cottageType,
+            description: cottage.description,
+            images: cottage.images,
+            latitude: cottage.latitude,
+            longitude: cottage.longitude,
+            mainImage: cottage.images[0],
+            name: cottage.cottageName,
+            placeId: cottage.placeId,
+            price: cottage.price,
+            priceWeekend: cottage.priceWeekend,
+            regionId: cottage.regionId,
+            contactPhone: cottage.contactPhone,
+            doubleBedCount: cottage.doubleBedCount,
+            entranceTime: cottage.entranceTime,
+            exitTime: cottage.exitTime,
+            familyOnly: cottage.familyOnly,
+            maxGuests: cottage.maxGuests,
+            noAlcohol: cottage.noAlcohol,
+            noLoudMusic: cottage.noLoudMusic,
+            noParty: cottage.noParty,
+            noPets: cottage.noPets,
+            noSmoking: cottage.noSmoking,
+            numberOfRooms: cottage.numberOfRooms,
+            quiteHours: cottage.quiteHours,
+            singleBedCount: cottage.singleBedCount
+        })
+        console.log(addNewCottage.variables);
+
     };
     console.log(cottage);
+
+
 
     return (
         <>
