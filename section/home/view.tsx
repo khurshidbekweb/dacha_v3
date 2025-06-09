@@ -12,7 +12,7 @@ export const HomePage = () => {
     return (
         <div>
             <Navbar />
-            <div className="mt-20">
+            <div className="mt-5 md:mt-20 ">
                 <Banner />
             </div>
             <div className='mt-5 md:mt-16'>
