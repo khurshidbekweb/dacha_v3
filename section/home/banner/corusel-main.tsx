@@ -19,6 +19,7 @@ import './css/embla.css'
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react'
 import { cottageTop } from '@/types'
 import { IMG_BASE_URL } from '@/constants'
+import { useTranslation } from 'react-i18next'
 
 const TWEEN_FACTOR_BASE = 0.2
 
@@ -29,7 +30,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
     const { slides, options } = props
-
+    const { t } = useTranslation()
     const autoplay = Autoplay({ delay: 4000, stopOnInteraction: false })
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -130,7 +131,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                             {top?.cottage?.region.name.slice(0, 12)},
                                             {top?.cottage?.place.name}
                                         </p>
-                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">Narxi: {top.cottage.price} sum
+                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">Narxi: {top.cottage.price} {t('currency')}
                                             <span className='text-white text-[12px] text-center'>Ish kunlaridagi narx</span>
                                         </p>
                                         <button className="details-btn mt-4 w-fit flex items-center bg-amber-500 rounded-xl p-2">
@@ -145,7 +146,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                                 <MapPinIcon className="w-4 h-4 mr-2" />
                                                 {top?.cottage?.place.name}
                                             </p>
-                                            <p className="text-[11px] text-amber-400 line-clamp-1">Narxi: {top.cottage.price.toLocaleString()} sum</p>
+                                            <p className="text-[11px] text-amber-400 line-clamp-1">Narxi: {top.cottage.price.toLocaleString()} {t('currency')}</p>
                                         </div>
                                         <button className="details-btn mt-4 w-fit flex items-center bg-green-500 p-1 rounded-lg">
                                             <span>Batafsil</span>

@@ -11,12 +11,18 @@ export const navLink = [
     {
         id: 2,
         name: 'services',
-        path: '/villa',
+        path: '/services',
         icon: User
     },
     {
+        id: 4,
+        name: 'add_announcements',
+        path: '/add-new',
+        icon: MessageCircle
+    },
+    {
         id: 3,
-        name: 'Contact',
+        name: 'contact',
         path: '/contact',
         icon: MessageCircle
     },

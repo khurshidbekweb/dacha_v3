@@ -9,6 +9,7 @@ import Cleave from 'cleave.js/react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { ALL_DATA } from '@/query/query-fn';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useTranslation } from 'react-i18next';
 
 interface infoProps {
     cottage: postCottage;
@@ -29,6 +30,7 @@ interface priceDacha {
 
 const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
     const { control } = useFormContext();
+    const { t } = useTranslation()
     const [entranceTime, setEntranceTime] = useState<Date | undefined>(() => {
         const now = new Date();
         now.setHours(19, 0, 0, 0); // Soat 17:00:00.000
@@ -126,7 +128,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                                                     setCottage({ ...cottage, [el.name]: Number(numeric) })
                                                 }}
                                             />
-                                            <span className='absolute p-2 px-4 bg-gray-600 text-white rounded-end top-0 right-0'> SUM</span>
+                                            <span className='absolute p-2 px-4 bg-gray-600 text-white rounded-end top-0 right-0 uppercase'> {t('currency')}</span>
                                         </div>
                                     </FormControl>
                                     <FormMessage />

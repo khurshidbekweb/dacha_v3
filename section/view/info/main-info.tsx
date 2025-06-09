@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import GoogleMap from './google-map';
+import { useTranslation } from 'react-i18next';
 
 
 interface mainInfo {
@@ -14,6 +15,7 @@ interface mainInfo {
 }
 
 const MainInfo = ({ cottage }: mainInfo) => {
+    const { t } = useTranslation()
     const mapLink =
         cottage?.latitude &&
         cottage?.longitude &&
@@ -142,11 +144,11 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
                             <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> Narxi: </p>
-                            <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.price.toLocaleString()} sum</p>
+                            <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.price.toLocaleString()} {t('currency')} </p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
                             <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> Dam olish kunlari: </p>
-                            <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} sum</p>
+                            <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} {t('currency')} </p>
                         </div>
 
                         <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:+998971082004`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>

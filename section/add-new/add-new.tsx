@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { useMutation } from '@tanstack/react-query';
 import { cottageUtils } from '@/utils/cottage.utils';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 const AddNewPage = () => {
     const [cottage, setCottage] = useState<postCottage>({
@@ -124,13 +125,13 @@ const AddNewPage = () => {
 
     };
     console.log(cottage);
-
+    const { t } = useTranslation()
 
 
     return (
         <>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: 'Home' }]} page='E`lon qo`shsih' />
+            <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('add_announcements')} />
             <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0'>
                 <FormProvider {...methods}>
                     <form onSubmit={methods.handleSubmit(onSubmit)}>
