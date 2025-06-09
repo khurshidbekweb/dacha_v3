@@ -72,9 +72,6 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
         },
     ]
 
-    console.log(entranceTime, exitTime);
-
-
     useEffect(() => {
         if (entranceTime && exitTime) {
             setCottage(prev => ({
