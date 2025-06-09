@@ -2,7 +2,7 @@
 
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { postCottage } from '@/types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { TimePicker } from './time-picer';
 import Cleave from 'cleave.js/react';
@@ -29,7 +29,16 @@ interface priceDacha {
 
 const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
     const { control } = useFormContext();
-    const [data, setDate] = useState<Date | undefined>(undefined)
+    const [entranceTime, setEntranceTime] = useState<Date | undefined>(() => {
+        const now = new Date();
+        now.setHours(19, 0, 0, 0); // Soat 17:00:00.000
+        return now;
+    })
+    const [exitTime, setExitTime] = useState<Date | undefined>(() => {
+        const now = new Date();
+        now.setHours(17, 0, 0, 0); // Soat 17:00:00.000
+        return now;
+    })
     const dataRule: ruleData[] = [
         {
             id: 1,
@@ -62,6 +71,20 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
             title: 'Bazm qilishga ruhsat'
         },
     ]
+
+    console.log(entranceTime, exitTime);
+
+
+    useEffect(() => {
+        if (entranceTime && exitTime) {
+            setCottage(prev => ({
+                ...prev,
+                entranceTime: entranceTime ? entranceTime.toISOString() : prev.entranceTime,
+                exitTime: exitTime ? exitTime.toISOString() : prev.exitTime
+            }));
+        }
+    }, [entranceTime, exitTime, setCottage])
+
 
     const price: priceDacha[] = [
         {
@@ -121,11 +144,11 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                 <div className="flex items-center justify-between gap-x-2">
                     <div className="flex flex-col border w-full border-dashed rounded-lg p-2">
                         <h4 className='text-[15px] font-semibold'>Kirish</h4>
-                        <TimePicker date={data} setDate={setDate} />
+                        <TimePicker date={entranceTime} setDate={setEntranceTime} />
                     </div>
                     <div className="flex flex-col border w-full border-dashed rounded-lg p-2">
                         <h4 className='text-[15px] font-semibold'>Chiqish</h4>
-                        <TimePicker date={data} setDate={setDate} />
+                        <TimePicker date={exitTime} setDate={setExitTime} />
                     </div>
                 </div>
             </div>

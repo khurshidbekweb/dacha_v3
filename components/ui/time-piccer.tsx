@@ -120,6 +120,7 @@ const TimePickerInput = React.forwardRef<
                     onKeyDown?.(e);
                     handleKeyDown(e);
                 }}
+                defaultValue={value}
                 {...props}
             />
         );
