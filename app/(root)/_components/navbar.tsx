@@ -21,7 +21,7 @@ const Navbar = () => {
                 </Link>
                 <div className="w-[40%] md:flex justify-between items-center hidden gap-x-5">
                     {navLink.map((el: { id: number, name: string, path: string }) => (
-                        <Link className={`hover:bg-[#44bd32] dark:hover:bg-[#F0A500] hover:text-white px-2 p-1 text-xl rounded-md transition-colors ${pathname == el.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`} key={el.id} href={el.path}>
+                        <Link className={`hover:bg-[#44bd32] dark:hover:bg-[#F0A500] hover:text-white px-2 p-1 text-[18px] rounded-md transition-colors ${pathname == el.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`} key={el.id} href={el.path}>
                             {t(`${el.name}`)}
                         </Link>
                     ))}
