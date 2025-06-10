@@ -248,34 +248,35 @@ export const cottageUtils = {
         quiteHours,
         singleBedCount
     }: PostCottagePayload) => {
-        const formData = new FormData()
-        comforts.forEach(el => formData.append('comforts', el))
-        cottageType.forEach(el => formData.append('cottageType', el))
-        images.forEach(img => formData.append('images', img))
-        formData.append('name', name)
-        formData.append('mainImage', mainImage)
-        formData.append('placeId', placeId)
-        formData.append('regionId', regionId)
-        formData.append('price', String(price))
-        formData.append('priceWeekend', String(priceWeekend))
-        formData.append('description', description)
-        formData.append('longitude', longitude)
-        formData.append('latitude', latitude)
-        formData.append('contactPhone', contactPhone)
-        formData.append('doubleBedCount', String(doubleBedCount))
-        formData.append('entranceTime', entranceTime)
-        formData.append('exitTime', exitTime)
-        formData.append('familyOnly', String(familyOnly))
-        formData.append('maxGuests', String(maxGuests))
-        formData.append('noAlcohol', String(noAlcohol))
-        formData.append('noLoudMusic', String(noLoudMusic))
-        formData.append('noParty', String(noParty))
-        formData.append('noPets', String(noPets))
-        formData.append('noSmoking', String(noSmoking))
-        formData.append('numberOfRooms', String(numberOfRooms))
-        formData.append('quiteHours', String(quiteHours))
-        formData.append('singleBedCount', String(singleBedCount))
-        const { data } = await custimAxios.post('https://test-api.dachaol.uz/api/v1/cottage/add', formData, {
+
+        const { data } = await custimAxios.post('https://test-api.dachaol.uz/api/v1/cottage/add', {
+            comforts,
+            cottageType,
+            description,
+            mainImage,
+            images,
+            name,
+            placeId,
+            price,
+            priceWeekend,
+            regionId,
+            latitude,
+            longitude,
+            contactPhone,
+            doubleBedCount,
+            entranceTime,
+            exitTime,
+            familyOnly,
+            maxGuests,
+            noAlcohol,
+            noLoudMusic,
+            noParty,
+            noPets,
+            noSmoking,
+            numberOfRooms,
+            quiteHours,
+            singleBedCount
+        }, {
             headers: {
                 Authorization: `Bearer ${safeLocalStorage.getItem('accessToken')}`,
             },
