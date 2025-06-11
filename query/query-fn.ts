@@ -178,6 +178,7 @@ export const ALL_DATA = {
         useQuery({
             queryKey: [QUERY_KEYS.servicesId, tarifId],
             queryFn: () => ServiceUtils.getServiceId(tarifId),
+            enabled: !!tarifId
         }),
 
     useOrder: (): UseQueryResult<order[]> =>

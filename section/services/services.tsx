@@ -1,22 +1,25 @@
+
+'use client'
+
 import Navbar from '@/app/(root)/_components/navbar';
 import BreadCrumbs from '@/components/share/bredcrambs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ServiceCard from './service-card';
-import Login from '@/app/(root)/login/page';
 import { safeLocalStorage } from '@/utils/safeLocalstorge';
 import { services } from '@/types';
 import { ALL_DATA } from '@/query/query-fn';
+import { useRouter } from 'next/navigation';
 
 const ServicesPage = () => {
     const { data: services } = ALL_DATA.useServices();
     const { t } = useTranslation()
+    const route = useRouter()
     const accessAToken = safeLocalStorage.getItem('accessToken')
     if (!accessAToken) {
-        return <Login />
+        route.push('/login')
     }
     return (
-
         <>
             <Navbar />
             <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('add_announcements')} />

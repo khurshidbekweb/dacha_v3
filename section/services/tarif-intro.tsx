@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { services, tariff } from '@/types';
@@ -43,33 +43,33 @@ export function TopBannerService({ tarif }: tarifProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {tarif?.tariffs?.length && tarif.tariffs.map((tariff) => (
-          <Card key={tariff.id} className="hover:shadow-lg transition-shadow">
+          <Card key={tariff.id} className="hover:shadow-lg transition-shadow flex flex-col justify-between">
             <CardHeader>
               <CardTitle className="text-2xl">
                 {tariff.type.split("\n")[0]}
               </CardTitle>
               <CardDescription>
                 {tariff.type.split("\n")[1]}
+                <div className="text-3xl font-bold mb-4 text-black dark:text-white">
+                  {formatNumber(Number(tariff.price))} {t('currency')}
+                </div>
+                <ul className="space-y-2 mb-6 list-disc text-black dark:text-white">
+                  {tariff.description?.split("\n").map((line, index) => (
+                    <li className="flex items-start" key={index}>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold mb-4">
-                {formatNumber(Number(tariff.price))} {t('currency')}
-              </div>
-              <ul className="space-y-2 mb-6 list-disc">
-                {tariff.description?.split("\n").map((line, index) => (
-                  <li className="flex items-start" key={index}>
-                    {line}
-                  </li>
-                ))}
-              </ul>
+            <CardFooter>
               <Button className="w-full" onClick={() => {
                 setOpen(true)
                 setCurTariff(tariff)
               }}>
                 {t('select_button')}
               </Button>
-            </CardContent>
+            </CardFooter>
           </Card>
         ))}
       </div>

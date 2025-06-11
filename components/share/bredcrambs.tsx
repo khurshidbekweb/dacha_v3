@@ -10,22 +10,23 @@ interface Props {
 const BreadCrumbs = (props: Props) => {
 
     return (
-        <Breadcrumb className='my-3 px-1 md:px-5 xl:px-16'>
-            <BreadcrumbList>
-                {props.data.map(el => (
-                    <Fragment key={el.slug}>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href={`/${el.slug}`}>{el.title}</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                    </Fragment>
-                ))}
-                <BreadcrumbItem>
-                    <BreadcrumbPage>{props.page}</BreadcrumbPage>
-                </BreadcrumbItem>
-            </BreadcrumbList>
-        </Breadcrumb>
-
+        <div className="max-w-[1540px] mx-auto px-2 md:px-5 xl:px-14">
+            <Breadcrumb className='mt-2 md:mt-3'>
+                <BreadcrumbList>
+                    {props.data.map(el => (
+                        <Fragment key={el.slug}>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href={`/${el.slug}`}>{el.title}</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                        </Fragment>
+                    ))}
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>{props.page}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+            </Breadcrumb>
+        </div>
     );
 };
 
