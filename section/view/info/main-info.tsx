@@ -65,44 +65,44 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             <div className="flex items-center justify-between border-b py-2">
                                 <div className="flex gap-x-3 items-center">
                                     <LogIn size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px]  text-2xl'>Kirish</p>
+                                    <p className='text-[18px]  text-2xl'>{t('enter')}</p>
                                 </div>
                                 <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
                             </div>
                             <div className="flex items-center justify-between py-3 border-b">
                                 <div className="flex gap-x-3 items-center">
                                     <LogOut size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px]   md:text-2xl'>Chiqish</p>
+                                    <p className='text-[18px]   md:text-2xl'>{t('logout')}</p>
                                 </div>
                                 <p className='text-[15px] md:text-xl font-normal'>09:00/17:00</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
                                 <div className="flex gap-x-3 items-center">
                                     <Wine size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px]  text-2xl'>Spirtli ichimliklar</p>
+                                    <p className='text-[18px]  text-2xl'>{t('alcahol')}</p>
                                 </div>
-                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
+                                <p className='text-[15px] md:text-xl font-normal'>{t('inPossible')}</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
                                 <div className="flex gap-x-3 items-center">
                                     <PartyPopper size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px]  text-2xl'>Korporativ tadbir</p>
+                                    <p className='text-[18px]  text-2xl'>{t('party')}</p>
                                 </div>
-                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
+                                <p className='text-[15px] md:text-xl font-normal'>{t('possible')}</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
                                 <div className="flex gap-x-3 items-center">
                                     <PawPrint size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px]  text-2xl'>Uy hayvonlari</p>
+                                    <p className='text-[18px]  text-2xl'>{t('pats')}</p>
                                 </div>
-                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
+                                <p className='text-[15px] md:text-xl font-normal'>{t('inPossible')}</p>
                             </div>
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex gap-x-3 items-center">
                                     <VolumeOff size={25} strokeWidth={1.75} />
-                                    <p className='text-[18px] text-2xl'>Sokin soatlar</p>
+                                    <p className='text-[18px] text-2xl'>{t('vois')}</p>
                                 </div>
-                                <p className='text-[15px] md:text-xl font-normal'>soat 22:00 dan 07:00 gacha</p>
+                                <p className='text-[15px] md:text-xl font-normal'>{t('clock')} 22:00 {t('to')} 07:00 {t('from')}</p>
                             </div>
                         </div>
                     </div>
