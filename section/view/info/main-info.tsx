@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { IMG_BASE_URL } from '@/constants';
 import { cottage } from '@/types';
-import { BadgePercent, BedDouble, BedSingle, Clock, DoorOpen, Dot, House, LogIn, MapPin, PhoneOutgoing, Star, UsersRound } from 'lucide-react';
+import { BadgePercent, BedDouble, BedSingle, Clock, DoorOpen, Dot, House, LogIn, LogOut, MapPin, PartyPopper, PawPrint, PhoneOutgoing, Star, UsersRound, VolumeOff, Wine } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -63,28 +63,46 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <h3 className='text-2xl md:text-3xl font-mediu'>Qoidalar</h3>
                         <div className="border p-2 md:p-3 rounded-lg mt-1 md:mt-3">
                             <div className="flex items-center justify-between border-b py-2">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <LogIn size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px]  text-2xl'>Kirish</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
                             </div>
                             <div className="flex items-center justify-between py-3 border-b">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <LogOut size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px]   md:text-2xl'>Chiqish</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>09:00/17:00</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <Wine size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px]  text-2xl'>Spirtli ichimliklar</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <PartyPopper size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px]  text-2xl'>Korporativ tadbir</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
                             </div>
                             <div className="flex items-center justify-between py-4 border-b">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <PawPrint size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px]  text-2xl'>Uy hayvonlari</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>10:00/19:00</p>
                             </div>
                             <div className="flex items-center justify-between py-3">
-                                <LogIn size={28} strokeWidth={1.75} />
-                                <p className='text-xl font-normal'>10:00/19:00</p>
+                                <div className="flex gap-x-3 items-center">
+                                    <VolumeOff size={25} strokeWidth={1.75} />
+                                    <p className='text-[18px] text-2xl'>Sokin soatlar</p>
+                                </div>
+                                <p className='text-[15px] md:text-xl font-normal'>soat 22:00 dan 07:00 gacha</p>
                             </div>
                         </div>
                     </div>

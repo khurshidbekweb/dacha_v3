@@ -22,7 +22,7 @@ interface imageProps {
 export function ImageDacha({ images, onOpenSheet }: imageProps) {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
-    const [count, setCount] = React.useState(0)
+    const [count, setCount] = React.useState(images?.images?.length)
 
     React.useEffect(() => {
         if (!api) {
@@ -43,7 +43,7 @@ export function ImageDacha({ images, onOpenSheet }: imageProps) {
                 <CarouselContent>
                     {images.images?.length && images?.images?.map((img) => (
                         <CarouselItem key={img.id}>
-                            <div className="relative w-full h-[280px]" onClick={onOpenSheet}>
+                            <div className="relative w-full h-[260px]" onClick={onOpenSheet}>
                                 <Image
                                     src={`${IMG_BASE_URL}${img.image}`}
                                     alt={images.name}
