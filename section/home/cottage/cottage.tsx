@@ -20,7 +20,7 @@ const Cottage = () => {
                 <MobileSwiper cottages={allCottages!} />
             </div> */}
             <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
-                {allCottages?.length && allCottages?.map(dacha => (
+                {cottages?.length && cottages?.slice(4).map(dacha => (
                     <DachaCardMini dacha={dacha} key={dacha.id} />
                 ))}
             </div>

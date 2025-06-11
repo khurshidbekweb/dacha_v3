@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import HeadInfo from './info/head-info';
 import MainInfo from './info/main-info';
 import SuitableCottage from './suitable-cottage';
+import CallMobile from './info/coll-mobile';
 
 
 interface dachaView {
@@ -29,6 +30,7 @@ const MainView = ({ cottage, suitableCottage }: dachaView) => {
                 <DachaImages cottage={cottage} />
                 <MainInfo cottage={cottage} />
                 <SuitableCottage cottages={suitableCottage} />
+                <CallMobile cottage={cottage} />
             </div>
         </>
     );

@@ -40,10 +40,10 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <h3 className='text-2xl md:text-3xl font-mediu'>Dacha haqida</h3>
                         <p className='text-base md:text-lg whitespace-pre-wrap break-words'>{cottage.description}</p>
                         <div className="flex flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
-                            <span className='flex gap-x-2 items-center text-xl'><UsersRound size={28} strokeWidth={1.75} /> Mehmonlar</span>
-                            <span className='flex gap-x-2 items-center text-xl'><DoorOpen size={28} strokeWidth={1.75} /> Yotoq xonalar</span>
-                            <span className='flex gap-x-2 items-center text-xl'><BedSingle size={28} strokeWidth={1.75} /> Yotoqlar</span>
-                            <span className='flex gap-x-2 items-center text-xl'><BedDouble size={28} strokeWidth={1.75} /> 2 o`rinli yotoqlar</span>
+                            <span className='flex gap-x-2 items-center text-[16px] md:text-xl'><UsersRound size={22} strokeWidth={1.75} /> Mehmonlar</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><DoorOpen size={22} strokeWidth={1.75} /> Yotoq xonalar</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><BedSingle size={22} strokeWidth={1.75} /> Yotoqlar</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><BedDouble size={22} strokeWidth={1.75} /> 2 o`rinli yotoqlar</span>
                         </div>
                         <Separator className='mt-5 md:mt-10' />
                     </div>
@@ -151,7 +151,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} {t('currency')} </p>
                         </div>
 
-                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:+998971082004`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>
+                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage.user.phone}`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>
                     </div>
                 </div>
             </div>

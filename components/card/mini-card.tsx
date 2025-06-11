@@ -56,7 +56,9 @@ export function DachaCardMini({ dacha }: DachaProps) {
                     </div>
 
                     <div className="p-1 pt-0 text-sm">
-                        <p className="text-lg font-semibold text-primary">{dacha.price.toLocaleString()} so`m</p>
+                        {dacha.cottageType[0].id === 'c4c301b1-4719-499e-bde2-2c36715fae9e' ?
+                            <p className="text-lg font-semibold text-primary">{dacha.price.toLocaleString()} so`m</p> : <p className="text-center p-1 bg-primary text-white dark:bg-amber-500 rounded-lg font-semibold">{dacha?.cottageType[0]?.name}</p>
+                        }
                     </div>
                 </div>
             </Link>
