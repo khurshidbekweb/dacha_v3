@@ -106,7 +106,7 @@ const AddNewPage = () => {
             price: cottage.price,
             priceWeekend: cottage.priceWeekend,
             regionId: cottage.regionId,
-            contactPhone: cottage.contactPhone,
+            contactPhone: cottage.contactPhone.replaceAll(" ", "").slice(3),
             doubleBedCount: cottage.doubleBedCount,
             entranceTime: cottage.entranceTime,
             exitTime: cottage.exitTime,
