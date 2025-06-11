@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 
 
-type activeView = 'cottage' | 'myservice' | 'service'
+type activeView = 'cottage' | 'myservice' | 'service' | 'settings'
 
 interface userProps {
     user: user
@@ -26,9 +26,10 @@ const DesktopInfo = ({ user }: userProps) => {
     return (
         <div className='w-full hidden md:block mt-10'>
             <ul className="flex items-center gap-x-7 border-b py-2">
-                <li onClick={() => setActive('cottage')} className={cn('cursor-pointer p-1 px-2', active == 'cottage' && 'text-green-500 text-xl')}>{t("profile_e'lonlarim")}</li>
-                <li onClick={() => setActive('myservice')} className={cn('cursor-pointer p-1 px-2', active == 'myservice' && 'text-green-500 text-xl')}>{t("profile_tariff")}</li>
-                <li onClick={() => setActive('service')} className={cn('cursor-pointer p-1 px-2', active == 'service' && 'text-green-500 text-xl')}>{t('not_servise')}</li>
+                <li onClick={() => setActive('cottage')} className={cn('cursor-pointer p-1 px-2', active == 'cottage' && 'text-green-500 text-xl')}>{t("my_announcements")}</li>
+                <li onClick={() => setActive('myservice')} className={cn('cursor-pointer p-1 px-2', active == 'myservice' && 'text-green-500 text-xl')}>{t("my_tariff")}</li>
+                <li onClick={() => setActive('service')} className={cn('cursor-pointer p-1 px-2', active == 'service' && 'text-green-500 text-xl')}>{t('services')}</li>
+                <li onClick={() => setActive('settings')} className={cn('cursor-pointer p-1 px-2', active == 'settings' && 'text-green-500 text-xl')}>{t('settings')}</li>
             </ul>
             {active === 'cottage' &&
                 <div>
@@ -87,6 +88,12 @@ const DesktopInfo = ({ user }: userProps) => {
                 active == 'service' &&
                 <div className="">
                     Service
+                </div>
+            }
+            {
+                active == 'settings' &&
+                <div className="">
+                    Settings
                 </div>
             }
         </div>

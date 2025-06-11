@@ -54,9 +54,12 @@
 	"clock": "soat",
 	"from": "gacha",
 	"to": "dan",
-	"enter":"Kirish",
-	"pats":"Uy hayvonlari",
-	"alcahol":"Spirtli ichimliklar",
-	"party":"Korporativ tadbir",
-	"vois":"Sokin soatlar"
+	"enter": "Kirish",
+	"pats": "Uy hayvonlari",
+	"alcahol": "Spirtli ichimliklar",
+	"party": "Korporativ tadbir",
+	"vois": "Sokin soatlar",
+	"my_announcements": "Mening e'lonlarim",
+	"my_tariff": "Foydalangan tariflarim",
+	"settings": "Sozlamalar"
 }

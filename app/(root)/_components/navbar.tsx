@@ -6,13 +6,20 @@ import React from 'react';
 import { ModeToggle } from './mode-toggle';
 import MobileMenu from './mobile-menu';
 import { usePathname } from 'next/navigation';
-import { navLink } from '@/constants';
+import { IMG_BASE_URL, navLink } from '@/constants';
 import { useTranslation } from 'react-i18next';
 import ChangeLanguage from './change-language';
+import { safeLocalStorage } from '@/utils/safeLocalstorge';
+import { user } from '@/types';
+import Image from 'next/image';
 
 const Navbar = () => {
     const pathname = usePathname()
     const { t } = useTranslation()
+    const user: user = JSON.parse(safeLocalStorage.getItem('user')!)
+
+    console.log(user);
+
     return (
         <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14 z-50 '>
             <div className="flex justify-between items-center h-[60px]">
@@ -29,6 +36,9 @@ const Navbar = () => {
                 <div className='gap-x-3 hidden md:flex items-center'>
                     <ChangeLanguage />
                     <ModeToggle />
+                    {user && <Link href={'/profile'} className='border w-[40px] h-[40px] rounded-full flex items-center justify-center overflow-hidden'>
+                        {user.image ? <Image width={50} height={50} priority src={`${IMG_BASE_URL}${user.image}`} alt={user.name || 'user image'} /> : user.name?.slice(0, 2)}
+                    </Link>}
                 </div>
                 <div className="flex md:hidden gap-x-3 items-center">
                     <ChangeLanguage />
