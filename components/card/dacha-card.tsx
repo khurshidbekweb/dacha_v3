@@ -19,7 +19,7 @@ export function DachaCard({ dacha }: DachaProps) {
     }
 
     return (
-        <div className="w-[350px]  md:w-[330px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
+        <div className="w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
             <Link href={`/view/${dacha.id}`} className="w-full flex flex-col">
                 <div className="w-full pointer-events-none">
                     <CardSwiper dacha={dacha} />

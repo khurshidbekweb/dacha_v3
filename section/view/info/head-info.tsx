@@ -1,8 +1,11 @@
+'use client'
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useLikeStore } from '@/store/like-card';
 import { cottage } from '@/types';
 import { Dot, Heart, MapPin, MapPinned, MoveLeft, Share2, Star } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -18,6 +21,8 @@ const HeadInfo = ({ cottage }: headINfo) => {
     const handleLikeClick = (id: string) => {
         toggleLike(id);
     }
+
+    const route = useRouter()
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -65,7 +70,7 @@ const HeadInfo = ({ cottage }: headINfo) => {
                 </div>
             </div>
             <div className={`w-full flex justify-between items-center md:hidden fixed z-2  px-1 ${isScrolled ? 'bg-secondary -mt-1 py-2 transition-all' : "mt-[6px]"}`}>
-                <Button className='rounded-full p-2 py-5 shadow-lg' variant='outline'><MoveLeft size={28} strokeWidth={1.75} /> </Button>
+                <Button onClick={() => route.back()} className='rounded-full p-2 py-5 shadow-lg' variant='outline'><MoveLeft size={28} strokeWidth={1.75} /> </Button>
                 <div className="flex gap-x-3 items-center justify-between">
                     <Button className='rounded-full py-5 shadow-lg' onClick={copyLinkText} variant='outline'> <Share2 size={28} strokeWidth={1.75} /></Button>
                     <Button className='rounded-full py-5 shadow-lg' onClick={() => handleLikeClick(cottage.id)} variant='outline'> <Heart className={cn('overflow-hidden', isLiked && 'transition-colors fill-amber-400 text-yellow-500 ')} size={35} strokeWidth={1.75} /></Button>
