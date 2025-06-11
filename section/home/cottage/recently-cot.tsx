@@ -2,7 +2,7 @@
 
 import { DachaCard } from '@/components/card/dacha-card';
 import { DachaCardMini } from '@/components/card/mini-card';
-import { MobileSwiper } from '@/components/swiper/mobile-swiper';
+// import { MobileSwiper } from '@/components/swiper/mobile-swiper';
 import { ALL_DATA } from '@/query/query-fn';
 import React from 'react';
 
@@ -17,10 +17,10 @@ const RecentlyCot = () => {
                     <DachaCard dacha={dacha} key={dacha.id} />
                 ))}
             </div>
-            <div className="mt-3 md:hidden justify-items-center md:justify-between items-center mx-auto">
+            {/* <div className="mt-3 md:hidden justify-items-center md:justify-between items-center mx-auto">
                 <MobileSwiper cottages={recentleCottage!} />
-            </div>
-            <div className="grid grid-cols-2 md:hidden gap-2">
+            </div> */}
+            <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
                 {recentleCottage?.length && recentleCottage?.map(dacha => (
                     <DachaCardMini dacha={dacha} key={dacha.id} />
                 ))}

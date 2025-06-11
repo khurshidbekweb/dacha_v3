@@ -8,6 +8,13 @@ export interface language {
   title: string
 }
 
+interface event {
+  eventType: "view" | "call",
+  id: string,
+  cottageId: string,
+  occurredAt: string
+}
+
 export interface cottage {
   id: string,
   name: string,
@@ -25,6 +32,7 @@ export interface cottage {
   status: string,
   region: region,
   user: user,
+  events: event[]
 }
 
 export interface cottageTop {
