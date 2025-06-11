@@ -3,7 +3,7 @@ import React from 'react';
 const UserDacha = () => {
     return (
         <div>
-            dacha
+            dachalar bizda
         </div>
     );
 };

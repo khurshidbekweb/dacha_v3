@@ -1,12 +1,13 @@
 'use client'
 
 import React from 'react';
-import UserDacha from '../../app/(root)/profile/cottage';
-import UserTariff from '../../app/(root)/profile/user-tariff';
-import Settings from '../../app/(root)/profile/settings';
-import UserService from '../../app/(root)/profile/service-user';
 import { useParams, useRouter } from 'next/navigation';
-type TabKey = 'dacha' | 'tariffs' | 'services' | 'settings';
+import UserDacha from '../../../../section/profile/mobile/cottage';
+import UserTariff from '../../../../section/profile/mobile/tariffs';
+import UserService from '../../../../section/profile/mobile/service-user';
+import { Settings } from 'lucide-react';
+
+type TabKey = 'cottage' | 'tariffs' | 'services' | 'settings';
 
 interface TabsProps {
     active: TabKey;
@@ -15,19 +16,18 @@ interface TabsProps {
 
 const MobileProfile = () => {
     const params = useParams();
+    const section = params?.tab as string; // 🟢 <-- MUHIM O‘ZGARISH
     const router = useRouter();
-    const section = params?.section as string;
 
     const isValidTabKey = (value: string): value is TabKey => {
-        return ['dacha', 'tariffs', 'services', 'settings'].includes(value);
+        return ['cottage', 'tariffs', 'services', 'settings'].includes(value);
     }
 
-    const activeSection: TabKey = isValidTabKey(section) ? section : 'dacha';
-
+    const activeSection: TabKey = isValidTabKey(section) ? section : 'cottage';
 
     const renderSection = () => {
-        switch (section) {
-            case 'dacha': return <UserDacha />;
+        switch (activeSection) {
+            case 'cottage': return <UserDacha />;
             case 'tariffs': return <UserTariff />;
             case 'services': return <UserService />;
             case 'settings': return <Settings />;
@@ -46,21 +46,20 @@ export default MobileProfile;
 
 const Tabs = ({ active, onChange }: TabsProps) => {
     const tabs: { key: TabKey; label: string }[] = [
-        { key: "dacha", label: "Dachalar" },
+        { key: "cottage", label: "Dachalar" },
         { key: "tariffs", label: "Tariflar" },
         { key: "services", label: "Xizmatlar" },
         { key: "settings", label: "Sozlamalar" },
     ];
     return (
-        <div className="flex overflow-x-auto">
+        <div className="flex flex-col">
             {tabs.map(tab => (
-                <button
-                    key={tab.key}
-                    className={`p-2 ${active === tab.key ? "font-bold border-b-2 border-blue-500" : ""}`}
+                <div
                     onClick={() => onChange(tab.key)}
-                >
+                    className={`p-2 ${active === tab.key ? "font-bold border-b-2 border-blue-500" : ""}`}
+                    key={tab.key}>
                     {tab.label}
-                </button>
+                </div>
             ))}
         </div>
     );

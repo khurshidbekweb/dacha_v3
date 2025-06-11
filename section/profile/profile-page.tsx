@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button';
 import Navbar from '@/app/(root)/_components/navbar';
 import DesktopInfo from './desktop-info';
 import BreadCrumbs from '@/components/share/bredcrambs';
-import MobileProfile from './mobile-profile';
+import MobileProfile from '@/app/(root)/profile/[tab]/page';
 
 
 const ProfilePage = () => {
