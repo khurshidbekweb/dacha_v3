@@ -4,7 +4,7 @@ import { BASE_URL_SERVER } from "@/constants";
 
 const custimAxios = axios.create({
   baseURL: BASE_URL_SERVER,
-  timeout: 10000,
+  timeout: 30000,
 });
 
 custimAxios.interceptors.response.use(

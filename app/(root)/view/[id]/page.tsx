@@ -4,11 +4,6 @@ import { cottage, image } from '@/types';
 import { IMG_BASE_URL } from '@/constants';
 import Info from '../info';
 
-interface PageParams {
-    params: {
-        id: string;
-    };
-}
 
 // static params generatsiya qilish
 export async function generateStaticParams() {
@@ -20,11 +15,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-    { params }: PageParams
+    { params }: { params: { id: string } }
 ): Promise<Metadata> {
     const cottages = await cottageUtils.getCottage();
-    const awaitedParams = await params;
-    const suitableCottage = cottages.find((e: cottage) => e.id === awaitedParams.id);
+    const suitableCottage = cottages.find((e: cottage) => e.id === params.id);
     const mainImage = suitableCottage?.images.find((img: image) => img.isMainImage);
 
     return {
@@ -51,13 +45,15 @@ export async function generateMetadata(
     };
 }
 
+
+
 export default async function View({
     params,
-}: PageParams) {
+}: { params: { id: string } }) {
     const cottage = await cottageUtils.getCottage();
-    const awaitedParams = await params; // await kerak emas
-    const suitableCottage = await cottageUtils.getSuitableCottage(awaitedParams.id);
-    const cottageView: cottage = cottage && cottage?.find((e: cottage) => e.id === awaitedParams.id)
+    const suitableCottage = await cottageUtils.getSuitableCottage(params.id);
+    const cottageView: cottage = cottage?.find((e: cottage) => e.id === params.id);
+
     return (
         <>
             <Info
@@ -68,3 +64,4 @@ export default async function View({
         </>
     );
 }
+
