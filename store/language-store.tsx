@@ -11,7 +11,7 @@ const useLanguageStore = create<LanguageState>((set) => ({
   language: typeof window !== "undefined" ? safeLocalStorage.getItem("language") || "uz" : "uz",
   setLanguage: (language: string) => {
     safeLocalStorage.setItem("language", language);
-      set({ language });
+    set({ language });
   },
 }));
 
