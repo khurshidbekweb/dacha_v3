@@ -14,23 +14,25 @@ import { Separator } from "@/components/ui/separator";
 import { ALL_DATA } from '@/query/query-fn';
 import { IMG_BASE_URL } from '@/constants';
 import { DachaCardMini } from '@/components/card/mini-card';
+import { Slider } from '@/components/ui/slider';
+import { DachaCard } from '@/components/card/dacha-card';
 
 const CottagePage = () => {
     const { t } = useTranslation();
-    const [value, setValue] = useState(12000000);
+    const [value, setValue] = useState(12000);
     const [selectedRegion, setSelectedRegion] = useState("");
     const [selectedPlace, setSelectedPlace] = useState("");
-    const [selectedComforts, setSelectedComforts] = useState([]);
-    const [selectedTypes, setSelectedTypes] = useState([]);
+    const [selectedComforts, setSelectedComforts] = useState<string[]>([]);
+    const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
     const cottages = ALL_DATA.useCottage()?.data;
     const cottageTypes = ALL_DATA.useCottageType()?.data;
     const regions = ALL_DATA.useRegion()?.data;
     const places = ALL_DATA.usePlaceById(selectedRegion)?.data;
-    const { data: comforts } = ALL_DATA.useComforts() || []
+    const { data: comforts } = ALL_DATA.useComforts()
     const cottageType = ['c23f5e39-c51e-4135-9c45-9142924b008f', 'c4c301b1-4719-499e-bde2-2c36715fae9e', '3e54eff7-8a26-443b-a302-066cbe8a05ff']
     const cottageTypeSelectChart = cottageTypes?.filter((el: cottageType) => cottageType.includes(el.id))
     const [moreInfo, setMoreInfo] = useState(5)
-    const isAllShown = moreInfo >= comforts?.length
+    const isAllShown = moreInfo >= (comforts?.length ?? 0)
     const [filter, setFilter] = useState({
         minPrice: 500000,
         maxPrice: value,
@@ -61,24 +63,24 @@ const CottagePage = () => {
         <>
             <Navbar />
             <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('announcements')} />
-            <div className="mt-5">
+            <div className="mt-5 max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0">
                 <h3 className='text-xl md:text-2xl'>{t('all_announcements')}</h3>
                 <div className="w-full mt-5 flex items-start gap-x-5">
                     <div className="filter hidden md:block ml-0 w-[250px] mx-auto shadow-lg">
                         <h1 className="text-[22px] font-createRound">{t('filtr')}</h1>
                         <div className="w-[250px] flex flex-col items-center gap-6 p-4">
                             <div className="flex justify-between text-sm w-[250px]">
-                                <span>500,000 sum</span>
-                                <span>{value.toLocaleString()} sum</span>
+                                <span>500 ming sum</span>
+                                <span>{value.toString().slice(0, 2)} mln sum</span>
                             </div>
-                            {/* <Slider
+                            <Slider
                                 defaultValue={[value]}
-                                min={500000}
-                                max={12000000}
+                                min={500}
+                                max={12000}
                                 step={1}
                                 onValueChange={(val) => setValue(val[0])}
                                 className="w-[250px]"
-                            /> */}
+                            />
                         </div>
                         <Select onValueChange={setSelectedRegion}>
                             <SelectTrigger className='w-full bg-white dark:bg-[#161f309c]'>
@@ -124,7 +126,7 @@ const CottagePage = () => {
                                     </label>
                                 ))}
                                 {!isAllShown && (
-                                    <button className="flex gap-x-1 justify-center items-center" onClick={() => setMoreInfo(comforts.length)}>Ko`proq ko`rish <ChevronDown /></button>
+                                    <button className="flex gap-x-1 justify-center items-center" onClick={() => setMoreInfo((comforts?.length ?? 0))}>Ko`proq ko`rish <ChevronDown /></button>
                                 )}
                             </div>
                         </div>
@@ -140,7 +142,16 @@ const CottagePage = () => {
                                     (dacha: cottage) =>
                                         dacha.cottageType[0].id !== "678811f1-d67c-42fa-a78c-f1d980df3397"
                                 )
-                                ?.map((dacha: cottage) => <DachaCardMini key={dacha.id} dacha={dacha} />)
+                                ?.map((dacha: cottage) => (
+                                    <>
+                                        <div className="w-full hidden md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-4">
+                                            <DachaCard key={dacha.id} dacha={dacha} />
+                                        </div>
+                                        <div className="w-full grid grid-cols-2 md:hidden">
+                                            <DachaCardMini key={dacha.id} dacha={dacha} />
+                                        </div>
+                                    </>
+                                ))
                         )}
                     </div>
                 </div>
