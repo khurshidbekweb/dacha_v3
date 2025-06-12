@@ -1,24 +1,24 @@
-import { User, MessageCircle } from 'lucide-react'
+import { MessageCircle, MapPinHouse, DatabaseZap, HousePlus } from 'lucide-react'
 import { z } from "zod";
 
 export const navLink = [
     {
         id: 1,
         name: 'announcements',
-        path: '/villa',
-        icon: User
+        path: '/cottage',
+        icon: MapPinHouse
     },
     {
         id: 2,
         name: 'services',
         path: '/services',
-        icon: User
+        icon: DatabaseZap
     },
     {
         id: 4,
         name: 'add_announcements',
         path: '/add-new',
-        icon: MessageCircle
+        icon: HousePlus
     },
     {
         id: 3,
