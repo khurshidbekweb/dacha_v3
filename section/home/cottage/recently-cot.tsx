@@ -14,7 +14,7 @@ const RecentlyCot = () => {
         <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
             <h2 className='text-2xl md:text-3xl font-semibold'>Yaqinda joylangan e`lonlar </h2>
             <div className="hidden md:grid mt-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-3 xl:gap-4 justify-items-center md:justify-between items-center mx-auto">
-                {isLoading ? <>
+                {isLoading || !recentleCottage?.length ? <>
                     <SkeletonCard />
                     <SkeletonCard />
                     <SkeletonCard />
@@ -27,7 +27,7 @@ const RecentlyCot = () => {
                 <MobileSwiper cottages={recentleCottage!} />
             </div> */}
             <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
-                {isLoading ? <>
+                {isLoading || !recentleCottage?.length ? <>
                     <SkeletonCard />
                     <SkeletonCard />
                     <SkeletonCard />

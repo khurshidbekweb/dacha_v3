@@ -14,9 +14,9 @@ const Cottage = () => {
         <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
             <h2 className='text-3xl font-semibold'>Barcha e`lonlar </h2>
             <div className="hidden md:grid mt-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3 justify-items-center md:justify-between items-center mx-auto">
-                {isLoading ? <>
+                {isLoading || !cottages?.length ? <>
                     <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
-                </> : cottages?.length && allCottages?.map(dacha => (
+                </> : allCottages?.map(dacha => (
                     <DachaCard dacha={dacha} key={dacha.id} />
                 ))}
             </div>
@@ -24,9 +24,9 @@ const Cottage = () => {
                 <MobileSwiper cottages={allCottages!} />
             </div> */}
             <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
-                {isLoading ? <>
+                {isLoading || !cottages?.length ? <>
                     <SkeletonCard /> <SkeletonCard />
-                </> : allCottagesMini?.length && allCottagesMini?.slice(4).map(dacha => (
+                </> : allCottagesMini?.slice(4).map(dacha => (
                     <DachaCardMini dacha={dacha} key={dacha.id} />
                 ))}
             </div>
