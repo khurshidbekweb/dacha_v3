@@ -4,7 +4,6 @@ import React from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import UserDacha from '../../../../section/profile/mobile/cottage';
 import UserTariff from '../../../../section/profile/mobile/tariffs';
-import UserService from '../../../../section/profile/mobile/service-user';
 import { ChevronRight, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
