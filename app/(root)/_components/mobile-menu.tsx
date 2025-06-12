@@ -13,9 +13,11 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from 'react';
+import { useTranslation } from "react-i18next";
 
 const MobileMenu = () => {
     const pathname = usePathname()
+    const { t } = useTranslation()
     return (
         <Sheet>
             <SheetTrigger className="md:hidden">
@@ -24,7 +26,7 @@ const MobileMenu = () => {
             <SheetContent side="left" className="w-[280px] sm:w-[320px] p-0">
                 <SheetHeader className="text-left p-6 border-b">
                     <SheetTitle className="text-2xl font-bold">
-                        Khurshidbek
+                        DachaOL
                     </SheetTitle>
                 </SheetHeader>
 
@@ -38,7 +40,7 @@ const MobileMenu = () => {
                                 className={`hover:bg-[#44bd32] px-4 py-3 dark:hover:bg-[#F0A500] hover:text-white flex items-center gap-x-2 rounded-md transition-colors ${pathname == link.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`}
                             >
                                 <Icon size={25} />
-                                <span className="font-medium">{link.name}</span>
+                                <span className="font-medium">{t(`${link.name}`)}</span>
                             </Link>
                         )
                     })}
