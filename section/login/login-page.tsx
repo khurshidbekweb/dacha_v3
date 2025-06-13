@@ -86,9 +86,9 @@ const LoginPage = () => {
     }
 
     return (
-        <div className="">
+        <div className="w-full">
             <Navbar />
-            <div className="flex items-center justify-center mt-20">
+            <div className="flex items-center justify-center mt-20 px-5 md:px-0">
                 {authLOgin(step)}
             </div>
         </div>

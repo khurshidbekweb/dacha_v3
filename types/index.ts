@@ -53,6 +53,7 @@ export interface image {
   isMainImage: boolean,
   status: "active" | "inactive"
 }
+
 export interface comfort {
   id: string,
   image: string,

@@ -20,10 +20,10 @@ const SmsCode = ({ backOneHandle, handleLogin, phoneNumber }: smsCode) => {
                 <span className='text-blue-400 underline'>+{phoneNumber.replaceAll(' ', '')}</span> raqamiga SMS kod yuborildi.
             </p>
             <form onSubmit={handleLogin}>
-                <input name='smscode' className='border-b-2 text-center text-xl border-bottom w-full outline-0 mt-5' type="tel" placeholder='*****' />
+                <input name='smscode' className='border-b-2 text-center border-black text-black text-xl border-bottom w-full outline-0 mt-5' type="tel" placeholder='*****' />
                 <div className="flex items-center gap-x-2 mt-3">
-                    <Checkbox checked={!checked} onCheckedChange={(value) => setChecked(!value)} />
-                    <p>Barcha shartlarga roziman</p>
+                    <Checkbox className='text-gray-600 border border-black' checked={!checked} onCheckedChange={(value) => setChecked(!value)} />
+                    <p className='text-gray-600'>Barcha shartlarga roziman</p>
                 </div>
                 <Button
                     disabled={checked}

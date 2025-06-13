@@ -11,12 +11,12 @@ interface phoneNumber {
 
 const PhoneNumber = ({ handleAuth, setPhoneNumber }: phoneNumber) => {
     return (
-        <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+        <div className="bg-white  shadow-md rounded-lg p-8 w-full max-w-md">
             <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-start">
                 Kirish
             </h2>
             <Image width={70} height={70} className='rounded-full overflow-hidden mx-auto border p-1' src={logo} alt='' />
-            <p className='text-2xl text-center font-normal'>DachaOL.uz</p>
+            <p className='text-2xl text-center font-normal text-gray-800'>DachaOL.uz</p>
             <form onSubmit={handleAuth} >
                 <label htmlFor="phone" className="block text-gray-700 py-2 text-sm font-createRound">
                     Telefon raqami

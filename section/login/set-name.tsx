@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { ALL_DATA } from '@/query/query-fn';
 import { QUERY_KEYS } from '@/query/query-key';
 import { userUtils } from '@/utils/user.utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -13,16 +14,18 @@ interface userName {
 const SetName = ({ userId }: userName) => {
     console.log(userId);
     const router = useRouter()
+    const userData = ALL_DATA.useSingleUser();
     const [name, setName] = useState('')
     const queryClinet = useQueryClient()
     const userEdit = useMutation({
         mutationFn: userUtils.editUser,
-        onSuccess: async () => {
+        onSuccess: () => {
             queryClinet.invalidateQueries({ queryKey: [QUERY_KEYS.users] })
             toast.success('Muaffaqiyatli')
             setTimeout(() => {
-                router.push('profile')
+                router.push('/profile')
             }, 200)
+            localStorage.setItem("user", JSON.stringify(userData?.data));
         }
     })
 
@@ -46,12 +49,12 @@ const SetName = ({ userId }: userName) => {
                 <input
                     type='text'
                     placeholder='Ismiz...'
-                    className='w-full p-2 border outline-blue-500  rounded-md py-2 mt-2'
+                    className='w-full p-2 border outline-blue-500  rounded-md py-2 mt-2 border-black text-black'
                     onChange={(e) => setName(e.target.value)}
                 />
                 <Button
                     onClick={handleUserEdit}
-                    type="submit"
+                    type='button'
                     className="w-full mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-400"
                 >
                     Tasdiqlash
