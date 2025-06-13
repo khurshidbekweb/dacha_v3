@@ -131,7 +131,7 @@ const CottagePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-4 px-1">
+                    <div className="w-full">
                         {isLoading ? (
                             'Loading'
                         ) : (filteredCottages || cottages)?.length === 0 ? <>
@@ -147,7 +147,7 @@ const CottagePage = () => {
                                         <div className="w-full hidden md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-4">
                                             <DachaCard key={dacha.id} dacha={dacha} />
                                         </div>
-                                        <div className="w-full grid grid-cols-2 md:hidden">
+                                        <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
                                             <DachaCardMini key={dacha.id} dacha={dacha} />
                                         </div>
                                     </>
