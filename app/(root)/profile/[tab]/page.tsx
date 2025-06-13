@@ -4,10 +4,11 @@ import React from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import UserDacha from '../../../../section/profile/mobile/cottage';
 import UserTariff from '../../../../section/profile/mobile/tariffs';
-import { ChevronRight, Settings } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import Servives from '../../services/page';
+import Settings from '@/section/profile/mobile/settings';
 
 type TabKey = 'cottage' | 'tariffs' | 'services' | 'settings';
 
