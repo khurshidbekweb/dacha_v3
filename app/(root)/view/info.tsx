@@ -6,11 +6,10 @@ import React from 'react';
 interface PropsView {
     cottage: cottage,
     paramsId: string,
-    suitableCottage: cottage[]
 }
 
-const Info = ({ cottage, suitableCottage }: PropsView) => {
-    return <MainView cottage={cottage} suitableCottage={suitableCottage} />;
+const Info = ({ cottage }: PropsView) => {
+    return <MainView cottage={cottage}  />;
 };
 
 export default Info;

@@ -84,10 +84,11 @@ export const ALL_DATA = {
             enabled: !!search,
         }),
 
-    useSuitableCottage: (id: string): UseQueryResult<cottage> =>
+    useSuitableCottage: (id: string): UseQueryResult<cottage[]> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottage_suitable_id, id],
             queryFn: () => cottageUtils.getSuitableCottage(id),
+            enabled: !!id
         }),
 
     useCottageTariffTop: (id: string): UseQueryResult<cottage[]> =>

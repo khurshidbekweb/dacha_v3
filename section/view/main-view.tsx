@@ -10,15 +10,16 @@ import HeadInfo from './info/head-info';
 import MainInfo from './info/main-info';
 import SuitableCottage from './suitable-cottage';
 import CallMobile from './info/coll-mobile';
+import { ALL_DATA } from '@/query/query-fn';
 
 
 interface dachaView {
     cottage: cottage,
-    suitableCottage: cottage[]
 }
 
-const MainView = ({ cottage, suitableCottage }: dachaView) => {
+const MainView = ({ cottage }: dachaView) => {
     const { t } = useTranslation()
+    const { data: suitableCottage } = ALL_DATA.useSuitableCottage(cottage?.id)
     return (
         <>
             <div className="w-full hidden md:block">
@@ -29,7 +30,7 @@ const MainView = ({ cottage, suitableCottage }: dachaView) => {
                 <HeadInfo cottage={cottage} />
                 <DachaImages cottage={cottage} />
                 <MainInfo cottage={cottage} />
-                <SuitableCottage cottages={suitableCottage} />
+                {suitableCottage && <SuitableCottage cottages={suitableCottage} />}
                 <CallMobile cottage={cottage} />
             </div>
         </>
