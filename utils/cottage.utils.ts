@@ -77,7 +77,7 @@ type PatchCottageImagePayload = {
     image: File
 }
 
-type FilterValue = string | number | boolean | ReadonlyArray<string | number | boolean> | null | undefined;
+type FilterValue = string | number | boolean | ReadonlyArray<string | number | boolean> | null | undefined | string;
 
 export const cottageUtils = {
     getCottage: async () => {
@@ -294,6 +294,7 @@ export const cottageUtils = {
         })
         return data
     },
+
     addCottageImage: async ({
         cottageId,
         image,
