@@ -145,9 +145,9 @@ export const cottageUtils = {
         const { data } = await custimAxios.get(
             `/cottage/filter/?${queryStr.join('&')}`,
             {
-                type: type,
-                place: place,
-                price: price,
+                ...(type && { type }),
+                ...(place && { place }),
+                ...(price && { price }),
 
                 headers: {
                     'accept-language': safeLocalStorage.getItem('language'),
