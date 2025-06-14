@@ -65,6 +65,7 @@ const CottagePage = () => {
         enabled: !!(filter.regionId || filter.placeId || filter.cottageTypes.length || filter.comforts.length || filter.maxGuests),
     });
 
+
     return (
         <>
             <Navbar />
@@ -74,17 +75,19 @@ const CottagePage = () => {
                 <div className="w-full mt-5 flex items-start gap-x-5">
                     <div className="filter hidden md:block ml-0 w-[250px] mx-auto shadow-lg">
                         <h1 className="text-[22px] font-createRound">{t('filtr')}</h1>
+
                         <div className="w-[250px] flex flex-col items-center gap-6 p-4">
                             <div className="flex justify-between text-sm w-[250px]">
                                 <span>500 ming sum</span>
-                                <span>{filter.maxGuests.toString().slice(0, 1)}mln {filter.maxGuests.toString().slice(1, 5)} ming sum</span>
+                                <span>{filter.maxPrice.toString().slice(0, 1)}mln {filter.maxPrice.toString().slice(1, 4)} ming sum</span>
                             </div>
+
                             <Slider
-                                defaultValue={[filter.minPrice]}
+                                defaultValue={[filter.maxPrice]}
                                 min={500}
                                 max={12000}
                                 step={1}
-                                onValueChange={(val) => setFilter((prev) => ({ ...prev, maxGuests: val[0] }))}
+                                onValueChange={(val) => setFilter((prev) => ({ ...prev, maxPrice: val[0] }))}
                                 className="w-[250px]"
                             />
                         </div>
@@ -117,16 +120,22 @@ const CottagePage = () => {
                                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                         value={e.id}
                                         onCheckedChange={(checked) => {
-                                            const isChecked = checked === true
+                                            setFilter((prev) => {
+                                                let newTypes = prev.cottageTypes?.length ? prev.cottageTypes : [];
 
-                                            let newValue
+                                                if (checked) {
+                                                    if (!newTypes.includes(e.id)) {
+                                                        newTypes.push(e.id);
+                                                    }
+                                                } else {
+                                                    newTypes = newTypes.filter((val: string) => val !== e.id);
+                                                }
 
-                                            if (isChecked) {
-                                                newValue = [e.id]
-                                            } else {
-                                                newValue = ([]).filter((val: string) => val !== e.id)
-                                            }
-                                            setFilter((prev) => ({ ...prev, cottageTypes: newValue }));
+                                                return {
+                                                    ...prev,
+                                                    cottageTypes: newTypes,
+                                                };
+                                            });
                                         }} />
                                     <p>{e.name}</p>
                                 </label>
@@ -153,7 +162,6 @@ const CottagePage = () => {
                                         <p className="line-clamp-1">{e.name}</p>
                                     </label>
                                 ))}
-
                             </div>
                         </div>
                     </div>
@@ -169,14 +177,14 @@ const CottagePage = () => {
                                         dacha.cottageType[0].id !== "678811f1-d67c-42fa-a78c-f1d980df3397"
                                 )
                                 ?.map((dacha: cottage) => (
-                                    <>
+                                    <div className='w-full' key={dacha.id}>
                                         <div className="w-full hidden md:block">
                                             <DachaCard key={dacha.id} dacha={dacha} />
                                         </div>
                                         <div className="md:hidden">
                                             <DachaCardMini key={dacha.id} dacha={dacha} />
                                         </div>
-                                    </>
+                                    </div>
                                 ))
                         )}
                     </div>
