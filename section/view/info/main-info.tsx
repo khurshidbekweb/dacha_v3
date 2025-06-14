@@ -52,8 +52,8 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <div className="grid grid-cols-3 gap-2 mt-5">
                             {cottage.comforts.map(comfort => (
                                 <span className="flex gap-x-2 items-center" key={comfort.id}>
-                                    <Image width={30} height={30} src={`${IMG_BASE_URL}${comfort.image}`} alt={cottage.name} />
-                                    <p className='line-clamp-1'>{comfort.name}</p>
+                                    <Image className=' ' width={31} height={30} src={`${IMG_BASE_URL}${comfort.image}`} alt={cottage.name} />
+                                    <p className='line-clamp-1 text-[16px] md:text-xl font-normal'>{comfort.name}</p>
                                 </span>
                             ))}
                         </div>
