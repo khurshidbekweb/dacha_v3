@@ -10,6 +10,7 @@ import {
 import { place } from "@/types"
 import Image from "next/image"
 import { IMG_BASE_URL } from "@/constants"
+import Link from "next/link"
 
 interface placeProps {
     places: place[]
@@ -27,7 +28,7 @@ export function ResortsSwiper({ places }: placeProps) {
             <CarouselContent>
                 {places?.length && places.map((place) => (
                     <CarouselItem key={place.id} className="basis-1/4 md:basis-1/5 lg:basis-1/7">
-                        <div className="w-[90px] h-[89px] md:w-[150px] md:h-[150px] xl:w-[150px] xl:h-[145px] rounded-full relative">
+                        <Link href={`/place/${place.id}`} className="w-[90px] h-[89px] md:w-[150px] md:h-[150px] xl:w-[150px] xl:h-[145px] rounded-full relative block">
                             <div className="relative w-full h-full rounded-full overflow-hidden">
                                 <Image
                                     sizes="(max-width: 80px) 80px, 90px"
@@ -41,7 +42,7 @@ export function ResortsSwiper({ places }: placeProps) {
                             <div className="absolute bg-[var(--background)] bottom-[-2px] text-[14px] w-full overflow-hidden text-center pb-[5px] font-semibold md:pb-3 md:text-xl md:font-bold line-clamp-1">
                                 {place.name}
                             </div>
-                        </div>
+                        </Link>
                     </CarouselItem>
                 ))}
             </CarouselContent>
