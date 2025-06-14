@@ -96,6 +96,12 @@ export const ALL_DATA = {
             queryFn: () => cottageUtils.getCottageTariffTop(id),
         }),
 
+    useCottageBySingle: (id: string) => useQuery({
+        queryKey: [QUERY_KEYS.cottage_by_id],
+        queryFn: () => cottageUtils.getCottageById(id),
+        enabled: !id
+    }),
+
     useCottageRecommended: (): UseQueryResult<premiumCottage[]> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottage_by_recommended],

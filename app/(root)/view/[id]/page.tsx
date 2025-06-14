@@ -50,14 +50,14 @@ export async function generateMetadata(
 export default async function View({
     params,
 }: { params: { id: string } }) {
-    const cottage = await cottageUtils.getCottage();
+    const { data: cottage } = await cottageUtils.getCottageById(params.id);
     const suitableCottage = await cottageUtils.getSuitableCottage(params.id);
-    const cottageView: cottage = cottage?.find((e: cottage) => e.id === params.id);
+    console.log(cottage);
 
     return (
         <>
             <Info
-                cottage={cottageView}
+                cottage={cottage}
                 paramsId={params.id}
                 suitableCottage={suitableCottage}
             />
