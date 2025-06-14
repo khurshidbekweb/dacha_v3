@@ -13,6 +13,7 @@ import {
 import Image from "next/image"
 import { cottage, } from "@/types"
 import { IMG_BASE_URL } from "@/constants"
+import { Eye } from "lucide-react"
 
 
 interface swiperImage {
@@ -23,6 +24,8 @@ export function CardSwiper({ dacha }: swiperImage) {
     const [api, setApi] = React.useState<CarouselApi>()
     const [current, setCurrent] = React.useState(0)
     const [count, setCount] = React.useState(0);
+
+    const view = dacha.events.filter(event => event.eventType === 'view')
 
     React.useEffect(() => {
         if (!api) {
@@ -81,6 +84,9 @@ export function CardSwiper({ dacha }: swiperImage) {
                 </CarouselContent>
                 <CarouselPrevious />
                 <CarouselNext />
+                <div className="absolute bottom-1 right-4 flex items-center gap-x-4">
+                    <span className="flex items-center gap-x-1 text-[16px] text-white"><Eye size={16} /> {view?.length}</span>
+                </div>
                 {renderDots()}
             </Carousel>
 

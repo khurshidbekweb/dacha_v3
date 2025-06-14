@@ -16,6 +16,8 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
     const handleLikeClick = (id: string) => {
         toggleLike(id);
     };
+    const view = dacha?.cottage?.events?.filter(event => event.eventType === 'view')
+
     return (
         <div className="w-[360px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
             <CardSwiper dacha={dacha.cottage} />
@@ -48,8 +50,8 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                         <span>0 Sharhlar</span>
                     </div>
                     <div className="flex items-center gap-x-5">
-                        <span className="flex items-center gap-x-1 text-[12px]"><Eye size={16} /> 257</span>
-                        <span className="flex items-center gap-x-1 text-[12px]"><Phone size={15} /> 23</span>
+                        <span className="flex items-center gap-x-1 text-[14px]"><Eye size={16} /> {view.length}</span>
+                        <span className="flex items-center gap-x-1 text-[14px]"><Phone size={15} /> 23</span>
                     </div>
                 </div>
             </div>
