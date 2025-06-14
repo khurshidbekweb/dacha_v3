@@ -17,7 +17,6 @@ const LoginPage = () => {
         mutationFn: authUtils.smsAuth,
         onSuccess: (data) => {
             toast.success('a');
-            console.log(data, 'userrrrr');
             setUserId(data.userId)
             setTimeout(() => {
                 setStep(1)
@@ -26,7 +25,7 @@ const LoginPage = () => {
         },
         onError: (err) => {
             console.log(err);
-            toast.error('a');
+            toast.error('Success');
         },
     });
 

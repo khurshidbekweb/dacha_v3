@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const GoogleMap = ({ link }: { link: string }) => {
-    console.log(link);
 
     return (
         <div className='w-full mt-5 md:mt-10 px-1'>

@@ -11,7 +11,6 @@ interface imageProps {
 
 const ImageDachaDes = ({ images, onOpenSheet }: imageProps) => {
     const mainImageCard = images.images && images?.images.filter(dacha => dacha.isMainImage == true)
-    console.log(mainImageCard);
 
     return (
         <div className='hidden md:flex justify-between rounded-4xl overflow-hidden gap-2 mt-4 h-[450px] relative'>

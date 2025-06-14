@@ -52,8 +52,6 @@ export default async function View({
 }: { params: { id: string } }) {
     const { data: cottage } = await cottageUtils.getCottageById(params.id);
     const suitableCottage = await cottageUtils.getSuitableCottage(params.id);
-    console.log(cottage);
-
     return (
         <>
             <Info

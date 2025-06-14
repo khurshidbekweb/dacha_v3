@@ -72,7 +72,6 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
     };
 
     const previews = cottage?.images
-    console.log(previews);
 
 
     return (

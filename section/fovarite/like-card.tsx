@@ -15,7 +15,6 @@ const LikeCard = () => {
     const { likedCards } = useLikeStore()
     const likeCottage = cottages?.filter(dacha => likedCards.includes(dacha.id)) || []
     const { t } = useTranslation()
-    console.log(likeCottage);
 
     return (
         <>

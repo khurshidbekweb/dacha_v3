@@ -29,9 +29,7 @@ const ProfilePage = () => {
     const [name, setName] = useState(user?.name)
     const [changeData, setChangeData] = useState(true)
     const queryClinet = useQueryClient()
-    const { data: services } = ALL_DATA.useServices();
 
-    console.log(services);
 
     const userEdit = useMutation({
         mutationFn: userUtils.editUser,

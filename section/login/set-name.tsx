@@ -12,7 +12,6 @@ interface userName {
 }
 
 const SetName = ({ userId }: userName) => {
-    console.log(userId);
     const router = useRouter()
     const userData = ALL_DATA.useSingleUser();
     const [name, setName] = useState('')

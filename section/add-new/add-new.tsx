@@ -91,7 +91,6 @@ const AddNewPage = () => {
 
 
     const onSubmit = () => {
-        console.log(1);
 
         addNewCottage.mutate({
             comforts: cottage.comforts,
@@ -121,10 +120,8 @@ const AddNewPage = () => {
             quiteHours: cottage.quiteHours,
             singleBedCount: cottage.singleBedCount
         })
-        console.log(addNewCottage.variables);
 
     };
-    console.log(cottage);
     const { t } = useTranslation()
 
 
