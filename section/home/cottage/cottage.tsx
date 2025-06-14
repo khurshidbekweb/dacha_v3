@@ -2,7 +2,7 @@
 
 import { DachaCard } from '@/components/card/dacha-card';
 import { DachaCardMini } from '@/components/card/mini-card';
-import { SkeletonCard } from '@/components/card/skeleton-card';
+import { SkeletonCard } from '@/components/loading/skeleton-card';
 import { ALL_DATA } from '@/query/query-fn';
 import React from 'react';
 

@@ -1,4 +1,5 @@
-import axios from "axios"
+import custimAxios from "@/config/axios.config"
+import { safeLocalStorage } from "./safeLocalstorge"
 
 interface uploadImage {
     destination: string,
@@ -10,7 +11,13 @@ export const uploadImage = {
         const formData = new FormData()
         formData.append('destination', destination)
         formData.append('file', file)
-        const { data } = await axios.post('https://test-api.dachaol.uz/api/v1/uploads/add', formData)
+        const { data } = await custimAxios.post('uploads/add', formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${safeLocalStorage.getItem('accessToken')}`,
+                },
+            }
+        )
         return data
     }
 }

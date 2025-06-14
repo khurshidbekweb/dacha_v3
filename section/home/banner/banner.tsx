@@ -5,7 +5,7 @@ import EmblaCarousel from "./corusel-main"
 
 import './css/embla.css'
 import { ALL_DATA } from "@/query/query-fn"
-import { SkeletonCardBanner } from "@/components/card/banner-skeleton"
+import { SkeletonCardBanner } from "@/components/loading/banner-skeleton"
 
 export function Banner() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true }

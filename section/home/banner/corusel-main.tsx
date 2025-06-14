@@ -139,7 +139,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                             <ArrowRightIcon className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                                         </button>
                                     </div>
-                                    <div className="z-20 info-section-mobile flex justify-between md:hidden w-full absolute h-full bottom-0 p-1 px-2 items-end">
+                                    <div className="z-20 info-section-mobile flex justify-between md:hidden w-full items-end absolute h-full bottom-0 p-1 px-2">
                                         <h2 className="text-[14px] font-semibold w-[30%] text-start text-white line-clamp-2">{top.cottage.name}</h2>
                                         <div className="flex flex-col justify-end items-start w-[35%]">
                                             <p className="flex items-center text-white/90 line-clamp-1">

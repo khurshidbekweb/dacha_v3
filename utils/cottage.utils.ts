@@ -260,7 +260,7 @@ export const cottageUtils = {
         singleBedCount
     }: PostCottagePayload) => {
 
-        const { data } = await custimAxios.post('https://test-api.dachaol.uz/api/v1/cottage/add', {
+        const { data } = await custimAxios.post('cottage/add', {
             comforts,
             cottageType,
             description,

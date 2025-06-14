@@ -16,6 +16,7 @@ import { IMG_BASE_URL } from '@/constants';
 import { DachaCardMini } from '@/components/card/mini-card';
 import { Slider } from '@/components/ui/slider';
 import { DachaCard } from '@/components/card/dacha-card';
+import CottageLoading from '@/components/loading/cottage-loading';
 
 const CottagePage = () => {
     const { t } = useTranslation();
@@ -133,7 +134,7 @@ const CottagePage = () => {
                     </div>
                     <div className="w-full grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-2">
                         {isLoading ? (
-                            'Loading ...'
+                            <CottageLoading />
                         ) : (filteredCottages || cottages)?.length === 0 ? <>
                             <p className="col-span-full text-center text-red-500">Ma’lumot topilmadi</p>
                         </> : (

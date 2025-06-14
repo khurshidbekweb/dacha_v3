@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import React from 'react';
-import { SkeletonCard } from '@/components/card/skeleton-card';
+import { SkeletonCard } from '@/components/loading/skeleton-card';
 import BreadCrumbs from '@/components/share/bredcrambs';
 import { ALL_DATA } from '@/query/query-fn';
 import { TopBannerService } from '@/section/services/tarif-intro';

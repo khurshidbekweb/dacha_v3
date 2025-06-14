@@ -1,7 +1,7 @@
 'use client'
 
 import Navbar from '@/app/(root)/_components/navbar';
-import { SkeletonCard } from '@/components/card/skeleton-card';
+import { SkeletonCard } from '@/components/loading/skeleton-card';
 import { UserDachaCard } from '@/components/card/user-card';
 import BreadCrumbs from '@/components/share/bredcrambs';
 import { ALL_DATA } from '@/query/query-fn';
