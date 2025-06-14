@@ -131,9 +131,9 @@ const CottagePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-full grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
                         {isLoading ? (
-                            'Loading'
+                            'Loading ...'
                         ) : (filteredCottages || cottages)?.length === 0 ? <>
                             <p className="col-span-full text-center text-red-500">Ma’lumot topilmadi</p>
                         </> : (
@@ -144,10 +144,10 @@ const CottagePage = () => {
                                 )
                                 ?.map((dacha: cottage) => (
                                     <>
-                                        <div className="w-full hidden md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-4">
+                                        <div className="w-full hidden md:block">
                                             <DachaCard key={dacha.id} dacha={dacha} />
                                         </div>
-                                        <div className="grid grid-cols-2 md:hidden gap-2 mt-5">
+                                        <div className="md:hidden">
                                             <DachaCardMini key={dacha.id} dacha={dacha} />
                                         </div>
                                     </>
