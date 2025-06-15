@@ -48,6 +48,9 @@ const AddNewPage = () => {
         quiteHours: ''
     })
 
+    console.log(cottage);
+
+
     const methods = useForm<CottageFormValues>({
         resolver: zodResolver(cottageSchema),
         defaultValues: {
@@ -78,6 +81,8 @@ const AddNewPage = () => {
             longitude: 0,
         },
     });
+
+    const [submitCheck, setSubmitCheck] = useState(false)
 
     const route = useRouter()
 
@@ -113,6 +118,7 @@ const AddNewPage = () => {
                 quiteHours: ''
             })
             route.push('/profile')
+            setSubmitCheck(false)
         },
         onError: (err) => {
             console.log(err);
@@ -121,7 +127,7 @@ const AddNewPage = () => {
 
 
     const onSubmit = () => {
-
+        setSubmitCheck(true)
         addNewCottage.mutate({
             comforts: cottage.comforts,
             cottageType: cottage.cottageType,
@@ -172,7 +178,7 @@ const AddNewPage = () => {
                                 <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
                             </div>
                         </div>
-                        <Button className='w-full md:w-[450px] mx-auto block my-10' type='submit'>E`lonni joylash</Button>
+                        <Button disabled={submitCheck} className='w-full md:w-[450px] mx-auto block my-10' type='submit'>E`lonni joylash</Button>
                     </form>
                 </FormProvider>
             </div>

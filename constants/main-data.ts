@@ -33,7 +33,7 @@ export const navLink = [
 export const cottageSchema = z.object({
     cottageName: z.string().min(1, "Cottage name is required"),
     description: z.string().min(10, "Min 10 ta belgi").max(400, 'Max 400 ta belgi'),
-    images: z.array(z.string()).optional(),
+    images: z.array(z.string()).min(3),
     regionId: z.string().min(1, "Region is required"),
     placeId: z.string().min(1, "Place is required"),
     price: z.number().min(1, "Price cannot be negative"),

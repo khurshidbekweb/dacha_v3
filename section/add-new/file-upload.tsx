@@ -9,6 +9,8 @@ import { Separator } from '@/components/ui/separator';
 import { useMutation } from '@tanstack/react-query';
 import { uploadImage } from '@/utils/upload-image.utls';
 import { SkeletonImage } from '@/components/loading/img-skeleton';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useFormContext } from 'react-hook-form';
 
 
 interface ImageUploaderProps {
@@ -20,6 +22,7 @@ interface ImageUploaderProps {
 const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [uploadingCount, setUploadingCount] = useState(0);
+    const { control } = useFormContext();
     const imageUpload = useMutation({
         mutationFn: uploadImage.uploadImage,
         onSuccess: (data) => {
@@ -31,48 +34,6 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
         }
     })
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.target.files;
-        if (!files) return;
-
-        const newFiles = Array.from(files);
-        const validFiles: File[] = [];
-        const maxFileSize = 10 * 1024 * 1024; // 10 MB
-        const totalImagesCount = cottage.images.length;
-
-        for (const file of newFiles) {
-            if (file.size > maxFileSize) {
-                alert(`${file.name} hajmi 10MB dan katta. Iltimos, kichikroq fayl yuklang.`);
-                continue;
-            }
-            if (totalImagesCount + validFiles.length >= 15) {
-                alert("Faqat 15 ta rasm yuklash mumkin.");
-                break;
-            }
-            validFiles.push(file);
-            setUploadingCount(prev => prev + 1);
-            imageUpload.mutate({
-                destination: 'cottage',
-                file: file
-            }, {
-                onSuccess: (data) => {
-                    setCottage((prev) => ({
-                        ...prev, images: [data.imageUrl, ...prev.images]
-                    }))
-                },
-                onError: (err) => {
-                    console.log(err);
-                },
-                onSettled: () => {
-                    // Fayl yuklanish jarayoni tugadi (muvaffaqiyatli yoki xatolik bo'lsa ham)
-                    setUploadingCount(prev => prev - 1);
-                }
-            }
-            )
-
-        }
-    };
-
     const handleRemoveImage = (index: number) => {
         const newImages = cottage.images.filter((_, i: number) => i !== index);
         setCottage(prev => ({ ...prev, images: newImages }));
@@ -83,12 +44,68 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
 
     return (
         <div className="flex flex-col items-start px-2 mt-5 md:mt-10 w-full mx-auto">
-            <Input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                ref={fileInputRef}
-                onChange={handleImageChange}
+            <FormField
+                control={control}
+                name="images"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Rasm yuklash</FormLabel>
+                        <FormControl>
+                            <Input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                ref={fileInputRef}
+                                onChange={(e) => {
+                                    const files = e.target.files;
+                                    if (!files) return;
+
+                                    const newFiles = Array.from(files);
+                                    const validFiles: File[] = [];
+                                    const maxFileSize = 10 * 1024 * 1024; // 10 MB
+                                    const totalImagesCount = cottage.images.length;
+
+                                    for (const file of newFiles) {
+                                        if (file.size > maxFileSize) {
+                                            alert(`${file.name} hajmi 10MB dan katta. Iltimos, kichikroq fayl yuklang.`);
+                                            continue;
+                                        }
+                                        if (totalImagesCount + validFiles.length >= 15) {
+                                            alert("Faqat 15 ta rasm yuklash mumkin.");
+                                            break;
+                                        }
+                                        validFiles.push(file);
+
+                                        // Yuklanayotgan fayllar sonini oshiramiz
+                                        setUploadingCount(prev => prev + 1);
+
+                                        // Faylni yuklaymiz
+                                        imageUpload.mutate({
+                                            destination: 'cottage',
+                                            file: file
+                                        }, {
+                                            onSuccess: (data) => {
+                                                setCottage((prev) => ({
+                                                    ...prev,
+                                                    images: [data.imageUrl, ...prev.images]
+                                                }));
+                                                field.onChange([...field.value, data.imageUrl]);
+
+                                            },
+                                            onError: (err) => {
+                                                console.log(err);
+                                            },
+                                            onSettled: () => {
+                                                setUploadingCount(prev => prev - 1);
+                                            }
+                                        });
+                                    }
+                                }}
+                            />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )}
             />
             <div className='flex flex-col w-full border border-dashed p-1 shadow-lg rounded-lg md:p-5  gap-x-3 h-auto'>
                 <div className="w-full flex flex-col md:flex-row justify-center items-center" onClick={() => fileInputRef.current?.click()}>
