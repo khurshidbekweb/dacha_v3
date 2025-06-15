@@ -128,7 +128,7 @@ const AddNewPage = () => {
     return (
         <>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('add_announcements')} />
+            <BreadCrumbs data={[{ slug: '', title: t('home') }]} page={t('add_announcements')} />
             <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0'>
                 <FormProvider {...methods}>
                     <form onSubmit={methods.handleSubmit(onSubmit)}>

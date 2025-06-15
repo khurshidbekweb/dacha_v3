@@ -22,8 +22,8 @@ const ServicesPage = () => {
     return (
         <div className='w-full'>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('add_announcements')} />
-            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0 flex flex-col md:flex-row mt-5 space-y-3 md:space-y-0 px-2'>
+            <BreadCrumbs data={[{ slug: '', title: t('home') }]} page={t('add_announcements')} />
+            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 mt-5 space-y-3 md:space-y-0 px-2 gap-2'>
                 {services && services.map((ser: services) => (
                     <ServiceCard key={ser.id} {...ser} />
                 ))}

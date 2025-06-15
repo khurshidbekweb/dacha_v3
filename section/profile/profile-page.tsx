@@ -65,7 +65,7 @@ const ProfilePage = () => {
     return (
         <>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('profile')} />
+            <BreadCrumbs data={[{ slug: '', title: t('home') }]} page={t('profile')} />
             <div className='mt-10 max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0'>
                 <div className="md:w-[50%] md:justify-center flex flex-col space-y-3 items-center md:flex-row gap-2 md:gap-x-14 md:items-start">
                     <div className="!w-[120px] !h-[120px] relative flex items-center justify-center">

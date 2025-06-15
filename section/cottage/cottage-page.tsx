@@ -69,7 +69,7 @@ const CottagePage = () => {
     return (
         <>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }]} page={t('announcements')} />
+            <BreadCrumbs data={[{ slug: '', title: t('home') }]} page={t('announcements')} />
             <div className="mt-5 max-w-[1540px] mx-auto md:px-10 xl:px-16 mb-24 md:mb-0">
                 <h3 className='text-xl md:text-2xl'>{t('all_announcements')}</h3>
                 <div className="w-full mt-5 flex items-start gap-x-5">

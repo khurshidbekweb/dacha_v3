@@ -16,7 +16,7 @@ const UserDacha = () => {
     return (
         <div className='w-full'>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }, { slug: 'profile', title: t('profile') }]} page={t('my_announcements')} />
+            <BreadCrumbs data={[{ slug: '', title: t('home') }, { slug: 'profile', title: t('profile') }]} page={t('my_announcements')} />
 
             <div className="flex flex-col space-y-3 mt-5">
                 <h3 className='text-2xl font-semibold'>{t('my_announcements')}</h3>
