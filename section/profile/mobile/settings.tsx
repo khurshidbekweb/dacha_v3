@@ -12,7 +12,7 @@ const Settings = () => {
     return (
         <div className='w-full'>
             <Navbar />
-            <BreadCrumbs data={[{ slug: '/', title: t('home') }, { slug: 'profile', title: t('profile') }]} page={t('settings')} />
+            <BreadCrumbs data={[{ slug: '', title: t('home') }, { slug: 'profile', title: t('profile') }]} page={t('settings')} />
             <div className="flex flex-col space-y-3 mt-5 px-2">
                 <h2 className='text-2xl font-semibold'>{t('settings')}</h2>
                 <div className="flex items-center gap-x-5">
