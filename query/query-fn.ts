@@ -31,6 +31,7 @@ export const ALL_DATA = {
         const cottages = useQuery({
             queryKey: [QUERY_KEYS.cottages_by_place],
             queryFn: () => cottageUtils.getCottageByPlace(placeId),
+            enabled: !!placeId
         });
 
         const likedCottages: string[] = JSON.parse(safeLocalStorage.getItem("liked") || "[]");

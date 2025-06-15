@@ -1,23 +1,15 @@
-import { placeUtils } from '@/utils/place.utils';
-import { Metadata } from 'next';
+
 import React from 'react';
 import ByPlace from '@/app/(root)/place/by-props';
+import { Metadata } from 'next';
 
 
 
-export async function generateMetadata(
-    { params }: { params: { id: string } }
-): Promise<Metadata> {
-    const place = await placeUtils.getPlaceById(params.id);
-    return {
-        title: place?.name || 'Dacha ko‘rish',
-        description: place?.description || 'Dacha haqida ma’lumot',
-        openGraph: {
-            title: place?.name || 'DachaOL',
-            description: place?.description,
-        },
-    };
-}
+export const metadata: Metadata = {
+    title: "Place | DachaOL",
+    description: "Reginter in this page",
+};
+
 
 
 const PlaceByCottage = ({
