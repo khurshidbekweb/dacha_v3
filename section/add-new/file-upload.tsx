@@ -3,11 +3,12 @@ import { Input } from '@/components/ui/input';
 import { postCottage } from '@/types';
 import { X } from 'lucide-react';
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import UploadImage from '@/public/image/upload-image.png'
 import { Separator } from '@/components/ui/separator';
 import { useMutation } from '@tanstack/react-query';
 import { uploadImage } from '@/utils/upload-image.utls';
+import { SkeletonImage } from '@/components/loading/img-skeleton';
 
 
 interface ImageUploaderProps {
@@ -18,7 +19,7 @@ interface ImageUploaderProps {
 
 const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
-
+    const [uploadingCount, setUploadingCount] = useState(0);
     const imageUpload = useMutation({
         mutationFn: uploadImage.uploadImage,
         onSuccess: (data) => {
@@ -44,13 +45,12 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                 alert(`${file.name} hajmi 10MB dan katta. Iltimos, kichikroq fayl yuklang.`);
                 continue;
             }
-
             if (totalImagesCount + validFiles.length >= 15) {
                 alert("Faqat 15 ta rasm yuklash mumkin.");
                 break;
             }
-
             validFiles.push(file);
+            setUploadingCount(prev => prev + 1);
             imageUpload.mutate({
                 destination: 'cottage',
                 file: file
@@ -59,6 +59,13 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                     setCottage((prev) => ({
                         ...prev, images: [data.imageUrl, ...prev.images]
                     }))
+                },
+                onError: (err) => {
+                    console.log(err);
+                },
+                onSettled: () => {
+                    // Fayl yuklanish jarayoni tugadi (muvaffaqiyatli yoki xatolik bo'lsa ham)
+                    setUploadingCount(prev => prev - 1);
                 }
             }
             )
@@ -101,6 +108,14 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                 </div>
                 <Separator className='my-3' />
                 {previews?.length ? <div className={`grid w-full grid-cols-3 md:grid-cols-3 xl:grid-cols-5 gap-1 overflow-hidden  ${previews?.length > 5 ? 'overflow-y-scroll h-[170px]' : ''}`}>
+                    {uploadingCount > 0 && (
+                        <div className="mb-4 relative">
+                            {Array.from({ length: uploadingCount }).map((_, idx) => (
+                                <SkeletonImage key={idx} />
+                            ))}
+                            <p className='text-[14px] absolute top-8 ml-4 text-red-500'>Yuklanmoqda...</p>
+                        </div>
+                    )}
                     {previews?.map((src, index) => (
                         <div key={index} className="relative max-w-[140px] md:max-w-[250px] h-[80px]">
                             <Image

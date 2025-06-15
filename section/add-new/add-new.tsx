@@ -17,6 +17,7 @@ import { useMutation } from '@tanstack/react-query';
 import { cottageUtils } from '@/utils/cottage.utils';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 
 const AddNewPage = () => {
     const [cottage, setCottage] = useState<postCottage>({
@@ -78,11 +79,40 @@ const AddNewPage = () => {
         },
     });
 
+    const route = useRouter()
+
     const addNewCottage = useMutation({
         mutationFn: cottageUtils.postCottage,
         onSuccess: (data) => {
             toast.success(data.message)
-
+            setCottage({
+                cottageName: '',
+                description: '',
+                images: [],
+                regionId: '',
+                placeId: '',
+                price: 0,
+                contactPhone: '',
+                priceWeekend: 0,
+                cottageType: ["c4c301b1-4719-499e-bde2-2c36715fae9e"],
+                comforts: [],
+                latitude: 0,
+                longitude: 0,
+                doubleBedCount: 0,
+                entranceTime: '',
+                exitTime: '',
+                maxGuests: 0,
+                numberOfRooms: 0,
+                singleBedCount: 0,
+                familyOnly: false,
+                noAlcohol: false,
+                noLoudMusic: false,
+                noParty: false,
+                noPets: false,
+                noSmoking: false,
+                quiteHours: ''
+            })
+            route.push('/profile')
         },
         onError: (err) => {
             console.log(err);
