@@ -30,8 +30,8 @@ const AddNewPage = () => {
         priceWeekend: 0,
         cottageType: ["c4c301b1-4719-499e-bde2-2c36715fae9e"],
         comforts: [],
-        latitude: '',
-        longitude: '',
+        latitude: 0,
+        longitude: 0,
         doubleBedCount: 0,
         entranceTime: '',
         exitTime: '',
@@ -73,8 +73,8 @@ const AddNewPage = () => {
             noPets: false,
             noSmoking: false,
             quiteHours: '',
-            latitude: '',
-            longitude: '',
+            latitude: 0,
+            longitude: 0,
         },
     });
 

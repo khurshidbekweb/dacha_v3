@@ -54,8 +54,8 @@ export const cottageSchema = z.object({
     noPets: z.boolean(),
     noSmoking: z.boolean(),
     quiteHours: z.string(),
-    latitude: z.string(),
-    longitude: z.string(),
+    latitude: z.number(),
+    longitude: z.number(),
 });
 
 export type CottageFormValues = z.infer<typeof cottageSchema>;

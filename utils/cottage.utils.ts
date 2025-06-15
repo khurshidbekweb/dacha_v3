@@ -17,9 +17,9 @@ type PostCottagePayload = {
     priceWeekend: number | '';
     cottageType: string[]; // Bu sizning misolingizda ["c4c301b1-4719-499e-bde2-2c36715fae9e"]
     comforts: string[];
-    latitude: string;
+    latitude?: number;
     contactPhone: string,
-    longitude: string;
+    longitude?: number;
     doubleBedCount: number | '';
     entranceTime: string;
     exitTime: string;
@@ -271,8 +271,8 @@ export const cottageUtils = {
             price,
             priceWeekend,
             regionId,
-            latitude,
-            longitude,
+            latitude: latitude !== 0 ? Number(latitude) : undefined,
+            longitude: longitude !== 0 ? Number(longitude) : undefined,
             contactPhone,
             doubleBedCount,
             entranceTime,

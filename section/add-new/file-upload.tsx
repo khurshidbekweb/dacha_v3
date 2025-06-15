@@ -104,7 +104,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                     {previews?.map((src, index) => (
                         <div key={index} className="relative max-w-[140px] md:max-w-[250px] h-[80px]">
                             <Image
-                                src={'https://api.dachaol.uz/uploads/' + src}
+                                src={'https://api.dachaol.uz/' + src}
                                 fill
                                 alt={`preview-${index}`}
                                 className="w-24 h-24 object-cover rounded border"

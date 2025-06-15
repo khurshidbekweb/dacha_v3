@@ -21,7 +21,7 @@ const LoginPage = () => {
             setTimeout(() => {
                 setStep(1)
             }, 500);
-            // console.log(data.smsCode)
+            console.log(data.smsCode)
         },
         onError: (err) => {
             console.log(err);
