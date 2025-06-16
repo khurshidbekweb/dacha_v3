@@ -3,7 +3,7 @@
 import MobileNov from '@/app/(root)/_components/mobile-nov';
 import Navbar from '@/app/(root)/_components/navbar';
 import BreadCrumbs from '@/components/share/bredcrambs';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FileUpload from './file-upload';
 import MainInfo from './main-info';
 import PlaceMap from './place-map';
@@ -18,6 +18,7 @@ import { cottageUtils } from '@/utils/cottage.utils';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
+import { safeLocalStorage } from '@/utils/safeLocalstorge';
 
 const AddNewPage = () => {
     const [cottage, setCottage] = useState<postCottage>({
@@ -47,8 +48,7 @@ const AddNewPage = () => {
         noSmoking: false,
         quiteHours: ''
     })
-
-    console.log(cottage);
+    const token = safeLocalStorage.getItem('accessToken')
 
 
     const methods = useForm<CottageFormValues>({
@@ -85,6 +85,12 @@ const AddNewPage = () => {
     const [submitCheck, setSubmitCheck] = useState(false)
 
     const route = useRouter()
+
+    useEffect(() => {
+        if (!token) {
+            route.push('/login')
+        }
+    }, [token, route])
 
     const addNewCottage = useMutation({
         mutationFn: cottageUtils.postCottage,
@@ -135,7 +141,7 @@ const AddNewPage = () => {
             images: cottage.images,
             latitude: cottage.latitude,
             longitude: cottage.longitude,
-            mainImage: cottage.images[0],
+            mainImage: cottage.images[cottage.images.length - 1],
             name: cottage.cottageName,
             placeId: cottage.placeId,
             price: cottage.price,

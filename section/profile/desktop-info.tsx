@@ -41,7 +41,7 @@ const DesktopInfo = ({ user }: userProps) => {
                             <div className='border w-[370px] mt-4 border-red-400 p-2 rounded-md mb-20 bg-yellow-200 flex flex-col space-y-3'>
                                 <p className="text-black">{t('my_annonim')} </p>
                                 <div className="flex gap-3 ">
-                                    <Link className='text-blue-500 underline inline-block' href={'/add-new'}>{t("profile_e'lonlar")} </Link><HousePlus className='text-blue-500' size={20} />
+                                    <Link className='text-blue-500 underline inline-block' href={'/add-new'}>{t("add_announcements")} </Link><HousePlus className='text-blue-500' size={20} />
                                 </div>
                             </div>
                         }
