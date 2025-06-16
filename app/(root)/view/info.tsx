@@ -9,6 +9,7 @@ interface PropsView {
 }
 
 const Info = ({ cottage }: PropsView) => {
+    
     return <MainView cottage={cottage}  />;
 };
 

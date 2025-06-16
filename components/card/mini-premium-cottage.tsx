@@ -20,7 +20,7 @@ export function MiniPremiumDacha({ dacha }: premiumCottageProps) {
     const dachaOnly = dacha.cottage
     return (
         <div className="max-w-[200px] md:w-[320px] overflow-hidden transition-shadow p-0 relative " key={dacha.id}>
-            <Link href={`/view/${dacha.id}`} className="flex flex-col w-full">
+            <Link href={`/view/${dacha.cottage.id}`} className="flex flex-col w-full">
                 <div className="w-full pointer-events-none">
                     <CardSwiperMini dacha={dacha.cottage} />
                 </div>

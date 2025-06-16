@@ -22,7 +22,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
 
     return (
         <div className="w-[360px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
-            <Link href={`/view/${dacha.id}`} className="w-full flex flex-col" >
+            <Link href={`/view/${dacha.cottage.id}`} className="w-full flex flex-col" >
                 <div className="w-full pointer-events-none">
                     <CardSwiper dacha={dacha.cottage} />
                 </div>

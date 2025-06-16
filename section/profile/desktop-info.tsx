@@ -1,6 +1,6 @@
 'use client'
 
-import { DachaCard } from '@/components/card/dacha-card';
+import { UserDachaCard } from '@/components/card/user-card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { ALL_DATA } from '@/query/query-fn';
@@ -36,7 +36,7 @@ const DesktopInfo = ({ user }: userProps) => {
                     <h2 className='text-xl md:text-2xl font-createRound mt-10'>Mening dachalarim</h2>
                     <div className="w-full mt-5 grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                         {userCottage?.length ? userCottage.map((dacha: cottage) => (
-                            <DachaCard key={dacha.id} dacha={dacha} />
+                            <UserDachaCard key={dacha.id} dacha={dacha} />
                         )) :
                             <div className='border w-[370px] mt-4 border-red-400 p-2 rounded-md mb-20 bg-yellow-200 flex flex-col space-y-3'>
                                 <p className="text-black">{t('my_annonim')} </p>

@@ -12,13 +12,13 @@ export function UserDachaCard({ dacha }: DachaProps) {
 
 
     return (
-        <div className="w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
-            <Link href={`/view/${dacha.id}`} className="w-full flex flex-col">
-                <div className="w-full pointer-events-none">
+        <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
+            <div className="">
+                <Link href={`/view/${dacha.id}`} className="w-full pointer-events-none">
                     <CardSwiper dacha={dacha} />
-                </div>
+                </Link>
 
-                <div className="card-content p-2">
+                <div className="card-content p-2 relative">
                     <div className="p-2" id="swip-card">
                         <h3 className="font-medium text-lg line-clamp-1">{dacha.name}</h3>
                         <div className="flex items-center text-sm text-gray-600 mt-1">
@@ -46,6 +46,7 @@ export function UserDachaCard({ dacha }: DachaProps) {
                             <span className="mx-1">●</span>
                             <span>0 Sharhlar</span>
                         </div>
+
                     </div>
 
                     <div className="p-2 pt-0">
@@ -55,8 +56,9 @@ export function UserDachaCard({ dacha }: DachaProps) {
                             <p className="w-full py-2 text-xl font-semibold text-center bg-primary text-white dark:bg-amber-500 rounded-lg">{dacha.cottageType[0].name}</p>}
                     </div>
                 </div>
-            </Link>
-            <CottageEdit cottage={dacha} />
+                <CottageEdit cottage={dacha} />
+            </div>
+
         </div>
     );
 }

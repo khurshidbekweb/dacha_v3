@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cottage } from '@/types';
 import Navbar from '@/app/(root)/_components/navbar';
 import DachaImages from './image/images';
@@ -11,6 +11,8 @@ import MainInfo from './info/main-info';
 import SuitableCottage from './suitable-cottage';
 import CallMobile from './info/coll-mobile';
 import { ALL_DATA } from '@/query/query-fn';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { cottageUtils } from '@/utils/cottage.utils';
 
 
 interface dachaView {
@@ -19,7 +21,22 @@ interface dachaView {
 
 const MainView = ({ cottage }: dachaView) => {
     const { t } = useTranslation()
+    const queryClient = useQueryClient()
     const { data: suitableCottage } = ALL_DATA.useSuitableCottage(cottage?.id)
+    const viewCottage = useMutation({
+        mutationFn: cottageUtils.addEvent,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['views'] })
+        }
+    })
+    useEffect(() => {
+        viewCottage.mutate({
+            cottageId: cottage.id,
+            event: 'view'
+        })
+
+    }, [])
+
     return (
         <>
             <div className="w-full hidden md:block">
