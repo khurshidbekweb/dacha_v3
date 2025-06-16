@@ -2,6 +2,7 @@ import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from '@/components/
 import { cottage } from '@/types';
 import { Pen, X } from 'lucide-react';
 import React, { useState } from 'react';
+import CottageEditImg from './image-edit';
 
 interface bootomSheet {
     cottage: cottage
@@ -20,8 +21,8 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
                 </DrawerTitle>
 
                 <div className="grid grid-cols-2 gap-1 md:gap-2 px-1 md:px-5 overflow-y-auto mt-1">
-
                 </div>
+                <CottageEditImg id={cottage.id} images={cottage.images} />
             </DrawerContent>
         </Drawer>
     );

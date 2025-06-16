@@ -2,7 +2,7 @@ import { MapPin, Users, DoorOpen, Star, } from "lucide-react";
 import { CardSwiper } from "@/components/swiper/swiper-card";
 import { cottage } from "@/types";
 import Link from "next/link";
-import CottageEdit from "@/section/profile/dacha-edit";
+import CottageEdit from "@/section/profile/dacha-edit/dacha-edit";
 
 interface DachaProps {
     dacha: cottage
