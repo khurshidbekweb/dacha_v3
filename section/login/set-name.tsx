@@ -31,7 +31,7 @@ const SetName = ({ userId }: userName) => {
     const handleUserEdit = () => {
         userEdit.mutate({
             id: userId,
-            name: name,
+            name: name ? name : '',
             image: null
         })
     }
@@ -47,16 +47,25 @@ const SetName = ({ userId }: userName) => {
                 </label>
                 <input
                     type='text'
-                    placeholder='Ismiz...'
+                    placeholder='Ismingizni kiriting...'
+                    required
                     className='w-full p-2 border outline-blue-500  rounded-md py-2 mt-2 border-black text-black'
                     onChange={(e) => setName(e.target.value)}
                 />
                 <Button
                     onClick={handleUserEdit}
                     type='button'
+                    disabled={!name ? true : false}
                     className="w-full mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-400"
                 >
                     Tasdiqlash
+                </Button>
+                <Button
+                    onClick={() => router.push('/profile')}
+                    type='button'
+                    className="w-full mt-3 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-400"
+                >
+                    O`tkazib yuborish
                 </Button>
             </form>
         </div>

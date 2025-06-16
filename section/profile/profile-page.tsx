@@ -8,7 +8,7 @@ import { safeLocalStorage } from '@/utils/safeLocalstorge';
 import { userUtils } from '@/utils/user.utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import userAvatar from '@/public/image/user-avater.png'
@@ -19,6 +19,7 @@ import Navbar from '@/app/(root)/_components/navbar';
 import DesktopInfo from './desktop-info';
 import BreadCrumbs from '@/components/share/bredcrambs';
 import MobileProfile from '@/app/(root)/profile/[tab]/page';
+import { useRouter } from 'next/navigation';
 
 
 const ProfilePage = () => {
@@ -29,6 +30,15 @@ const ProfilePage = () => {
     const [name, setName] = useState(user?.name)
     const [changeData, setChangeData] = useState(true)
     const queryClinet = useQueryClient()
+
+    const token = safeLocalStorage.getItem('accessToken')
+    const route = useRouter()
+    useEffect(() => {
+        if (!token) {
+            route.push('/login')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     const userEdit = useMutation({

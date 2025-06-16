@@ -16,6 +16,8 @@ import { comfort, cottage, cottageTop, cottageType, language, order, place, prem
 
 // Type definitions (misol uchun, o'zingizning real typelar bilan to'ldiring)
 
+const token = safeLocalStorage.getItem('accessToken')
+
 export const ALL_DATA = {
     useCottage: (): UseQueryResult<cottage[]> =>
         useQuery({
@@ -70,6 +72,7 @@ export const ALL_DATA = {
         useQuery({
             queryKey: [QUERY_KEYS.cottages],
             queryFn: cottageUtils.getCottageUser,
+            enabled: !!token
         }),
 
     useCottageAllUserId: (userId: string): UseQueryResult<cottage[]> =>

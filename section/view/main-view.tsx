@@ -34,7 +34,7 @@ const MainView = ({ cottage }: dachaView) => {
             cottageId: cottage.id,
             event: 'view'
         })
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

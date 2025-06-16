@@ -4,11 +4,23 @@ import ChangeLanguage from '@/app/(root)/_components/change-language';
 import { ModeToggle } from '@/app/(root)/_components/mode-toggle';
 import Navbar from '@/app/(root)/_components/navbar';
 import BreadCrumbs from '@/components/share/bredcrambs';
-import React from 'react';
+import { safeLocalStorage } from '@/utils/safeLocalstorge';
+import { LogOut } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
     const { t } = useTranslation()
+    const route = useRouter()
+    const logOut = () => {
+        safeLocalStorage.removeItem('accessToken')
+        window.location.reload()
+
+    }
+    useEffect(() => {
+        route.push('/')
+    }, [route])
     return (
         <div className='w-full'>
             <Navbar />
@@ -22,6 +34,9 @@ const Settings = () => {
                 <div className="flex items-center gap-x-5">
                     <p>Tilni o`zgartirish:</p>
                     <ChangeLanguage />
+                </div>
+                <div onClick={logOut} className="flex items-center cursor-pointer justify-center text-white gap-x-2 border bg-red-500 text-center p-1 rounded-lg w-[150px] mt-16">
+                    Chiqish <LogOut />
                 </div>
             </div>
 

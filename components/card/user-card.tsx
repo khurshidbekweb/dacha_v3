@@ -9,8 +9,6 @@ interface DachaProps {
 }
 
 export function UserDachaCard({ dacha }: DachaProps) {
-
-
     return (
         <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
             <div className="">
