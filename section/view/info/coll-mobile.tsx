@@ -16,7 +16,7 @@ const CallMobile = ({ cottage }: callProps) => {
     const actionCottage = useMutation({
         mutationFn: cottageUtils.addEvent,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['views'] })
+            queryClient.invalidateQueries({ queryKey: ['call'] })
         }
     })
     const callAdd = () => {
