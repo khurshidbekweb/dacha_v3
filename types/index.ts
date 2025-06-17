@@ -134,7 +134,7 @@ export interface premiumCottage {
 export interface postCottage {
   cottageName: string;
   description: string;
-  images: string[];
+  images?: string[];
   regionId: string;
   placeId: string;
   price: number | '';
@@ -158,3 +158,42 @@ export interface postCottage {
   noSmoking: boolean | '';
   quiteHours: string;
 };
+
+
+export interface newCottage {
+  id: string;
+  name: string;
+  description: string;
+  contactPhone: string;
+  cottageStatus: "confirmed" | string;
+  cottageType: cottageType[];
+  createdAt: string;
+  updatedAt: string;
+  entranceTime: string;
+  exitTime: string;
+  familyOnly: boolean;
+  noSmoking: boolean;
+  noAlcohol: boolean;
+  noPets: boolean;
+  noLoudMusic: boolean;
+  noParty: boolean;
+  numberOfRooms: number;
+  singleBedCount: number;
+  doubleBedCount: number;
+  maxGuests: number;
+  price: number;
+  priceWeekend: number;
+  rating: string;
+  quiteHours: string;
+  latitude: number;
+  longitude: number;
+  comforts: comfort[];
+  images: image[];
+  events: Event[];
+  orders: order[]; // Empty array, so can be left as `any[]` or defined
+  premiumCottages?: string[]; // Typing this depends on your actual structure
+  place: place;
+  region: region;
+  status: "active" | string;
+
+}

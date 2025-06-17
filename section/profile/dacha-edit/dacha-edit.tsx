@@ -1,16 +1,44 @@
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
-import { cottage } from '@/types';
+import { newCottage, postCottage } from '@/types';
 import { Pen, X } from 'lucide-react';
 import React, { useState } from 'react';
 import CottageEditImg from './image-edit';
+import InfoEdit from './info-edit';
 
 interface bootomSheet {
-    cottage: cottage
+    cottage: newCottage
 }
 
 const CottageEdit = ({ cottage }: bootomSheet) => {
     const [open, setOpen] = useState(false)
-    console.log(cottage);
+    const comforts = cottage.comforts.map((com) => com.id)
+
+    const [editcottage, setEditCottage] = useState<postCottage>({
+        cottageName: cottage.name,
+        description: cottage.description,
+        regionId: cottage.region.id,
+        placeId: cottage.place.id,
+        price: cottage.price,
+        contactPhone: cottage?.contactPhone,
+        priceWeekend: cottage.priceWeekend,
+        cottageType: [cottage.cottageType[0].id],
+        comforts: comforts,
+        latitude: cottage?.latitude,
+        longitude: cottage?.longitude,
+        doubleBedCount: cottage?.doubleBedCount,
+        entranceTime: cottage?.entranceTime,
+        exitTime: cottage?.exitTime,
+        maxGuests: cottage?.maxGuests,
+        numberOfRooms: cottage?.numberOfRooms,
+        singleBedCount: cottage?.singleBedCount,
+        familyOnly: cottage?.familyOnly,
+        noAlcohol: cottage?.noAlcohol,
+        noLoudMusic: cottage?.noLoudMusic,
+        noParty: cottage?.noParty,
+        noPets: cottage?.noPets,
+        noSmoking: cottage?.noSmoking,
+        quiteHours: ''
+    })
 
     return (
         <Drawer onOpenChange={setOpen} open={open}>
@@ -19,10 +47,8 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
                 <DrawerTitle className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg' onClick={() => setOpen(false)}>
                     <X className='w-5 h-5 font-bold block' size={35} />
                 </DrawerTitle>
-
-                <div className="grid grid-cols-2 gap-1 md:gap-2 px-1 md:px-5 overflow-y-auto mt-1">
-                </div>
-                <CottageEditImg id={cottage.id} images={cottage.images} />
+                <CottageEditImg id={cottage.id} images={cottage?.images} />
+                <InfoEdit cottage={editcottage} setCottage={setEditCottage} />
             </DrawerContent>
         </Drawer>
     );

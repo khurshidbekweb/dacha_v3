@@ -79,7 +79,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
     };
 
     return (
-        <div className="modal-body w-full overflow-x-hidden">
+        <div className="modal-body w-full xl:w-[50%] overflow-x-hidden">
             <div className="p-4 space-y-6">
                 {/* Main Image */}
                 <div>
