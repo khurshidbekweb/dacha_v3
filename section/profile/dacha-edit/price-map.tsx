@@ -7,6 +7,7 @@ import { ALL_DATA } from '@/query/query-fn';
 import { postCottage } from '@/types';
 import React, { useState } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface editINfoProps {
     cottage: postCottage
@@ -19,11 +20,11 @@ interface ruleData {
 }
 
 const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
-    const [regionId, setRegionId] = useState('')
+    const [regionId, setRegionId] = useState(cottage.regionId)
     const { data: regions } = ALL_DATA.useRegion()
 
     const { data: places } = ALL_DATA.usePlaceById(regionId)
-
+    const { data: comforts } = ALL_DATA.useComforts()
 
     const dataRule: ruleData[] = [
         {
@@ -57,12 +58,34 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
             title: 'Bazm qilishga ruhsat'
         },
     ]
+    const [selectedComfortIds, setSelectedComfortIds] = useState<string[]>(cottage.comforts);
+
+    const handleComfortChange = (id: string, checked: boolean) => {
+        let updatedIds: string[];
+        if (checked) {
+            updatedIds = [...selectedComfortIds, id];
+        } else {
+            updatedIds = selectedComfortIds.filter((comfortId) => comfortId !== id);
+        }
+
+        setSelectedComfortIds(updatedIds);
+
+
+        // Comfortlarning to‘liq obyektlarini cottage ichiga set qilish
+        const selectedComforts = comforts?.length && comforts.filter((c) => updatedIds.includes(c.id)).map(el => el.id)
+        console.log(selectedComforts);
+
+
+        setCottage({ ...cottage, comforts: selectedComforts || [] });
+    };
+
     return (
         <div className='w-full flex flex-col space-y-3 px-2'>
             <h3 className='text-xl md:text-3xl font-semibold mt-3'>Manzil</h3>
             <div className="flex flex-col space-y-2">
                 <Label htmlFor="region">Viloyatni tanlang</Label>
                 <Select
+                    value={regionId}
                     onValueChange={(value: string) => {
                         setCottage({ ...cottage, regionId: value })
                         setRegionId(value)
@@ -79,7 +102,7 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
             </div>
             <div className="flex flex-col space-y-2">
                 <Label htmlFor="region">Joylashuvni tanlang</Label>
-                <Select disabled={!regionId} onValueChange={(value) => {
+                <Select value={cottage.placeId} disabled={!regionId} onValueChange={(value) => {
                     setCottage({ ...cottage, placeId: value })
                 }}>
                     <SelectTrigger className='w-full'>
@@ -135,6 +158,19 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
                             <p>Yoq</p>
                         </div>
                     </RadioGroup>
+                ))}
+            </div>
+            <div className="w-full">
+                {comforts?.length && comforts.map((comfort) => (
+                    <label key={comfort.id} className="flex items-center gap-2">
+                        <Checkbox
+                            checked={selectedComfortIds.includes(comfort.id)}
+                            onCheckedChange={(checked) =>
+                                handleComfortChange(comfort.id, !!checked)
+                            }
+                        />
+                        <span>{comfort.name}</span>
+                    </label>
                 ))}
             </div>
         </div>

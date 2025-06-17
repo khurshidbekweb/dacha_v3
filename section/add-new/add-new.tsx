@@ -141,7 +141,7 @@ const AddNewPage = () => {
             images: cottage.images,
             latitude: cottage.latitude,
             longitude: cottage.longitude,
-            mainImage: cottage.images[cottage.images.length - 1],
+            mainImage: cottage?.images[cottage?.images?.length - 1],
             name: cottage.cottageName,
             placeId: cottage.placeId,
             price: cottage.price,

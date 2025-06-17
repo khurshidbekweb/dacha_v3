@@ -15,11 +15,11 @@ type PostCottagePayload = {
     placeId: string;
     price: number | '';
     priceWeekend: number | '';
-    cottageType: string[]; // Bu sizning misolingizda ["c4c301b1-4719-499e-bde2-2c36715fae9e"]
+    cottageType: string[];
     comforts: string[];
     latitude?: number;
-    contactPhone: string,
     longitude?: number;
+    contactPhone: string,
     doubleBedCount: number | '';
     entranceTime: string;
     exitTime: string;
@@ -61,15 +61,29 @@ type PatchCottageTextPayload = {
     cottageType: string[]
     description: string
     name: string
-    price: string
-    priceWeekend: string
-    rating: number
+    price: number
+    priceWeekend: number
+    rating?: number
     status: string
     lattitude: string
     longitude: string
     placeId: string
     regionId: string
     isTop: boolean
+    doubleBedCount: number | '';
+    entranceTime: string;
+    exitTime: string;
+    maxGuests: number | '';
+    numberOfRooms: number | '';
+    singleBedCount: number | '';
+    familyOnly: boolean | '';
+    noAlcohol: boolean | '';
+    noLoudMusic: boolean | '';
+    noParty: boolean | '';
+    noPets: boolean | '';
+    noSmoking: boolean | '';
+    quiteHours: string;
+    contactPhone: string,
 }
 
 type PatchCottageImagePayload = {
@@ -348,13 +362,23 @@ export const cottageUtils = {
         name,
         price,
         priceWeekend,
-        rating,
         status,
         lattitude,
         longitude,
         placeId,
         regionId,
         isTop,
+        doubleBedCount,
+        familyOnly,
+        maxGuests,
+        noAlcohol,
+        noLoudMusic,
+        noParty,
+        noPets,
+        noSmoking,
+        numberOfRooms,
+        singleBedCount,
+        contactPhone
     }: PatchCottageTextPayload) => {
         const { data } = await custimAxios.patch(
             `/cottage/edit/${id}`,
@@ -372,7 +396,17 @@ export const cottageUtils = {
                 isTop,
                 placeId,
                 regionId,
-                rating,
+                doubleBedCount,
+                familyOnly,
+                maxGuests,
+                noAlcohol,
+                noLoudMusic,
+                noParty,
+                noPets,
+                noSmoking,
+                numberOfRooms,
+                singleBedCount,
+                contactPhone
             },
             {
                 headers: {

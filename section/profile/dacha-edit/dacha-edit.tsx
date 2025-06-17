@@ -5,6 +5,11 @@ import React, { useState } from 'react';
 import CottageEditImg from './image-edit';
 import InfoEdit from './info-edit';
 import PriceMapEdit from './price-map';
+import { Button } from '@/components/ui/button';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { cottageUtils } from '@/utils/cottage.utils';
+import { toast } from 'sonner';
+import { QUERY_KEYS } from '@/query/query-key';
 
 interface bootomSheet {
     cottage: newCottage
@@ -38,8 +43,55 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
         noParty: cottage?.noParty,
         noPets: cottage?.noPets,
         noSmoking: cottage?.noSmoking,
-        quiteHours: ''
+        quiteHours: '',
+        images: ['']
     })
+
+
+
+
+    const queryClient = useQueryClient()
+
+    const editDacha = useMutation({
+        mutationFn: cottageUtils.patchCottageText,
+        onSuccess: () => {
+            toast.success('Muaffaqiyatli')
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.cottages] })
+            setOpen(false)
+        },
+        onError: (err) => {
+            console.log(err);
+        }
+    })
+
+    const dachEdit = () => {
+        const comfortsId: string[] = cottage.comforts && cottage.comforts.map(el => el.id)
+        editDacha.mutate({
+            comforts: comfortsId,
+            contactPhone: cottage.contactPhone,
+            cottageStatus: cottage.cottageStatus,
+            cottageType: ['c4c301b1-4719-499e-bde2-2c36715fae9e'],
+            description: cottage.description,
+            doubleBedCount: cottage.doubleBedCount,
+            familyOnly: cottage.familyOnly,
+            maxGuests: cottage.maxGuests,
+            name: cottage.name,
+            id: cottage.id,
+            noAlcohol: cottage.noAlcohol,
+            noLoudMusic: cottage.noLoudMusic,
+            noParty: cottage.noParty,
+            noPets: cottage.noPets,
+            noSmoking: cottage.noSmoking,
+            numberOfRooms: cottage.numberOfRooms,
+            placeId: cottage.place.id,
+            price: cottage.price,
+            priceWeekend: cottage.priceWeekend,
+            regionId: cottage.region.id,
+            singleBedCount: cottage.singleBedCount,
+
+        })
+    }
+
 
     return (
         <Drawer onOpenChange={setOpen} open={open}>
@@ -52,6 +104,7 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
                     <CottageEditImg id={cottage.id} images={cottage?.images} />
                     <InfoEdit cottage={editcottage} setCottage={setEditCottage} />
                     <PriceMapEdit cottage={editcottage} setCottage={setEditCottage} />
+                    <Button onClick={dachEdit} className='w-full my-3'>Tahrirlash</Button>
                 </div>
             </DrawerContent>
         </Drawer>

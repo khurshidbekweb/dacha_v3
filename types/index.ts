@@ -134,7 +134,7 @@ export interface premiumCottage {
 export interface postCottage {
   cottageName: string;
   description: string;
-  images?: string[];
+  images: string[];
   regionId: string;
   placeId: string;
   price: number | '';
