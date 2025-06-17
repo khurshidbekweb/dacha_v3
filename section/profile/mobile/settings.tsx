@@ -7,20 +7,23 @@ import BreadCrumbs from '@/components/share/bredcrambs';
 import { safeLocalStorage } from '@/utils/safeLocalstorge';
 import { LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
     const { t } = useTranslation()
     const route = useRouter()
+    const token = safeLocalStorage.getItem('accessToken')
     const logOut = () => {
         safeLocalStorage.removeItem('accessToken')
         window.location.reload()
-
     }
     useEffect(() => {
-        route.push('/')
-    }, [route])
+        if (!token) {
+            route.push('/')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     return (
         <div className='w-full'>
             <Navbar />

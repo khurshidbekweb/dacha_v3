@@ -16,7 +16,6 @@ const LoginPage = () => {
     const phone = useMutation({
         mutationFn: authUtils.smsAuth,
         onSuccess: (data) => {
-            toast.success('a');
             setUserId(data.userId)
             setTimeout(() => {
                 setStep(1)
@@ -25,7 +24,7 @@ const LoginPage = () => {
         },
         onError: (err) => {
             console.log(err);
-            toast.error('Success');
+            toast.error(err.message);
         },
     });
 
