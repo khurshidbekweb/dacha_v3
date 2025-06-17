@@ -2,6 +2,7 @@
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { postCottage } from '@/types';
 import Cleave from 'cleave.js/react';
 import { RefreshCcw } from 'lucide-react';
@@ -13,8 +14,6 @@ interface editINfoProps {
 }
 
 const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
-
-
     const [phoneNumber, setPhoneNumber] = useState(false)
 
 
@@ -99,6 +98,16 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }}
                     required
                 />
+            </div>
+            <div className='flex flex-col space-y-2'>
+                <Label htmlFor="deskription">Dacha haqida qisqacha tavsif</Label>
+                <Textarea
+                    id='deskription'
+                    defaultValue={cottage.description}
+                    onChange={(e) => {
+                        const inputValue = e.target.value;
+                        setCottage({ ...cottage, description: inputValue })
+                    }} />
             </div>
         </div>
     );

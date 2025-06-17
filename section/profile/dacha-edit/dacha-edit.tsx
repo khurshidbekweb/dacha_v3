@@ -4,6 +4,7 @@ import { Pen, X } from 'lucide-react';
 import React, { useState } from 'react';
 import CottageEditImg from './image-edit';
 import InfoEdit from './info-edit';
+import PriceMapEdit from './price-map';
 
 interface bootomSheet {
     cottage: newCottage
@@ -47,8 +48,11 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
                 <DrawerTitle className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg' onClick={() => setOpen(false)}>
                     <X className='w-5 h-5 font-bold block' size={35} />
                 </DrawerTitle>
-                <CottageEditImg id={cottage.id} images={cottage?.images} />
-                <InfoEdit cottage={editcottage} setCottage={setEditCottage} />
+                <div className=" overflow-y-auto">
+                    <CottageEditImg id={cottage.id} images={cottage?.images} />
+                    <InfoEdit cottage={editcottage} setCottage={setEditCottage} />
+                    <PriceMapEdit cottage={editcottage} setCottage={setEditCottage} />
+                </div>
             </DrawerContent>
         </Drawer>
     );
