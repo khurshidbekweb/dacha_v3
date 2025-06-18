@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Label } from "@/components/ui/label";
 import { TimePickerInput } from "@/components/ui/time-piccer";
+import { useTranslation } from "react-i18next";
 
 interface TimePickerDemoProps {
     date: Date | undefined;
@@ -12,12 +13,12 @@ interface TimePickerDemoProps {
 export function TimePicker({ date, setDate }: TimePickerDemoProps) {
     const minuteRef = React.useRef<HTMLInputElement>(null);
     const hourRef = React.useRef<HTMLInputElement>(null);
-
+    const { t } = useTranslation()
     return (
         <div className="flex items-end gap-2">
             <div className="grid gap-1 text-center">
                 <Label htmlFor="hours" className="text-[12px]">
-                    Soat
+                    {t('hours')}
                 </Label>
                 <TimePickerInput
                     picker="hours"
@@ -29,7 +30,7 @@ export function TimePicker({ date, setDate }: TimePickerDemoProps) {
             </div>
             <div className="grid gap-1 text-center">
                 <Label htmlFor="minutes" className="text-xs">
-                    Minut
+                    {t('minutes')}
                 </Label>
                 <TimePickerInput
                     picker="minutes"

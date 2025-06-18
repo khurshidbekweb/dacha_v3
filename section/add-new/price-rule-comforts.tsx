@@ -177,13 +177,13 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                                                 <FormControl>
                                                     <RadioGroupItem value="true" />
                                                 </FormControl>
-                                                <FormLabel className="font-normal">Ha</FormLabel>
+                                                <FormLabel className="font-normal">{t('yes')}</FormLabel>
                                             </FormItem>
                                             <FormItem className="flex items-center gap-3">
                                                 <FormControl>
                                                     <RadioGroupItem value="false" />
                                                 </FormControl>
-                                                <FormLabel className="font-normal">Yo‘q</FormLabel>
+                                                <FormLabel className="font-normal">{t('no')}</FormLabel>
                                             </FormItem>
                                         </RadioGroup>
                                     </FormControl>

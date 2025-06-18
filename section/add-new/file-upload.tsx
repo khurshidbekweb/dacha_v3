@@ -115,11 +115,11 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                     </div>
                     <div className="flex flex-col items-start justify-start">
                         {
-                            previews?.length == 0 && <><span className="text-sm text-muted-foreground"> PNG, JPG yoki GIF (max: 5MB)</span>
-                                <span className="text-sm text-muted-foreground">Rasmlar soni 3ta dan kam bo`lmasligi kerak(max: 15 ta).</span></> ||
-                            previews?.length < 3 && <p className='text-[14px] text-red-400'>Rasm qo`shing (kamida 3 ta rasm bo`lishi kerak)</p> ||
-                            previews?.length < 15 && <p className='text-xl text-green-400'>Yana {15 - previews.length} ta rasm qo`shishingiz mumkin</p> ||
-                            previews?.length === 15 && <p>Yetarlicha rasm qo`shildi</p>
+                            previews?.length == 0 && <><span className="text-sm text-muted-foreground"> {t('image_size')} </span>
+                                <span className="text-sm text-muted-foreground">{t('size_worning')}</span></> ||
+                            previews?.length < 3 && <p className='text-[14px] text-red-400'>{t('size_requerd')}</p> ||
+                            previews?.length < 15 && <p className='text-xl text-green-400'>{t('size_info')}</p> ||
+                            previews?.length === 15 && <p>{t('size_finshed')}</p>
 
                         }
                     </div>
