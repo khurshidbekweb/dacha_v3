@@ -1,11 +1,18 @@
+import { Metadata } from 'next';
 import React from 'react';
+import TypeCottage from '../type-cottage';
 
-const CottageType = () => {
-    return (
-        <div>
+export const metadata: Metadata = {
+    title: "Place | DachaOL",
+    description: "Reginter in this page",
+};
 
-        </div>
-    );
+
+
+const CottageType = ({
+    params,
+}: { params: { id: string } }) => {
+    return <TypeCottage paramsId={params.id} />
 };
 
 export default CottageType;

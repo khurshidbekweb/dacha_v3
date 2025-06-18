@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 
 import translationRu from '../public/locales/ru.json';
 import translationUz from '../public/locales/uz.json';
+import { safeLocalStorage } from '@/utils/safeLocalstorge';
 
 const resources = {
     ru: { translation: translationRu },
@@ -14,7 +15,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'uz', // default til
+        lng: safeLocalStorage.getItem('language') || 'uz', // default til
         fallbackLng: 'ru',
         interpolation: {
             escapeValue: false,
