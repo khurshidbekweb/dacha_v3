@@ -26,7 +26,7 @@ export function CardSwiper({ dacha }: swiperImage) {
     const [count, setCount] = React.useState(0);
 
     const view = dacha.events.filter(event => event.eventType === 'view')
-
+    const mainImage = dacha.images.find(img => img.isMainImage === true)
     React.useEffect(() => {
         if (!api) {
             return
@@ -73,8 +73,14 @@ export function CardSwiper({ dacha }: swiperImage) {
                 id={`inner-carousel-${dacha.id}`}
                 key={`inner-carousel-${dacha.id}`}
             >
+
                 <CarouselContent className="z-3 pointer-events-auto">
-                    {dacha?.images?.length && dacha?.images.map((img) => (
+                    <CarouselItem>
+                        <div className="relative w-full h-[250px]" >
+                            <Image priority src={`${IMG_BASE_URL}${mainImage?.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
+                        </div>
+                    </CarouselItem>
+                    {dacha?.images?.length && dacha?.images.filter((img) => img.id !== mainImage?.id).map((img) => (
                         <CarouselItem key={img.id}>
                             <div className="relative w-full h-[250px]" >
                                 <Image priority src={`${IMG_BASE_URL}${img.image}`} alt={dacha.name} fill sizes="(max-width: 320px) 300px 280px" className="object-cover" />
