@@ -88,7 +88,10 @@ const CottageEdit = ({ cottage }: bootomSheet) => {
             priceWeekend: cottage.priceWeekend,
             regionId: cottage.region.id,
             singleBedCount: cottage.singleBedCount,
-
+            entranceTime: cottage.entranceTime,
+            exitTime: cottage.exitTime,
+            lattitude: String(cottage.latitude),
+            longitude: String(cottage.longitude),
         })
     }
 

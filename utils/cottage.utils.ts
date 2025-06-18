@@ -64,12 +64,10 @@ type PatchCottageTextPayload = {
     price: number
     priceWeekend: number
     rating?: number
-    status: string
     lattitude: string
     longitude: string
     placeId: string
     regionId: string
-    isTop: boolean
     doubleBedCount: number | '';
     entranceTime: string;
     exitTime: string;
@@ -82,7 +80,6 @@ type PatchCottageTextPayload = {
     noParty: boolean | '';
     noPets: boolean | '';
     noSmoking: boolean | '';
-    quiteHours: string;
     contactPhone: string,
 }
 
@@ -362,12 +359,10 @@ export const cottageUtils = {
         name,
         price,
         priceWeekend,
-        status,
         lattitude,
         longitude,
         placeId,
         regionId,
-        isTop,
         doubleBedCount,
         familyOnly,
         maxGuests,
@@ -390,10 +385,8 @@ export const cottageUtils = {
                 name,
                 price,
                 priceWeekend,
-                status,
                 lattitude,
                 longitude,
-                isTop,
                 placeId,
                 regionId,
                 doubleBedCount,
