@@ -45,32 +45,32 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
         {
             id: 1,
             name: 'noSmoking',
-            title: 'Chekishga ruxsat'
+            title: t('noSmoking')
         },
         {
             id: 2,
             name: 'noAlcohol',
-            title: 'Alkogol ichimlikariga ruxsat'
+            title: t('noAlcohol')
         },
         {
             id: 3,
             name: 'noPets',
-            title: 'Uy hayvonlariga ruxsat'
+            title: t('noPets')
         },
         {
             id: 4,
             name: 'familyOnly',
-            title: 'Faqat Oilaliylar uchun'
+            title: t('familyOnly')
         },
         {
             id: 5,
             name: 'noLoudMusic',
-            title: 'Baland musiqaga ruhsat'
+            title: t('noLoudMusic')
         },
         {
             id: 6,
             name: 'noParty',
-            title: 'Bazm qilishga ruhsat'
+            title: t('noParty')
         },
     ]
 
@@ -89,19 +89,20 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
         {
             id: 1,
             name: 'price',
-            title: 'Bir kunlik narx'
+            title: t('once_price')
         },
         {
             id: 2,
             name: 'priceWeekend',
-            title: 'Dam olish kunlari'
+            title: t('weekent_price')
         }]
+
     const { data: comforts } = ALL_DATA.useComforts()
 
     return (
         <div className="flex flex-col space-y-5 w-full">
             <div className='px-2 flex flex-col space-y-3'>
-                <h2 className='text-xl md:text-2xl font-semibold'>Narxlar</h2>
+                <h2 className='text-xl md:text-2xl font-semibold'>{t('price')}</h2>
                 <div className="w-full flex flex-col md:flex-row justify-between gap-x-2">
                     {price.map(el => (
                         <FormField
@@ -119,7 +120,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                                                     numeralThousandsGroupStyle: 'thousand',
                                                 }}
                                                 name="price"
-                                                placeholder='Bir kunlik narx'
+                                                placeholder={el.title}
                                                 className="bg-transparent dark:bg-input/30 h-[40px] border w-full rounded-md px-4 py-2"
                                                 onChange={(e) => {
                                                     const inputValue = e.target.value;
@@ -139,20 +140,20 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                 </div>
             </div>
             <div className='px-2 flex flex-col space-y-3'>
-                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Vaqt</h2>
+                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> {t('date')}</h2>
                 <div className="flex items-center justify-between gap-x-2">
                     <div className="flex flex-col border w-full border-dashed rounded-lg p-2">
-                        <h4 className='text-[15px] font-semibold'>Kirish</h4>
+                        <h4 className='text-[15px] font-semibold'>{t('enter')}</h4>
                         <TimePicker date={entranceTime} setDate={setEntranceTime} />
                     </div>
                     <div className="flex flex-col border w-full border-dashed rounded-lg p-2">
-                        <h4 className='text-[15px] font-semibold'>Chiqish</h4>
+                        <h4 className='text-[15px] font-semibold'>{t('logout')}</h4>
                         <TimePicker date={exitTime} setDate={setExitTime} />
                     </div>
                 </div>
             </div>
             <div className='px-2 flex flex-col space-y-3'>
-                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Qoidalar</h2>
+                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> {t('rule')}</h2>
                 <div className="grid grid-cols-2 gap-y-3">
                     {dataRule.map((rule) => (
                         <FormField
@@ -194,7 +195,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
                 </div>
             </div>
             <div className='px-2 flex flex-col space-y-3'>
-                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> Qulayliklar</h2>
+                <h2 className='text-xl md:text-2xl font-semibold flex items-center'> {t('comforts')}</h2>
                 <FormField
                     control={control}
                     name="comforts"

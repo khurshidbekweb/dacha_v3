@@ -11,6 +11,7 @@ import { uploadImage } from '@/utils/upload-image.utls';
 import { SkeletonImage } from '@/components/loading/img-skeleton';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 
 interface ImageUploaderProps {
@@ -40,7 +41,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
     };
 
     const previews = cottage?.images
-
+    const { t } = useTranslation()
 
     return (
         <div className="flex flex-col items-start px-2 mt-5 md:mt-10 w-full mx-auto">
@@ -49,7 +50,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                 name="images"
                 render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Rasm yuklash</FormLabel>
+                        <FormLabel className='mb-1'>{t('image_upload')}</FormLabel>
                         <FormControl>
                             <Input
                                 type="file"

@@ -184,7 +184,7 @@ const AddNewPage = () => {
                                 <PriceRuleComforts cottage={cottage} setCottage={setCottage} />
                             </div>
                         </div>
-                        <Button disabled={submitCheck} className='w-full md:w-[450px] mx-auto block my-10' type='submit'>E`lonni joylash</Button>
+                        <Button disabled={submitCheck} className='w-full md:w-[450px] mx-auto block my-10' type='submit'>{t('add_announcements')}</Button>
                     </form>
                 </FormProvider>
             </div>

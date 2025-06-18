@@ -10,6 +10,7 @@ import { ChevronLeft, MapPinned } from "lucide-react";
 import { postCottage } from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 interface infoProps {
     cottage: postCottage;
@@ -20,6 +21,7 @@ interface infoProps {
 export const DachaMap = ({ setCottage, cottage }: infoProps) => {
     const libraries: Libraries = ['places'];
     const [open, setOpen] = useState(false)
+    const { t } = useTranslation()
     const [coordinates, setCoordinates] = useState(defaultCenter);
     const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
     const onPlaceSelected = () => {
@@ -59,7 +61,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
 
     return (
         <Drawer onOpenChange={setOpen} open={open}>
-            <DrawerTrigger className="w-full flex items-center gap-x-3 border rounded-lg justify-center p-[6px] cursor-pointer bg-transparent dark:bg-input/30 border-amber-500 text-amber-500"><MapPinned size={25} className="text-amber-600" /> Xaritadan belgilash</DrawerTrigger>
+            <DrawerTrigger className="w-full flex items-center gap-x-3 border rounded-lg justify-center p-[6px] cursor-pointer bg-transparent dark:bg-input/30 border-amber-500 text-amber-500"><MapPinned size={25} className="text-amber-600" /> {t('choos_map')}</DrawerTrigger>
             <DrawerContent className='!h-[100vh]'>
                 <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>

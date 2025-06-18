@@ -22,8 +22,8 @@ const TypeCottage = ({ paramsId }: placeProps) => {
             <Navbar />
             <BreadCrumbs data={[{ slug: '', title: t('home') }, { slug: 'cottage', title: t('announcement') }]} page={type} />
             <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
-                <h2 className='text-2xl md:text-3xl mt-5 font-semibold'>Barcha
-                    <span className="text-amber-400"> {type}</span>lar
+                <h2 className='text-2xl md:text-3xl mt-5 font-semibold'>{t('all')}
+                    <span className="text-amber-400"> {type}</span>
                 </h2>
                 <div className="hidden md:grid mt-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3 justify-items-center md:justify-between items-center mx-auto">
                     {isLoading || !cottages?.length ? <>

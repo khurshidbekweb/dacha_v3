@@ -6,6 +6,7 @@ import { postCottage } from '@/types';
 import Cleave from 'cleave.js/react';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 interface infoProps {
     cottage: postCottage;
@@ -14,18 +15,19 @@ interface infoProps {
 
 const MainInfo = ({ cottage, setCottage }: infoProps) => {
     const { control } = useFormContext();
+    const { t } = useTranslation()
     return (
         <div className='px-2 flex flex-col space-y-2'>
             <div className="flex flex-col space-y-3">
-                <h3 className='text-xl md:text-2xl font-semibold'>Asosiy ma`lumotlar</h3>
+                <h3 className='text-xl md:text-2xl font-semibold'>{t('main_info')}</h3>
                 <FormField
                     control={control}
                     name="cottageName"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Dacha nomi</FormLabel>
+                            <FormLabel>{t('cottage_nema')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="Cottage Name" {...field}
+                                <Input placeholder={t('cottage_nema')} {...field}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         field.onChange(inputValue);
@@ -41,9 +43,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="maxGuests"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Mexmonlar soni</FormLabel>
+                            <FormLabel>{t('count_of_guests')}</FormLabel>
                             <FormControl>
-                                <Input value={field.value === 0 ? '' : Number(field.value)} type='tel' placeholder="Mexmonlar soni"
+                                <Input value={field.value === 0 ? '' : Number(field.value)} type='tel' placeholder={t('count_of_guests')}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
@@ -61,9 +63,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="numberOfRooms"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Xonalar soni</FormLabel>
+                            <FormLabel>{t('count_rooms')}</FormLabel>
                             <FormControl>
-                                <Input type='tel' value={field.value === 0 ? '' : Number(field.value)} placeholder="Xonalar soni"
+                                <Input type='tel' value={field.value === 0 ? '' : Number(field.value)} placeholder={t('count_rooms')}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
@@ -81,9 +83,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="singleBedCount"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>1 o`rinli yotoqlar soni</FormLabel>
+                            <FormLabel>{t('single_bad')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="1 o`rinli yotoqlar soni" type='tel' value={field.value === 0 ? '' : field.value}
+                                <Input placeholder={t('single_bad')} type='tel' value={field.value === 0 ? '' : field.value}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
@@ -101,9 +103,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="doubleBedCount"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>2 o`rinli yotoqlar soni</FormLabel>
+                            <FormLabel>{t('double_bad')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="2 o`rinli yotoqlar soni" type='tel' value={field.value === 0 ? '' : field.value}
+                                <Input placeholder={t('double_bad')} type='tel' value={field.value === 0 ? '' : field.value}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
@@ -118,13 +120,13 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                 />
             </div>
             <div className="flex flex-col space-y-2">
-                <h3 className='text-xl md:text-2xl font-semibold'>Bog`lanish</h3>
+                <h3 className='text-xl md:text-2xl font-semibold'>{t('contact')}</h3>
                 <FormField
                     control={control}
                     name="contactPhone"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Telefon raqam</FormLabel>
+                            <FormLabel>{t('contact_phone')}</FormLabel>
                             <FormControl>
                                 <Cleave
                                     options={{
@@ -133,7 +135,7 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                                         blocks: [4, 2, 3, 2, 2],
                                         numericOnly: true,
                                     }}
-                                    placeholder="Phone number"
+                                    placeholder={t('contact_phone')}
                                     className="w-full p-2 border bg-transparent dark:bg-input/30 text-[15px] md:text-xl rounded-md"
                                     name="phonenumber"
                                     inputMode="numeric"
@@ -156,9 +158,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="description"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Dacha haqida qisqacha tavsif</FormLabel>
+                            <FormLabel>{t('desk_cottage')}</FormLabel>
                             <FormControl>
-                                <Textarea className='w-full h-[100px] md:h-[150px]' placeholder="Dacha haqida tavsif" {...field} onChange={(e) => {
+                                <Textarea className='w-full h-[100px] md:h-[150px]' placeholder={t('desk_cottage')} {...field} onChange={(e) => {
                                     const inputValue = e.target.value;
                                     field.onChange(inputValue);
                                     setCottage({ ...cottage, description: inputValue })
