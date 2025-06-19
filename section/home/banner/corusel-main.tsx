@@ -131,11 +131,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                             {top?.cottage?.region.name.slice(0, 12)},
                                             {top?.cottage?.place.name}
                                         </p>
-                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">Narxi: {top.cottage.price} {t('currency')}
-                                            <span className='text-white text-[12px] text-center'>Ish kunlaridagi narx</span>
+                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">{t('price')}: {top.cottage.price} {t('currency')}
+                                            <span className='text-white text-[12px] text-center'>{t('work_day_price')}</span>
                                         </p>
                                         <button className="details-btn mt-4 w-fit flex items-center bg-amber-500 rounded-xl p-2">
-                                            <span>Batafsil</span>
+                                            <span>{t('more')}</span>
                                             <ArrowRightIcon className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                                         </button>
                                     </div>
