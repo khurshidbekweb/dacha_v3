@@ -33,7 +33,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                     lng: place.geometry.location!.lng(),
                 };
                 setCoordinates(newCoordinates);
-                setCottage({ ...cottage, latitude: String(newCoordinates.lat), longitude: String(newCoordinates.lng) }); // 📡 Ota komponentaga jo‘natish
+                setCottage({ ...cottage, latitude: newCoordinates.lat, longitude: newCoordinates.lng }); // 📡 Ota komponentaga jo‘natish
             }
         }
     };
@@ -50,7 +50,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                         lng: position.coords.longitude,
                     };
                     setCoordinates(newCoordinates);
-                    setCottage({ ...cottage, latitude: String(newCoordinates.lat), longitude: String(newCoordinates.lng) });
+                    setCottage({ ...cottage, latitude: newCoordinates.lat, longitude: newCoordinates.lng });
                 },
                 (error) => console.error("Geolocation error:", error)
             );
@@ -62,7 +62,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
     return (
         <Drawer onOpenChange={setOpen} open={open}>
             <DrawerTrigger className="w-full flex items-center gap-x-3 border rounded-lg justify-center p-[6px] cursor-pointer bg-transparent dark:bg-input/30 border-amber-500 text-amber-500"><MapPinned size={25} className="text-amber-600" /> {t('choos_map')}</DrawerTrigger>
-            <DrawerContent className='!h-[100vh]'>
+            <DrawerContent className='!h-[100vh] overflow-y-auto'>
                 <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>
                     {isMapLoad ? <div className="w-full h-full">
@@ -84,8 +84,8 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                                     setCoordinates(newCoordinates);
                                     setCottage({
                                         ...cottage,
-                                        latitude: String(newCoordinates.lat),
-                                        longitude: String(newCoordinates.lng),
+                                        latitude: newCoordinates.lat,
+                                        longitude: newCoordinates.lng,
                                     });
                                 }
                             }}
@@ -99,8 +99,8 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                                         setCoordinates(newCoordinates);
                                         setCottage({
                                             ...cottage,
-                                            latitude: String(newCoordinates.lat),
-                                            longitude: String(newCoordinates.lng),
+                                            latitude: newCoordinates.lat,
+                                            longitude: newCoordinates.lng,
                                         });
                                     }
                                 }}
