@@ -6,7 +6,7 @@ const mapContainerStyle = { height: "70%", width: "100%" };
 const defaultCenter = { lat: 41.2995, lng: 69.2401 }; // Toshkent koordinatalari
 import { Libraries } from '@react-google-maps/api';
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
-import { ChevronLeft, MapPinned } from "lucide-react";
+import { MapPinned, X } from "lucide-react";
 import { postCottage } from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -63,12 +63,10 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
         <Drawer onOpenChange={setOpen} open={open}>
             <DrawerTrigger className="w-full flex items-center gap-x-3 border rounded-lg justify-center p-[6px] cursor-pointer bg-transparent dark:bg-input/30 border-amber-500 text-amber-500"><MapPinned size={25} className="text-amber-600" /> {t('choos_map')}</DrawerTrigger>
             <DrawerContent className='!h-[100vh] overflow-y-auto'>
-                <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
+                <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><X className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>
                     {isMapLoad ? <div className="w-full h-full">
-
-
-                        <Button className="rounded-lg mb-2" onClick={getCurrentLocation} type="button">
+                        <Button className="rounded-lg my-2" onClick={getCurrentLocation} type="button">
                             📍 Joylashuvimni olish
                         </Button>
 
@@ -104,7 +102,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                                 }}
                             />
                         </GoogleMap>
-                        <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} onPlaceChanged={onPlaceSelected}>
+                        <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} className="z-20" onPlaceChanged={onPlaceSelected}>
                             <Input type="text" className="my-2 p-2" placeholder="Dacha joyini qidiring..." style={{ width: "100%", padding: "10px", fontSize: "16px" }} />
                         </Autocomplete>
                     </div> : ""}
