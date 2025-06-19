@@ -127,3 +127,7 @@
 .inner-swiper * {
   touch-action: pan-y;
 }
+
+.pac-container {
+  z-index: 9999 !important;
+}

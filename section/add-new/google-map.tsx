@@ -65,7 +65,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
             <DrawerContent className='!h-[100vh] overflow-y-auto'>
                 <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><X className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>
-                    {isMapLoad ? <div className="w-full h-full">
+                    {isMapLoad ? <div className="w-full h-full z-50">
                         <Button className="rounded-lg my-2" onClick={getCurrentLocation} type="button">
                             📍 Joylashuvimni olish
                         </Button>
