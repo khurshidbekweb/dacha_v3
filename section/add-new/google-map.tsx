@@ -66,9 +66,7 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                 <DrawerTitle onClick={() => setOpen(false)} className='w-[50px] border flex items-center p-2 text-center ml-3 justify-center cursor-pointer rounded-lg'><ChevronLeft className='w-5 h-5 font-bold block' size={35} /></DrawerTitle>
                 <LoadScript onLoad={() => setIsMapLoad(true)} googleMapsApiKey="AIzaSyCGUri0Qf7oabhI-5bCvkhu4DkNJU1l6v4" libraries={libraries}>
                     {isMapLoad ? <div className="w-full h-full">
-                        <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} onPlaceChanged={onPlaceSelected}>
-                            <Input type="text" className="my-2 p-2" placeholder="Dacha joyini qidiring..." style={{ width: "100%", padding: "10px", fontSize: "16px" }} />
-                        </Autocomplete>
+
 
                         <Button className="rounded-lg mb-2" onClick={getCurrentLocation} type="button">
                             📍 Joylashuvimni olish
@@ -106,6 +104,9 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
                                 }}
                             />
                         </GoogleMap>
+                        <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} onPlaceChanged={onPlaceSelected}>
+                            <Input type="text" className="my-2 p-2" placeholder="Dacha joyini qidiring..." style={{ width: "100%", padding: "10px", fontSize: "16px" }} />
+                        </Autocomplete>
                     </div> : ""}
                 </LoadScript>
             </DrawerContent>
