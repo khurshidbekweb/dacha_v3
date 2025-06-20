@@ -6,6 +6,7 @@ import RootLayoutClient from "@/components/provider/root-provider";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
 import Image from "next/image";
+import { InAppBrowserWarning } from "@/components/share/isTelegram";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: ChildProps) {
           <NextTopLoader showSpinner={false} />
           {children}
           <Toaster position="top-center" />
+          <InAppBrowserWarning />
         </RootLayoutClient>
         <noscript>
           <div>
