@@ -118,7 +118,7 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
                             previews?.length == 0 && <><span className="text-sm text-muted-foreground"> {t('image_size')} </span>
                                 <span className="text-sm text-muted-foreground">{t('size_worning')}</span></> ||
                             previews?.length < 3 && <p className='text-[14px] text-red-400'>{t('size_requerd')}</p> ||
-                            previews?.length < 15 && <p className='text-xl text-green-400'>{t('size_info')}</p> ||
+                            previews?.length < 15 && <p className='text-xl text-green-400'>{t('size_info')} {15 - previews.length} {t('size_info2')}</p> ||
                             previews?.length === 15 && <p>{t('size_finshed')}</p>
 
                         }

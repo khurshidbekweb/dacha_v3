@@ -97,7 +97,9 @@
 	"image_size": "PNG, JPG yoki GIF (max: 5MB)",
 	"size_worning": "Rasmlar soni 3ta dan kam bo`lmasligi kerak(max: 15 ta).",
 	"size_requerd": "Rasm qo`shing (kamida 3 ta rasm bo`lishi kerak)",
-	"size_info": "Yana {15 - previews.length} ta rasm qo`shishingiz mumkin",
+
+	"size_info": "Yana ",
+	"size_info2":" ta rasm qo`shishingiz mumkin",
 	"size_finshed": "Yetarlicha rasm qo`shildi",
 	"hours": "Soat",
 	"minutes": "Minut",
