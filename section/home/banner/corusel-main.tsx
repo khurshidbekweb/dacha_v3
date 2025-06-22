@@ -20,6 +20,7 @@ import { ArrowRightIcon, MapPinIcon } from 'lucide-react'
 import { cottageTop } from '@/types'
 import { IMG_BASE_URL } from '@/constants'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 const TWEEN_FACTOR_BASE = 0.2
 
@@ -148,10 +149,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                             </p>
                                             <p className="text-[11px] text-amber-400 line-clamp-1">Narxi: {top.cottage.price.toLocaleString()} {t('currency')}</p>
                                         </div>
-                                        <button className="details-btn mt-4 w-fit flex items-center bg-green-500 p-1 rounded-lg">
+                                        <Link href={`/view/${top.cottage.id}`} className="details-btn mt-4 w-fit flex items-center bg-green-500 p-1 rounded-lg">
                                             <span className='text-white text-[12px]'>Batafsil</span>
                                             <ArrowRightIcon className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1 text-white" />
-                                        </button>
+                                        </Link>
                                     </div>
                                     <div className="absolute right-0 h-full w-full md:w-[65%] z-10">
                                         <Image
