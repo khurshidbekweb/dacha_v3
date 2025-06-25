@@ -160,6 +160,7 @@ export interface postCottage {
 };
 
 
+
 export interface newCottage {
   id: string;
   name: string;
