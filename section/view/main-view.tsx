@@ -37,6 +37,8 @@ const MainView = ({ cottage }: dachaView) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    
+
     return (
         <>
             <div className="w-full hidden md:block">
