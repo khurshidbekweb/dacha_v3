@@ -10,7 +10,7 @@ interface DachaProps {
 }
 
 export function UserDachaCard({ dacha }: DachaProps) {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     return (
         <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
             <div className="">
@@ -42,7 +42,7 @@ export function UserDachaCard({ dacha }: DachaProps) {
                         {/* Rating */}
                         <div className="flex items-center text-sm text-gray-600">
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
-                            <span>0</span>
+                            <span>{dacha?.rating}</span>
                             <span className="mx-1">●</span>
                             <span>0 {t('reviews')}</span>
                         </div>
