@@ -5,7 +5,6 @@ import { PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'sonner';
 
 interface callProps {
     cottage: cottage

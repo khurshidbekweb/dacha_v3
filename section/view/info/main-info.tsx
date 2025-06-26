@@ -8,6 +8,7 @@ import Link from 'next/link';
 import React from 'react';
 import GoogleMap from './google-map';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
 
 
 interface mainInfo {
@@ -109,6 +110,19 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <div className="review mt-5 flex flex-col space-y-2">
                         <h3 className='text-2xl md:text-3xl font-mediu'>{t('guest_reviews')}</h3>
                         <div className="flex flex-col space-y-3">
+                            <div className="">
+                                <div className="flex justify-between items-center gap-x-2">
+                                    <Avatar>
+                                        <AvatarImage src="https://github.com/shad5cn.png" />
+                                        <AvatarFallback>AL</AvatarFallback>
+                                    </Avatar>
+                                    <input type='text' placeholder='Commit add...' className='w-full border-b outline-none' />
+                                </div>
+                                <div className="flex justify-between items-start mt-2">
+                                    <span className='flex'><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /></span>
+                                    <Button>Commit</Button>
+                                </div>
+                            </div>
                             <div className="flex flex-col space-y-2">
                                 <div className="user flex gap-x-2 items-center">
                                     <Avatar>
@@ -116,7 +130,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                                         <AvatarFallback>AL</AvatarFallback>
                                     </Avatar>
                                     <div className="">
-                                        <p>Alojon</p>
+                                        <p>Alijon</p>
                                         <span className='flex'><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /></span>
                                     </div>
                                 </div>
