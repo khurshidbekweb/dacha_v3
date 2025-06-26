@@ -5,6 +5,7 @@ import { PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 interface callProps {
     cottage: cottage
@@ -21,9 +22,10 @@ const CallMobile = ({ cottage }: callProps) => {
     })
     const callAdd = () => {
         actionCottage.mutate({
-            cottageId: cottage.id,
+            cottageId: cottage?.id,
             event: 'call'
         })
+
     }
     return (
         cottage.cottageType[0].id === 'c4c301b1-4719-499e-bde2-2c36715fae9e' && <div className='fixed w-full bottom-0 p-1 bg-secondary flex justify-between items-center md:hidden'>

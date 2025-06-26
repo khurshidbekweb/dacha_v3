@@ -12,7 +12,7 @@ interface premiumCottageProps {
 
 
 export function PremiumDachaCard({ dacha }: premiumCottageProps) {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
     const isLiked = likedCards.includes(dacha.cottage.id);
@@ -21,6 +21,9 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
 
     };
     const view = dacha?.cottage?.events?.filter(event => event.eventType === 'view')
+    const call = dacha?.cottage?.events?.filter(event => event.eventType === 'call')
+    console.log(dacha?.cottage?.events);
+
 
     return (
         <div className="w-[360px] md:w-[320px] overflow-hidden transition-shadow p-1 relative" key={dacha.id}>
@@ -59,7 +62,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                             </div>
                             <div className="flex items-center gap-x-5">
                                 <span className="flex items-center gap-x-1 text-[14px]"><Eye size={16} /> {view.length}</span>
-                                <span className="flex items-center gap-x-1 text-[14px]"><Phone size={15} /> 29</span>
+                                <span className="flex items-center gap-x-1 text-[14px]"><Phone size={15} /> {call?.length}</span>
                             </div>
                         </div>
 
