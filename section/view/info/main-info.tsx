@@ -1,14 +1,21 @@
+'use client'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { IMG_BASE_URL } from '@/constants';
-import { cottage } from '@/types';
+import { cottage, user } from '@/types';
 import { BadgePercent, BedDouble, BedSingle, Clock, DoorOpen, Dot, House, LogIn, LogOut, MapPin, PartyPopper, PawPrint, PhoneOutgoing, Star, UsersRound, VolumeOff, Wine } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleMap from './google-map';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
+import { Rating, RatingButton } from '@/components/ui/reating';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { ratingUtils } from '@/utils/rating.utils';
+import { QUERY_KEYS } from '@/query/query-key';
+import { safeLocalStorage } from '@/utils/safeLocalstorge';
+import { commitUtils } from '@/utils/commit.utils';
 
 
 interface mainInfo {
@@ -17,6 +24,39 @@ interface mainInfo {
 
 const MainInfo = ({ cottage }: mainInfo) => {
     const { t } = useTranslation()
+    const [rating, setRating] = useState(3)
+    const [commitText, setCommitText] = useState('')
+    const userInfo: user = JSON.parse(safeLocalStorage.getItem('user')!)
+    console.log(rating);
+    const queryClient = useQueryClient()
+
+    const postRating = useMutation({
+        mutationFn: ratingUtils.postRating,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.commit_key] })
+        }
+    })
+    const postCommit = useMutation({
+        mutationFn: commitUtils.postComment,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.commit_key] })
+        }
+    })
+
+    const handleCommit = () => {
+        postRating.mutate({
+            cottageId: cottage.id,
+            rating,
+            userId: userInfo.id
+        })
+        postCommit.mutate({
+            cottageId: cottage.id,
+            content: commitText,
+            userId: userInfo.id
+        })
+    }
+
+
     const mapLink =
         cottage?.latitude &&
         cottage?.longitude &&
@@ -107,6 +147,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             </div>
                         </div>
                     </div>
+
                     <div className="review mt-5 flex flex-col space-y-2">
                         <h3 className='text-2xl md:text-3xl font-mediu'>{t('guest_reviews')}</h3>
                         <div className="flex flex-col space-y-3">
@@ -116,11 +157,17 @@ const MainInfo = ({ cottage }: mainInfo) => {
                                         <AvatarImage src="https://github.com/shad5cn.png" />
                                         <AvatarFallback>AL</AvatarFallback>
                                     </Avatar>
-                                    <input type='text' placeholder='Commit add...' className='w-full border-b outline-none' />
+                                    <input onChange={(text) => setCommitText(text.target.value)} type='text' placeholder='Commit add...' className='w-full border-b outline-none' />
                                 </div>
-                                <div className="flex justify-between items-start mt-2">
-                                    <span className='flex'><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /></span>
-                                    <Button>Commit</Button>
+                                <div className="flex justify-between items-center mt-4 gap-4">
+                                    <div className="flex">
+                                        <Rating defaultValue={rating} onValueChange={(value) => setRating(value)}>
+                                            {Array.from({ length: 5 }).map((_, index) => (
+                                                <RatingButton key={index} />
+                                            ))}
+                                        </Rating>
+                                    </div>
+                                    <button onClick={handleCommit}>Commit</button>
                                 </div>
                             </div>
                             <div className="flex flex-col space-y-2">

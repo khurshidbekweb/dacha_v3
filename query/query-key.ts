@@ -23,5 +23,6 @@ export const QUERY_KEYS = {
     userCottageUser: "UserCottageUser",
     order: "orders",
     cottage_by_isTop: "cottage_top_byId",
-    cottage_by_recommended: "cottage_recom_byId"
+    cottage_by_recommended: "cottage_recom_byId",
+    commit_key:"commit_keys"
 };
