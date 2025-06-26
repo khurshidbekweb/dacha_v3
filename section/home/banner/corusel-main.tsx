@@ -132,7 +132,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                             {top?.cottage?.region.name.slice(0, 12)},
                                             {top?.cottage?.place.name}
                                         </p>
-                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">{t('price')}: {top.cottage.price} {t('currency')}
+                                        <p className="text-xl font-semibold text-amber-400 flex flex-col">{t('prices')}: {top.cottage.price} {t('currency')}
                                             <span className='text-white text-[12px] text-center'>{t('work_day_price')}</span>
                                         </p>
                                         <button className="details-btn mt-4 w-fit flex items-center bg-amber-500 rounded-xl p-2">
@@ -147,7 +147,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                                 <MapPinIcon className="w-4 h-4 mr-2" />
                                                 {top?.cottage?.place.name}
                                             </p>
-                                            <p className="text-[11px] text-amber-400 line-clamp-1">Narxi: {top.cottage.price.toLocaleString()} {t('currency')}</p>
+                                            <p className="text-[11px] text-amber-400 line-clamp-1">{t('price')}: {top.cottage.price.toLocaleString()} {t('currency')}</p>
                                         </div>
                                         <Link href={`/view/${top.cottage.id}`} className="details-btn mt-4 w-fit flex items-center bg-green-500 p-1 rounded-lg">
                                             <span className='text-white text-[12px]'>Batafsil</span>

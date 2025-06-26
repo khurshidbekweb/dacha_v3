@@ -94,7 +94,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
         {
             id: 2,
             name: 'priceWeekend',
-            title: t('weekent_price')
+            title: t('weekend_days')
         }]
 
     const { data: comforts } = ALL_DATA.useComforts()
@@ -102,7 +102,7 @@ const PriceRuleComforts = ({ cottage, setCottage }: infoProps) => {
     return (
         <div className="flex flex-col space-y-5 w-full">
             <div className='px-2 flex flex-col space-y-3'>
-                <h2 className='text-xl md:text-2xl font-semibold'>{t('price')}</h2>
+                <h2 className='text-xl md:text-2xl font-semibold'>{t('prices')}</h2>
                 <div className="w-full flex flex-col md:flex-row justify-between gap-x-2">
                     {price.map(el => (
                         <FormField

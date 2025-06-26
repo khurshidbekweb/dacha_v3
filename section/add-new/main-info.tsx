@@ -25,9 +25,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="cottageName"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>{t('cottage_nema')}</FormLabel>
+                            <FormLabel>{t('cottage_name')}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('cottage_nema')} {...field}
+                                <Input placeholder={t('cottage_name')} {...field}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         field.onChange(inputValue);
@@ -83,9 +83,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="singleBedCount"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>{t('single_bad')}</FormLabel>
+                            <FormLabel>{t('single_bed')}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('single_bad')} type='tel' value={field.value === 0 ? '' : field.value}
+                                <Input placeholder={t('single_bed')} type='tel' value={field.value === 0 ? '' : field.value}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);
@@ -103,9 +103,9 @@ const MainInfo = ({ cottage, setCottage }: infoProps) => {
                     name="doubleBedCount"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>{t('double_bad')}</FormLabel>
+                            <FormLabel>{t('double_bed')}</FormLabel>
                             <FormControl>
-                                <Input placeholder={t('double_bad')} type='tel' value={field.value === 0 ? '' : field.value}
+                                <Input placeholder={t('double_bed')} type='tel' value={field.value === 0 ? '' : field.value}
                                     onChange={(e) => {
                                         const inputValue = e.target.value;
                                         const numeric = Number(inputValue);

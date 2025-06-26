@@ -141,7 +141,7 @@ const CottagePage = () => {
                                 </label>
                             ))}
                             <Separator className="my-2" />
-                            <p className="py-1 font-medium">{t('camforts')}</p>
+                            <p className="py-1 font-medium">{t('comforts')}</p>
                             <div className="flex flex-col space-y-1">
                                 {comforts?.map((e: comfort) => (
                                     <label key={e.id} className="flex items-center gap-2">

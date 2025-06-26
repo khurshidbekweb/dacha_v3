@@ -29,7 +29,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                     <p>3.5</p>
                     <Dot size={28} strokeWidth={1.75} />
-                    <span className='text-[16px] underline'>0 Sharhlar</span>
+                    <span className='text-[16px] underline'>0 {t('reviews')}</span>
                 </div>
                 <Separator className='my-2' />
             </div>
@@ -37,13 +37,13 @@ const MainInfo = ({ cottage }: mainInfo) => {
             <div className="flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
                 <div className="flex flex-col space-y-3 w-full md:w-[70%]">
                     <div className="about-cottage flex flex-col space-y-2">
-                        <h3 className='text-2xl md:text-3xl font-mediu'>Dacha haqida</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>{t('about_cottage')}</h3>
                         <p className='text-base md:text-lg whitespace-pre-wrap break-words'>{cottage.description}</p>
                         <div className="flex flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
-                            <span className='flex gap-x-2 items-center text-[16px] md:text-xl'><UsersRound size={22} strokeWidth={1.75} /> Mehmonlar</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><DoorOpen size={22} strokeWidth={1.75} /> Yotoq xonalar</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><BedSingle size={22} strokeWidth={1.75} /> Yotoqlar</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><BedDouble size={22} strokeWidth={1.75} /> 2 o`rinli yotoqlar</span>
+                            <span className='flex gap-x-2 items-center text-[16px] md:text-xl'><UsersRound size={22} strokeWidth={1.75} /> {t('guests')}</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><DoorOpen size={22} strokeWidth={1.75} /> {t('bedrooms')}</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><BedSingle size={22} strokeWidth={1.75} /> {t('beds')}</span>
+                            <span className='flex gap-x-2 items-center md:text-xl'><BedDouble size={22} strokeWidth={1.75} /> {t('double_bed')}</span>
                         </div>
                         <Separator className='mt-5 md:mt-10' />
                     </div>
@@ -60,7 +60,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <Separator className='mt-5 md:mt-10' />
                     </div>
                     <div className="rule flex flex-col space-y-2 mt-5">
-                        <h3 className='text-2xl md:text-3xl font-mediu'>Qoidalar</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>{t('rule')}</h3>
                         <div className="border p-2 md:p-3 rounded-lg mt-1 md:mt-3">
                             <div className="flex items-center justify-between border-b py-2">
                                 <div className="flex gap-x-3 items-center">
@@ -107,7 +107,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         </div>
                     </div>
                     <div className="review mt-5 flex flex-col space-y-2">
-                        <h3 className='text-2xl md:text-3xl font-mediu'>Mehmonlar sharhlari</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>{t('guest_reviews')}</h3>
                         <div className="flex flex-col space-y-3">
                             <div className="flex flex-col space-y-2">
                                 <div className="user flex gap-x-2 items-center">
@@ -140,36 +140,36 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <Separator className='mt-10' />
                 </div>
                 <div className="sticky w-full flex-1 border p-2 top-10 bottom-5 rounded-lg hidden md:block">
-                    <h3 className='text-xl font-mediu'>Dacha egasi bilan bog`lanish</h3>
+                    <h3 className='text-xl font-mediu'>{t('contact_cottage_owner')}</h3>
                     <Separator className='mt-5' />
                     <div className="flex flex-col items-start justify-start py-5">
-                        <h2 className='text-xl font-semibold mt-2'>Ma`lumotlar</h2>
+                        <h2 className='text-xl font-semibold mt-2'>{t('cottage_info')}</h2>
                         <div className="flex justify-between items-center w-full mt-5">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><House size={18} /> Dacha nomi: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><House size={18} /> {t('cottage_name')}: </p>
                             <p className='text-[17px] font-medium line-clamp-1'>{cottage.name}</p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><Clock size={17} /> Kirish vaqti: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><Clock size={17} /> {t('check_in_time')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>10:00/19:00</p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><Clock size={17} /> Chiqish vaqti: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><Clock size={17} /> {t('check_out_time')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>09:00/17:00</p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><MapPin size={17} /> Joylashuv: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><MapPin size={17} /> {t('place')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[17px] font-medium'>{cottage.region.name.slice(0, 12)},{cottage.place.name}</p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> Narxi: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> {t('price')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.price.toLocaleString()} {t('currency')} </p>
                         </div>
                         <div className="flex justify-between items-center w-full mt-3">
-                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> Dam olish kunlari: </p>
+                            <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> {t('weekend_days')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} {t('currency')} </p>
                         </div>
 
-                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage.user.phone}`}><PhoneOutgoing size={20} /> Qo`ng`iroq qilish </Link>
+                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage.user.phone}`}><PhoneOutgoing size={20} /> {t('call_now')} </Link>
                     </div>
                 </div>
             </div>

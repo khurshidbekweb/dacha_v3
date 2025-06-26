@@ -3,12 +3,14 @@ import { CardSwiper } from "@/components/swiper/swiper-card";
 import { cottage } from "@/types";
 import Link from "next/link";
 import CottageEdit from "@/section/profile/dacha-edit/dacha-edit";
+import { useTranslation } from "react-i18next";
 
 interface DachaProps {
     dacha: cottage
 }
 
 export function UserDachaCard({ dacha }: DachaProps) {
+    const {t} = useTranslation()
     return (
         <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
             <div className="">
@@ -42,7 +44,7 @@ export function UserDachaCard({ dacha }: DachaProps) {
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                             <span>0</span>
                             <span className="mx-1">●</span>
-                            <span>0 Sharhlar</span>
+                            <span>0 {t('reviews')}</span>
                         </div>
 
                     </div>

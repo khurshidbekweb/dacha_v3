@@ -5,12 +5,14 @@ import { premiumCottage } from "@/types";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 interface premiumCottageProps {
     dacha: premiumCottage
 }
 
 
 export function PremiumDachaCard({ dacha }: premiumCottageProps) {
+    const {t} = useTranslation()
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
     const isLiked = likedCards.includes(dacha.cottage.id);
@@ -53,7 +55,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                                 <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                                 <span>0</span>
                                 <span className="mx-1">●</span>
-                                <span>0 Sharhlar</span>
+                                <span>0 {t('reviews')}</span>
                             </div>
                             <div className="flex items-center gap-x-5">
                                 <span className="flex items-center gap-x-1 text-[14px]"><Eye size={16} /> {view.length}</span>

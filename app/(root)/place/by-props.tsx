@@ -14,14 +14,20 @@ interface placeProps {
 
 export default function ByPlace({ paramsId }: placeProps) {
     const { data: cottages, isLoading } = ALL_DATA.useCottageByPlace(paramsId)
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    console.log(i18n);
     const placeName = cottages?.length && cottages[0]?.place?.name || ''
     return (
         <>
             <Navbar />
             <BreadCrumbs data={[{ slug: '', title: t('home') }, { slug: 'cottage', title: t('place') }]} page={placeName} />
             <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
-                <h2 className='text-2xl md:text-3xl mt-5 font-semibold'><span className="text-amber-400">{placeName}</span> da joylashgan e`lonlar</h2>
+                <h2 className='text-2xl md:text-3xl mt-5 font-semibold'>
+                    {i18n.language === 'uz'
+                        ? <><span className="text-amber-400">{placeName}</span>{t('ads_located_in')}</>
+                        : <>{t('ads_located_in')} <span className="text-amber-400">{placeName}</span></>
+                    }
+                </h2>
                 <div className="hidden md:grid mt-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-3 justify-items-center md:justify-between items-center mx-auto">
                     {isLoading || !cottages?.length ? <>
                         <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />

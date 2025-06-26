@@ -66,11 +66,11 @@ export const DachaMap = ({ setCottage, cottage }: infoProps) => {
             <h3>{t('choos_map')}</h3>
 
             <Autocomplete onLoad={(ref) => (autocompleteRef.current = ref)} onPlaceChanged={onPlaceSelected}>
-                <Input type="text" className="my-2 p-2" placeholder="E'lon joyini qidiring..." />
+                <Input type="text" className="my-2 p-2" placeholder={`${t('search_by_location_name')}...`} />
             </Autocomplete>
 
             <Button className="rounded-lg my-2" onClick={getCurrentLocation} type="button">
-                📍 Joylashuvimni olish
+                📍 {t('get_my_location')}
             </Button>
 
             <GoogleMap

@@ -3,6 +3,7 @@ import { cottage } from '@/types';
 import { Images } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface imageProps {
     images: cottage,
@@ -10,6 +11,7 @@ interface imageProps {
 }
 
 const ImageDachaDes = ({ images, onOpenSheet }: imageProps) => {
+    const { t } = useTranslation()
     const mainImageCard = images.images && images?.images.filter(dacha => dacha.isMainImage == true)
 
     return (
@@ -41,7 +43,7 @@ const ImageDachaDes = ({ images, onOpenSheet }: imageProps) => {
             </div>
             <div className="absolute flex gap-x-2 right-3 bottom-3 bg-secondary p-2 rounded-xl px-3" onClick={onOpenSheet}>
                 <Images />
-                Barcha {images.images.length} ta rasmni ko`rish
+                {t('view_all_images')}
             </div>
         </div>
     );

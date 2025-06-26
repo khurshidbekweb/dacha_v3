@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { postCottage } from '@/types';
 import Cleave from 'cleave.js/react';
+import { t } from 'i18next';
 import { RefreshCcw } from 'lucide-react';
 import React, { useState } from 'react';
 
@@ -21,7 +22,7 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
     return (
         <div className="w-full flex flex-col space-y-3 px-2">
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="name">Dacha nomi</Label>
+                <Label htmlFor="name">{t('cottage_name')}</Label>
                 <Input
                     id='name'
                     defaultValue={cottage.cottageName}
@@ -53,9 +54,9 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }} />
             </div>
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="singlebad">1 o`rinli yotoqlar soni</Label>
+                <Label htmlFor="singlebed">{t('single_bed')}</Label>
                 <Input
-                    id='singlebad'
+                    id='singlebed'
                     type='tel'
                     defaultValue={cottage.singleBedCount}
                     onChange={(e) => {
@@ -64,7 +65,7 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }} />
             </div>
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="doublelebad">2 o`rinli yotoqlar soni</Label>
+                <Label htmlFor="doublelebad">{t('double_bed')}</Label>
                 <Input
                     id='doublelebad'
                     type='tel'

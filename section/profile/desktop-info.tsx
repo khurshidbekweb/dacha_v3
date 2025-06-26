@@ -33,7 +33,7 @@ const DesktopInfo = ({ user }: userProps) => {
             </ul>
             {active === 'cottage' &&
                 <div>
-                    <h2 className='text-xl md:text-2xl font-createRound mt-10'>Mening dachalarim</h2>
+                    <h2 className='text-xl md:text-2xl font-createRound mt-10'>{t('my_cottages')}</h2>
                     <div className="w-full mt-5 grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                         {userCottage?.length ? userCottage.map((dacha: cottage) => (
                             <UserDachaCard key={dacha.id} dacha={dacha} />

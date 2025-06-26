@@ -7,6 +7,7 @@ import { cottage } from '@/types';
 import { Dot, Heart, MapPin, MapPinned, MoveLeft, Share2, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 
 
@@ -15,6 +16,7 @@ interface headINfo {
 }
 
 const HeadInfo = ({ cottage }: headINfo) => {
+    const {t} = useTranslation()
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
     const isLiked = likedCards.includes(cottage.id);
@@ -65,7 +67,7 @@ const HeadInfo = ({ cottage }: headINfo) => {
                         <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                         <p>3.5</p>
                         <Dot size={28} strokeWidth={1.75} />
-                        <span className='text-sm underline'>0 Sharhlar</span>
+                        <span className='text-sm underline'>0 {t('reviews')}</span>
                     </div>
                 </div>
             </div>

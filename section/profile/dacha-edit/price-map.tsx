@@ -8,6 +8,7 @@ import { postCottage } from '@/types';
 import React, { useState } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useTranslation } from 'react-i18next';
 
 interface editINfoProps {
     cottage: postCottage
@@ -20,6 +21,7 @@ interface ruleData {
 }
 
 const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
+    const {t} = useTranslation()
     const [regionId, setRegionId] = useState(cottage.regionId)
     const { data: regions } = ALL_DATA.useRegion()
 
@@ -129,7 +131,7 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }} />
             </div>
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="price">Dam olish kunlari</Label>
+                <Label htmlFor="price">{t('weekend_days')}</Label>
                 <Input
                     id='price'
                     type='tel'
