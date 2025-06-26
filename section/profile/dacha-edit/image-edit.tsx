@@ -13,6 +13,7 @@ import { IMG_BASE_URL } from '@/constants';
 
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 interface PropsType {
     id: string;
@@ -20,6 +21,7 @@ interface PropsType {
 }
 
 const CottageEditImg = ({ id, images }: PropsType) => {
+    const {t} = useTranslation()
     const queryClient = useQueryClient();
 
     const mainImage = images.find((e) => e.isMainImage === true);
@@ -38,7 +40,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
         mutationFn: cottageUtils.addCottageImage,
         onSuccess: () => {
             invalidateImages();
-            toast.success('Rasm muvaffaqiyatli yuklandi');
+            toast.success(`${t('image_uploaded')}`);
         },
         onError: (err) => toast.error(err.message),
     });
@@ -47,7 +49,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
         mutationFn: cottageUtils.deleteCottageImage,
         onSuccess: () => {
             invalidateImages();
-            toast.success('Rasm muvaffaqiyatli o‘chirildi');
+            toast.success(`${t('image_deleted')}`);
         },
         onError: (err) => toast.error(err.message),
     });
@@ -83,7 +85,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
             <div className="p-4 space-y-6">
                 {/* Main Image */}
                 <div>
-                    <h2 className="text-lg font-semibold">Asosiy rasm</h2>
+                    <h2 className="text-lg font-semibold">{t('main_image')} </h2>
                     <div className="flex items-end gap-4 mt-3">
                         {mainImage?.image && (
                             <Image
@@ -102,7 +104,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
                                 className="hidden"
                             />
                             <Upload size={20} />
-                            <span>Rasmni almashtirish</span>
+                            <span>{t('replace_image')}</span>
                         </label>
                     </div>
                 </div>
@@ -111,7 +113,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
 
                 {/* Child Images */}
                 <div>
-                    <h2 className="text-lg font-semibold">Qo‘shimcha rasmlar</h2>
+                    <h2 className="text-lg font-semibold">{t('additional_images')}</h2>
                     <div className="flex gap-2 mt-3 overflow-x-auto items-center">
                         {childImages.map((img) => (
                             <div key={img.id} className="relative w-[120px] h-[150px]">
@@ -142,7 +144,7 @@ const CottageEditImg = ({ id, images }: PropsType) => {
                                 className="hidden"
                             />
                             <Upload size={20} />
-                            <span className='text-sm w-[120px] text-center'>Rasm qo‘shish</span>
+                            <span className='text-sm w-[120px] text-center'>{t('add_image')}</span>
                         </label>
                     </div>
                 </div>

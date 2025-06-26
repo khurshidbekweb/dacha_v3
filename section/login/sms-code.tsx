@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface smsCode {
     phoneNumber: string,
@@ -9,6 +10,7 @@ interface smsCode {
 }
 
 const SmsCode = ({ backOneHandle, handleLogin, phoneNumber }: smsCode) => {
+    const {t} = useTranslation()
     const [checked, setChecked] = useState(true)
 
     return (
@@ -23,20 +25,20 @@ const SmsCode = ({ backOneHandle, handleLogin, phoneNumber }: smsCode) => {
                 <input name='smscode' className='border-b-2 text-center border-black text-black text-xl border-bottom w-full outline-0 mt-5' type="tel" placeholder='*****' />
                 <div className="flex items-center gap-x-2 mt-3">
                     <Checkbox className='text-gray-600 border border-black' checked={!checked} onCheckedChange={(value) => setChecked(!value)} />
-                    <p className='text-gray-600'>Barcha shartlarga roziman</p>
+                    <p className='text-gray-600'>{t('accept_all_terms')}</p>
                 </div>
                 <Button
                     disabled={checked}
                     type="submit"
                     className="w-full mt-10 bg-blue-600 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-blue-500 focus:ring focus:ring-blue-400"
                 >
-                    Tasdiqlash
+                    {t('confirm')}
                 </Button>
             </form>
             <p className="text-center text-sm text-gray-600 mt-4 flex gap-x-2 justify-center">
                 Kodni qabul qilmadingizmi?
                 <button onClick={backOneHandle} className="text-blue-600 hover:underline focus:outline-none cursor-pointer">
-                    Qayta yuborish
+                    {t('resend')}
                 </button>
             </p>
         </div>

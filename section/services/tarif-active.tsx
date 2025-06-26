@@ -27,7 +27,7 @@ interface propsActive {
 
 export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActive) {
     const userCottage = ALL_DATA.useCottageUser();
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const [selectDacha, setSelectDacha] = useState("");
     const queryClient = useQueryClient()
     const route = useRouter()
@@ -79,10 +79,18 @@ export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActiv
             <DialogContent className="sm:max-w-[425px] rounded-lg">
                 <DialogHeader className="p-1">
                     <DialogTitle className="text-lg font-semibold text-start">
-                        {tariff?.type} tarifini faollashtirish
+                        {i18n.language == 'uz' ?
+                            <>
+                                {tariff?.type} {t('activate_tariff')}
+                            </> :
+                            <>
+                                {t('activate_tariff')} {tariff?.type}
+                            </>
+                        }
+
                     </DialogTitle>
                     <DialogDescription className="text-muted-foreground">
-                        Tarif parametrlari va muddatni tanlang
+                        {t('select_tariff_params')}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -101,14 +109,14 @@ export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActiv
                     {/* Muddatni tanlash */}
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-700">
-                            E`loningizni tanlang
+                            {t('select_your_ad')}
                         </label>
                         <select
                             value={selectDacha}
                             onChange={(e) => setSelectDacha(e.target.value)}
                             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                            <option value="">E`lon tanlang</option>
+                            <option value="">{t('choose_ad')}</option>
                             {userCottage.data?.length &&
                                 userCottage.data.filter((dacha) => dacha.cottageStatus === "confirmed").map((el: cottage) => (
                                     <option key={el.id} value={el.id}>
@@ -125,7 +133,7 @@ export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActiv
                         onClick={() => onOpenChange(false)}
                         disabled={isLoading}
                     >
-                        Bekor qilish
+                        {t('cancel')}
                     </Button>
                     <Button
                         onClick={handleActivate}
@@ -134,10 +142,12 @@ export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActiv
                         {isLoading ? (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Faollashtirilmoqda...
+                                {t('activating')}...
                             </>
                         ) : (
-                            "Faollashtirish"
+                            <>
+                                {t('activate')}
+                            </>
                         )}
                     </Button>
                 </div>

@@ -32,7 +32,7 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }} />
             </div>
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="maxGuests">Mehmonlar soni</Label>
+                <Label htmlFor="maxGuests">{t('number_of_guests')}</Label>
                 <Input
                     id='maxGuests'
                     type='tel'
@@ -76,12 +76,12 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                     }} />
             </div>
             <div className='flex flex-col space-y-2'>
-                <h3 className='text-xl md:text-3xl font-semibold '>Bog`lanish</h3>
-                <Label htmlFor="doublelebad">Hozirgi raqam:
+                <h3 className='text-xl md:text-3xl font-semibold '>{t('contact')}</h3>
+                <Label htmlFor="doublelebad">{t('current_number')}:
                     <p className='text-green-500 dark:text-amber-400'> +998{cottage?.contactPhone}</p>
 
                 </Label>
-                <span onClick={() => setPhoneNumber((value) => !value)} className='flex items-center gap-x-1.5 border text-center justify-center p-1 rounded-lg'>Raqamni almashtirish <RefreshCcw size={20} /></span>
+                <span onClick={() => setPhoneNumber((value) => !value)} className='flex items-center gap-x-1.5 border text-center justify-center p-1 rounded-lg'>{t('change_number')} <RefreshCcw size={20} /></span>
 
                 <Cleave
                     options={{
@@ -101,7 +101,7 @@ const InfoEdit = ({ cottage, setCottage }: editINfoProps) => {
                 />
             </div>
             <div className='flex flex-col space-y-2'>
-                <Label htmlFor="deskription">Dacha haqida qisqacha tavsif</Label>
+                <Label htmlFor="deskription">{t('cottage_description_short')}</Label>
                 <Textarea
                     id='deskription'
                     defaultValue={cottage.description}

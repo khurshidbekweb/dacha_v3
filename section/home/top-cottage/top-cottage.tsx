@@ -1,6 +1,6 @@
 'use client'
 import { MiniPremiumDacha } from '@/components/card/mini-premium-cottage';
-import { PremiumDachaCard } from '@/components/card/prmium-dacha';
+import { PremiumDachaCard } from '@/components/card/premium-dacha';
 import { ALL_DATA } from '@/query/query-fn';
 import React from 'react';
 import { useTranslation } from 'react-i18next';

@@ -6,7 +6,6 @@
   "send_message": "Yuborish",
   "contacy_description": "Men sizga yordam berish va har qanday savolga javob berish uchun shu yerdaman. Sizdan xabar kutib qolaman",
   "form_message": "Savollarngiz bo`lsa yozing...",
-  "form_number": "Telefon raqam",
   "form_name": "Ismingizni kiriting",
 
   "faq_title": "Tez-tez Beriladigan Savollar",
@@ -26,7 +25,7 @@
   "announcements": "E'lonlar",
   "announcement": "E'lon",
   "services": "Xizmatlar",
-  "contact": "Bog'lanish",
+  "contact": "Bog`lanish",
   "add_announcements": "E'lon joylash",
   "home": "Bosh sahifa",
   "fovarite": "Sevimlilar",
@@ -121,5 +120,34 @@
   "view_all_images": "Barcha rasmlarni ko`rish",
   "my_cottages": "Mening dachalarim",
   "get_my_location": "Joylashuvimni olish",
-  "search_by_location_name": "Joylashuv nomi bo'yicha qidirish"
+  "search_by_location_name": "Joylashuv nomi bo'yicha qidirish",
+
+  "edit": "Tahrirlash",
+  "guest_capacity": "kishilik",
+  "room_count": "xonalik",
+  "main_image": "Asosiy rasm",
+  "replace_image": "Rasmni almashtirish",
+  "additional_images": "Qo`shimcha rasmlar",
+  "add_image": "Rasm qo`shish",
+  "number_of_guests": "Mehmonlar soni",
+  "current_number": "Hozirgi raqam",
+  "change_number": "Raqamni almashtirish",
+  "cottage_description_short": "Dacha haqida qisqacha tavsif",
+
+  "activate_tariff": " tarifini faollashtirish",
+  "select_tariff_params": "Tarif parametrlari va muddatni tanlang",
+  "select_your_ad": "E`loningizni tanlang",
+  "choose_ad": "E`lon tanlang",
+  "cancel": "Bekor qilish",
+  "activate": "Faollashtirish",
+  "activating": "Faollashtirilmoqda",
+
+  "skip": "O`tkazib yuborish",
+  "resend": "Qayta yuborish",
+  "confirm": "Tasdiqlash",
+  "get_code": "Kodni olish",
+  "successfully_added": "Muvaffaqiyatli qo`shildi",
+  "image_uploaded": "Rasm muvaffaqiyatli yuklandi",
+  "image_deleted": "Rasm muvaffaqiyatli o`chirildi",
+  "accept_all_terms": "Barcha shartlarga roziman"
 }

@@ -48,7 +48,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <Separator className='mt-5 md:mt-10' />
                     </div>
                     <div className="comforts">
-                        <h3 className='text-2xl md:text-3xl font-mediu'>Qulayliklar</h3>
+                        <h3 className='text-2xl md:text-3xl font-mediu'>{t('comforts')}</h3>
                         <div className="grid grid-cols-3 gap-2 mt-5">
                             {cottage.comforts.map(comfort => (
                                 <span className="flex gap-x-2 items-center" key={comfort.id}>

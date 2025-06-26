@@ -42,11 +42,11 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                         <div className="flex gap-4 text-sm mb-3">
                             <div className="flex items-center">
                                 <Users className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>8 kishilik</span>
+                                <span>8 {t('guest_capacity')}</span>
                             </div>
                             <div className="flex items-center">
                                 <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>4 xonalik</span>
+                                <span>4 {t('room_count')}</span>
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                     </div>
                     <div className="p-2 pt-0 flex justify-between items-center">
                         <p className="text-lg font-semibold text-primary">{dacha.cottage.price.toLocaleString()} so`m</p>
-                        <Button className="p-2 rounded-lg bg-primary">Batafsil <MoveUpRight /></Button>
+                        <Button className="p-2 rounded-lg bg-primary">{t('more')} <MoveUpRight /></Button>
                     </div>
                 </div>
             </Link>

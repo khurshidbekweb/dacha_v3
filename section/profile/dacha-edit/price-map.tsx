@@ -83,9 +83,9 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
 
     return (
         <div className='w-full flex flex-col space-y-3 px-2'>
-            <h3 className='text-xl md:text-3xl font-semibold mt-3'>Manzil</h3>
+            <h3 className='text-xl md:text-3xl font-semibold mt-3'>{t('location')}</h3>
             <div className="flex flex-col space-y-2">
-                <Label htmlFor="region">Viloyatni tanlang</Label>
+                <Label htmlFor="region">{t('select_region')}</Label>
                 <Select
                     value={regionId}
                     onValueChange={(value: string) => {
@@ -93,7 +93,7 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
                         setRegionId(value)
                     }}>
                     <SelectTrigger className='w-full'>
-                        <SelectValue placeholder="Viloyatni tanlang" />
+                        <SelectValue placeholder={`${t('select_region')}`} />
                     </SelectTrigger>
                     <SelectContent>
                         {regions?.length && regions.map(el => (
@@ -103,12 +103,12 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
                 </Select>
             </div>
             <div className="flex flex-col space-y-2">
-                <Label htmlFor="region">Joylashuvni tanlang</Label>
+                <Label htmlFor="region">{t('select_place')}</Label>
                 <Select value={cottage.placeId} disabled={!regionId} onValueChange={(value) => {
                     setCottage({ ...cottage, placeId: value })
                 }}>
                     <SelectTrigger className='w-full'>
-                        <SelectValue placeholder="Joylashuvni tanlang" />
+                        <SelectValue placeholder={`${t('select_place')}`} />
                     </SelectTrigger>
                     <SelectContent>
                         {places?.length && places.map(el => (
@@ -119,8 +119,8 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
             </div>
             {/* <DachaMap cottage={cottage} setCottage={setCottage} /> */}
             <div className='flex flex-col space-y-2'>
-                <h3 className='text-xl md:text-3xl font-semibold mt-3'>Narxlar (sum)</h3>
-                <Label htmlFor="price">1 kunlik narx</Label>
+                <h3 className='text-xl md:text-3xl font-semibold mt-3'>{t('prices')} (sum)</h3>
+                <Label htmlFor="price">{t('once_price')}</Label>
                 <Input
                     id='price'
                     type='tel'

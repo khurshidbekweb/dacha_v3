@@ -31,7 +31,7 @@ const CallMobile = ({ cottage }: callProps) => {
                 <p className='text-[14px]'>Bir kunlik narx: <span className='text-[16px] font-semibold text-green-500'>{cottage.price.toLocaleString()}</span> {t('currency')}</p>
                 <p className='text-[14px]'>{t('weekend_days')}: <span className='text-[16px] font-semibold text-green-500'>{cottage.priceWeekend.toLocaleString()} </span> {t('currency')}</p>
             </div>
-            <Link onClick={callAdd} href={`tel:${cottage.user.phone}`} className="flex gap-x-2 justify-center items-center bg-primary dark:bg-amber-500 py-1 px-2 rounded-lg text-white"><PhoneCall size={15} /> Bog`lanish</Link>
+            <Link onClick={callAdd} href={`tel:${cottage.user.phone}`} className="flex gap-x-2 justify-center items-center bg-primary dark:bg-amber-500 py-1 px-2 rounded-lg text-white"><PhoneCall size={15} /> {t('contact')}</Link>
         </div>
     );
 };

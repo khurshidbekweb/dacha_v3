@@ -95,7 +95,7 @@ const AddNewPage = () => {
     const addNewCottage = useMutation({
         mutationFn: cottageUtils.postCottage,
         onSuccess: () => {
-            toast.success('Muvaffaqiyat qo`shildi')
+            toast.success(`${t('successfully_added')}`)
             setCottage({
                 cottageName: '',
                 description: '',

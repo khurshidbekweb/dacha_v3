@@ -78,8 +78,8 @@ const CottagePage = () => {
 
                         <div className="w-[250px] flex flex-col items-center gap-6 p-4">
                             <div className="flex justify-between text-sm w-[250px]">
-                                <span>500 ming sum</span>
-                                <span>{filter.maxPrice.toString().slice(0, 1)}mln {filter.maxPrice.toString().slice(1, 4)} ming sum</span>
+                                <span>500 ming so'm</span>
+                                <span>{filter.maxPrice.toString().slice(0, 1)}mln {filter.maxPrice.toString().slice(1, 4)} ming so'm</span>
                             </div>
 
                             <Slider

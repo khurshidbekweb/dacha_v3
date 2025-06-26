@@ -39,7 +39,7 @@ const Settings = () => {
                     <ChangeLanguage />
                 </div>
                 <div onClick={logOut} className="flex items-center cursor-pointer justify-center text-white gap-x-2 border bg-red-500 text-center p-1 rounded-lg w-[150px] mt-16">
-                    Chiqish <LogOut />
+                {t('logout')} <LogOut />
                 </div>
             </div>
 

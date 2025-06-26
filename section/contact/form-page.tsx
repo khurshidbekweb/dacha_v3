@@ -79,7 +79,7 @@ Message: ${values.message}`
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Input placeholder={`${t('form_number')}`} {...field} disabled={loading} />
+                                <Input placeholder={`${t('contact_phone')}`} {...field} disabled={loading} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

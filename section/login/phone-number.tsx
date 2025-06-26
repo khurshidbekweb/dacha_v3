@@ -3,6 +3,7 @@ import Cleave from 'cleave.js/react';
 import Image from 'next/image';
 import React from 'react';
 import logo from '@/public/image/image.png'
+import { useTranslation } from 'react-i18next';
 
 interface phoneNumber {
     handleAuth: (e: React.FormEvent<HTMLFormElement>) => void,
@@ -10,16 +11,17 @@ interface phoneNumber {
 }
 
 const PhoneNumber = ({ handleAuth, setPhoneNumber }: phoneNumber) => {
+    const {t} = useTranslation()
     return (
         <div className="bg-white  shadow-md rounded-lg p-8 w-full max-w-md">
             <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-start">
-                Kirish
+                {t('enter')}
             </h2>
             <Image width={70} height={70} className='rounded-full overflow-hidden mx-auto border p-1' src={logo} alt='' />
             <p className='text-2xl text-center font-normal text-gray-800'>DachaOL.uz</p>
             <form onSubmit={handleAuth} >
                 <label htmlFor="phone" className="block text-gray-700 py-2 text-sm font-createRound">
-                    Telefon raqami
+                    {t('contact_phone')}
                 </label>
                 <Cleave
                     options={{
@@ -39,7 +41,7 @@ const PhoneNumber = ({ handleAuth, setPhoneNumber }: phoneNumber) => {
                     type="submit"
                     className="w-full mt-6 bg-blue-600 text-white py-3 text-xl cursor-pointer px-4 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-400"
                 >
-                    Kodni olish
+                    {t('get_code')}
                 </Button>
             </form>
         </div>
