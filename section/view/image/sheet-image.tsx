@@ -5,7 +5,7 @@ import {
     DrawerTitle,
 } from "@/components/ui/drawer"
 import { ChevronLeft } from 'lucide-react';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import { IMG_BASE_URL } from '@/constants';
 import Image from 'next/image';
 import ImageSwiper from './image-swiper';
@@ -13,7 +13,7 @@ import ImageSwiper from './image-swiper';
 interface bootomSheet {
     isOpen: boolean,
     onClose: () => void
-    cottage: cottage
+    cottage: newCottage
 }
 
 const AllImage = ({ isOpen, onClose, cottage }: bootomSheet) => {

@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { IMG_BASE_URL } from '@/constants';
-import { cottage, user } from '@/types';
+import { newCottage, user } from '@/types';
 import { BadgePercent, BedDouble, BedSingle, Clock, DoorOpen, Dot, House, LogIn, LogOut, MapPin, PartyPopper, PawPrint, PhoneOutgoing, Star, UsersRound, VolumeOff, Wine } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,7 +19,7 @@ import { commitUtils } from '@/utils/commit.utils';
 
 
 interface mainInfo {
-    cottage: cottage
+    cottage: newCottage
 }
 
 const MainInfo = ({ cottage }: mainInfo) => {
@@ -230,11 +230,11 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} {t('currency')} </p>
                         </div>
 
-                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage.user.phone}`}><PhoneOutgoing size={20} /> {t('call_now')} </Link>
+                        <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage?.contactPhone ? cottage?.contactPhone : cottage?.user?.phone}`}><PhoneOutgoing size={20} /> {t('call_now')} </Link>
                     </div>
                 </div>
             </div>
-            <GoogleMap link={mapLink!} />
+            <GoogleMap link={mapLink as string} />
         </>
     );
 };

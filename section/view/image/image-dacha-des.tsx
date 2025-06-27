@@ -1,12 +1,12 @@
 import { IMG_BASE_URL } from '@/constants';
-import { cottage } from '@/types';
+import {  newCottage } from '@/types';
 import { Images } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface imageProps {
-    images: cottage,
+    images: newCottage,
     onOpenSheet: () => void
 }
 

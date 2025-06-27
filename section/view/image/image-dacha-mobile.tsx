@@ -10,12 +10,12 @@ import {
     CarouselPrevious,
     type CarouselApi,
 } from "@/components/ui/carousel"
-import { cottage } from "@/types"
+import { newCottage } from "@/types"
 import Image from "next/image"
 import { IMG_BASE_URL } from "@/constants"
 
 interface imageProps {
-    images: cottage,
+    images: newCottage,
     onOpenSheet: () => void
 }
 

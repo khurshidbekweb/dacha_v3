@@ -186,8 +186,8 @@ export interface newCottage {
   priceWeekend: number;
   rating: string;
   quiteHours: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | string;
+  longitude: number | string;
   comforts: comfort[];
   images: image[];
   events: Event[];
@@ -196,5 +196,5 @@ export interface newCottage {
   place: place;
   region: region;
   status: "active" | string;
-
+  user: user,
 }

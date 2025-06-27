@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useLikeStore } from '@/store/like-card';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import { Dot, Heart, MapPin, MapPinned, MoveLeft, Share2, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -12,11 +12,11 @@ import { toast } from 'sonner';
 
 
 interface headINfo {
-    cottage: cottage
+    cottage: newCottage
 }
 
 const HeadInfo = ({ cottage }: headINfo) => {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const likedCards = useLikeStore(state => state.likedCards);
     const toggleLike = useLikeStore(state => state.toggleLike);
     const isLiked = likedCards.includes(cottage.id);

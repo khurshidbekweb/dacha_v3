@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import Navbar from '@/app/(root)/_components/navbar';
 import DachaImages from './image/images';
 import BreadCrumbs from '@/components/share/bredcrambs';
@@ -16,7 +16,7 @@ import { cottageUtils } from '@/utils/cottage.utils';
 
 
 interface dachaView {
-    cottage: cottage,
+    cottage: newCottage,
 }
 
 const MainView = ({ cottage }: dachaView) => {
@@ -37,7 +37,7 @@ const MainView = ({ cottage }: dachaView) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    
+
 
     return (
         <>

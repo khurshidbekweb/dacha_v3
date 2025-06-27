@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import { ImageDacha } from './image-dacha-mobile';
 import ImageDachaDes from './image-dacha-des';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import AllImage from './sheet-image';
 
 interface imageProps {
-    cottage: cottage
+    cottage: newCottage
 }
 
 const DachaImages = ({ cottage }: imageProps) => {

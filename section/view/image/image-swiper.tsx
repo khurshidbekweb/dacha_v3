@@ -13,14 +13,14 @@ import {
     type CarouselApi,
 } from "@/components/ui/carousel"
 import { X } from 'lucide-react';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import { IMG_BASE_URL } from '@/constants';
 import Image from 'next/image';
 
 interface bottomSheetProps {
     isOpen: boolean,
     onClose: () => void
-    cottage: cottage
+    cottage: newCottage
     imageIndex: number
 }
 
