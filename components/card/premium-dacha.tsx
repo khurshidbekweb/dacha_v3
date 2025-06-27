@@ -21,8 +21,6 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
 
     };
     const view = dacha?.cottage?.events?.filter(event => event.eventType === 'view')
-    const call = dacha?.cottage?.events?.filter(event => event.eventType === 'call')
-    console.log(dacha?.cottage?.events);
 
 
     return (
@@ -62,7 +60,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                             </div>
                             <div className="flex items-center gap-x-5">
                                 <span className="flex items-center gap-x-1 text-[14px]"><Eye size={16} /> {view.length}</span>
-                                <span className="flex items-center gap-x-1 text-[14px]"><Phone size={15} /> {call?.length}</span>
+                                <span className="flex items-center gap-x-1 text-[14px]"><Phone size={15} /> 30</span>
                             </div>
                         </div>
 

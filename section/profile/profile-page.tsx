@@ -49,7 +49,7 @@ const ProfilePage = () => {
             localStorage.setItem("user", JSON.stringify(userData?.data));
         },
         onError: (err) => {
-            console.log(err, 'aaaa');
+            console.log(err, 'Hatolik mavjud');
         }
     });
 

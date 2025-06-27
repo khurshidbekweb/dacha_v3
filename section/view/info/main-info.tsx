@@ -27,7 +27,6 @@ const MainInfo = ({ cottage }: mainInfo) => {
     const [rating, setRating] = useState(3)
     const [commitText, setCommitText] = useState('')
     const userInfo: user = JSON.parse(safeLocalStorage.getItem('user')!)
-    console.log(rating);
     const queryClient = useQueryClient()
 
     const postRating = useMutation({

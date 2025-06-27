@@ -26,8 +26,8 @@ const FileUpload = ({ cottage, setCottage }: ImageUploaderProps) => {
     const { control } = useFormContext();
     const imageUpload = useMutation({
         mutationFn: uploadImage.uploadImage,
-        onSuccess: (data) => {
-            console.log(data);
+        onSuccess: () => {
+
         },
         onError: (err) => {
             console.log(err);

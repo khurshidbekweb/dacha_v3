@@ -21,7 +21,7 @@ interface ruleData {
 }
 
 const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const [regionId, setRegionId] = useState(cottage.regionId)
     const { data: regions } = ALL_DATA.useRegion()
 
@@ -75,7 +75,6 @@ const PriceMapEdit = ({ cottage, setCottage }: editINfoProps) => {
 
         // Comfortlarning to‘liq obyektlarini cottage ichiga set qilish
         const selectedComforts = comforts?.length && comforts.filter((c) => updatedIds.includes(c.id)).map(el => el.id)
-        console.log(selectedComforts);
 
 
         setCottage({ ...cottage, comforts: selectedComforts || [] });

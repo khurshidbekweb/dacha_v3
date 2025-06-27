@@ -55,7 +55,6 @@ const CottagePage = () => {
     const cottageTypeSelectChart = cottageTypes?.filter((el: cottageType) => cottageType.includes(el.id))
 
 
-    console.log(filter);
 
 
 

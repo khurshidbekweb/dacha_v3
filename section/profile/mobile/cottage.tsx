@@ -13,8 +13,6 @@ import { useTranslation } from 'react-i18next';
 const UserDacha = () => {
     const { t } = useTranslation()
     const { data: userCottage, isLoading } = ALL_DATA.useCottageUser();
-    console.log(userCottage);
-
     return (
         <div className='w-full'>
             <Navbar />

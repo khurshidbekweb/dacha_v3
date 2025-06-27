@@ -15,7 +15,6 @@ interface placeProps {
 export default function ByPlace({ paramsId }: placeProps) {
     const { data: cottages, isLoading } = ALL_DATA.useCottageByPlace(paramsId)
     const { t, i18n } = useTranslation()
-    console.log(i18n);
     const placeName = cottages?.length && cottages[0]?.place?.name || ''
     return (
         <>
