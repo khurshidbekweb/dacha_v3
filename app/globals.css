@@ -131,3 +131,7 @@
 .pac-container {
   z-index: 9999 !important;
 }
+
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}

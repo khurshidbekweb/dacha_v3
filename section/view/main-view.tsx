@@ -13,6 +13,7 @@ import CallMobile from './info/coll-mobile';
 import { ALL_DATA } from '@/query/query-fn';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { cottageUtils } from '@/utils/cottage.utils';
+import { QUERY_KEYS } from '@/query/query-key';
 
 
 interface dachaView {
@@ -26,7 +27,7 @@ const MainView = ({ cottage }: dachaView) => {
     const viewCottage = useMutation({
         mutationFn: cottageUtils.addEvent,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['views'] })
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.cottage_by_id] })
         }
     })
     useEffect(() => {
