@@ -197,4 +197,13 @@ export interface newCottage {
   region: region;
   status: "active" | string;
   user: user,
+  comments: comments[]
+}
+
+export interface comments {
+  content: string
+  cottageId: string
+  createdAt: string
+  id: string
+  userId: string
 }

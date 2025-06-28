@@ -54,6 +54,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
             userId: userInfo.id
         })
     }
+console.log(cottage);
 
 
     const mapLink =
