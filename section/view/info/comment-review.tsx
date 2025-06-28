@@ -26,7 +26,6 @@ const CommentReview = ({ cottage }: commentType) => {
     const userInfo: user = JSON.parse(safeLocalStorage.getItem('user')!)
     const queryClient = useQueryClient()
 
-
     const postCommit = useMutation({
         mutationFn: commitUtils.postComment,
         onSuccess: () => {
@@ -62,7 +61,7 @@ const CommentReview = ({ cottage }: commentType) => {
                         <Button className='' onClick={handleCommit}>Comment</Button>
                     </div>
                     <div className="h-[40vh] md:h-auto overflow-y-scroll scroll-none">
-                        {cottage?.comments ? cottage.comments.map((comment) => (
+                        {cottage?.comments?.length ? cottage.comments.map((comment) => (
                             <div className="flex flex-col space-y-2" key={comment.id}>
                                 <div className="user flex gap-x-2 items-center">
                                     <Avatar>
@@ -89,3 +88,4 @@ const CommentReview = ({ cottage }: commentType) => {
 };
 
 export default CommentReview;
+

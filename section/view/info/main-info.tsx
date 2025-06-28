@@ -1,4 +1,3 @@
-'use client'
 
 import { Separator } from '@/components/ui/separator';
 import { IMG_BASE_URL } from '@/constants';
@@ -18,7 +17,6 @@ interface mainInfo {
 
 const MainInfo = ({ cottage }: mainInfo) => {
     const { t } = useTranslation()
-
 
     const mapLink =
         cottage?.latitude &&
@@ -110,7 +108,6 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             </div>
                         </div>
                     </div>
-
                     <CommentReview cottage={cottage} />
                 </div>
                 <div className="sticky w-full flex-1 border p-2 top-10 bottom-5 rounded-lg hidden md:block">

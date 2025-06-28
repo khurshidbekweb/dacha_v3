@@ -1,10 +1,11 @@
 'use client'
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Rating, RatingButton } from '@/components/ui/reating';
 import { QUERY_KEYS } from '@/query/query-key';
 import { ratingUtils } from '@/utils/rating.utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 interface propsActive {
     open: boolean,
@@ -20,9 +21,10 @@ const RetingCottage = ({ onOpenChange, open, cottageId, userId }: propsActive) =
         mutationFn: ratingUtils.postRating,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.cottage_by_id] })
+            onOpenChange(false)
         }
     })
-    
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[425px] rounded-lg">
@@ -33,6 +35,21 @@ const RetingCottage = ({ onOpenChange, open, cottageId, userId }: propsActive) =
                     <DialogDescription className="text-muted-foreground">
                         {t('select_tariff_params')}
                     </DialogDescription>
+                    <div className="flex">
+                        <Rating defaultValue={rating} onValueChange={(value) => {
+                            setRating(value)
+                            postRating.mutate({
+                                cottageId: cottageId,
+                                rating,
+                                userId
+                            })
+
+                        }}>Add commentMore actions
+                            {Array.from({ length: 5 }).map((_, index) => (
+                                <RatingButton key={index} />
+                            ))}
+                        </Rating>
+                    </div>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
