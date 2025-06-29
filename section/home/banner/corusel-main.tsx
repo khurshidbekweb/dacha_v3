@@ -135,10 +135,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                         <p className="text-xl font-semibold text-amber-400 flex flex-col">{t('prices')}: {top.cottage.price} {t('currency')}
                                             <span className='text-white text-[12px] text-center'>{t('work_day_price')}</span>
                                         </p>
-                                        <button className="details-btn mt-4 w-fit flex items-center bg-amber-500 rounded-xl p-2">
+                                        <Link href={`/view/${top.cottage.id}`} className="details-btn mt-4 w-fit flex items-center bg-amber-500 rounded-xl p-2">
                                             <span>{t('more')}</span>
                                             <ArrowRightIcon className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                                        </button>
+                                        </Link>
                                     </div>
                                     <div className="z-20 info-section-mobile flex justify-between md:hidden w-full items-end absolute h-full bottom-0 p-1 px-2">
                                         <h2 className="text-[14px] font-semibold w-[30%] text-start text-white line-clamp-2">{top.cottage.name}</h2>
