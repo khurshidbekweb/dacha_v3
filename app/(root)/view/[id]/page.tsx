@@ -36,7 +36,6 @@ export async function generateMetadata(
 }
 
 
-
 export default async function View({
     params,
 }: { params: { id: string } }) {
@@ -44,8 +43,6 @@ export default async function View({
     return (
         <Info
             cottage={cottage}
-            paramsId={params.id}
         />
     );
 }
-

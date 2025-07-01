@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { newCottage, user } from '@/types';
 import { Star, UserRound } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { safeLocalStorage } from '@/utils/safeLocalstorge';
@@ -12,7 +12,9 @@ import { commitUtils } from '@/utils/commit.utils';
 import { IMG_BASE_URL } from '@/constants';
 import { Button } from '@/components/ui/button';
 import { QUERY_KEYS } from '@/query/query-key';
-import RetingCottage from './reting-cottage';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Rating, RatingButton } from '@/components/ui/reating';
+import { ratingUtils } from '@/utils/rating.utils';
 
 interface commentType {
     cottage: newCottage
@@ -45,45 +47,82 @@ const CommentReview = ({ cottage }: commentType) => {
             userId: userInfo.id
         })
     }
+    const [rating, setRating] = useState(4)
+    const postRating = useMutation({
+        mutationFn: ratingUtils.postRating,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.cottage_by_id] })
+            setOpen(false)
+        }
+    })
     return (
-        <div>
-            <div className="review mt-5 flex flex-col space-y-2 relative">
-                <h3 className='text-2xl md:text-3xl font-mediu'>{t('guest_reviews')}</h3>
-                <div className="flex flex-col space-y-3">
-                    <div className="flex justify-between items-end flex-col space-y-1">
-                        <div className="flex justify-between items-center gap-x-2 w-full">
-                            <Avatar>
-                                <AvatarImage src={userInfo?.name ? '' : `${IMG_BASE_URL}${userInfo.image}`} />
-                                <AvatarFallback>{userInfo?.name ? userInfo?.name?.slice(0, 3) : <UserRound />}</AvatarFallback>
-                            </Avatar>
-                            <Textarea onChange={(text) => setCommitText(text.target.value)} placeholder='Commit add...' className='w-full border-b outline-none' />
-                        </div>
-                        <Button className='' onClick={handleCommit}>Comment</Button>
-                    </div>
-                    <div className="h-[40vh] md:h-auto overflow-y-scroll scroll-none">
-                        {cottage?.comments?.length ? cottage.comments.map((comment) => (
-                            <div className="flex flex-col space-y-2" key={comment.id}>
-                                <div className="user flex gap-x-2 items-center">
-                                    <Avatar>
-                                        <AvatarImage src="https://github.com/shadcn.png" />
-                                        <AvatarFallback>AL</AvatarFallback>
-                                    </Avatar>
-                                    <div className="">
-                                        <p>Alijon</p>
-                                        <span className='flex'><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /></span>
-                                    </div>
-                                </div>
-                                <p className='text-[16px]'>{comment?.content}</p>
+        <>
+            <div>
+                <div className="review mt-5 flex flex-col space-y-2 relative">
+                    <h3 className='text-2xl md:text-3xl font-mediu'>{t('guest_reviews')}</h3>
+                    <div className="flex flex-col space-y-3">
+                        <div className="flex justify-between items-end flex-col space-y-3">
+                            <div className="flex justify-between items-center gap-x-2 w-full">
+                                <Avatar>
+                                    <AvatarImage src={userInfo?.name ? '' : `${IMG_BASE_URL}${userInfo.image}`} />
+                                    <AvatarFallback>{userInfo?.name ? userInfo?.name?.slice(0, 3) : <UserRound />}</AvatarFallback>
+                                </Avatar>
+                                <Textarea onChange={(text) => setCommitText(text.target.value)} placeholder='Commit add...' className='w-full border-b outline-none' />
                             </div>
-                        )) : <p>
-                            Not yet comment
-                        </p>}
+                            <Button className='' onClick={handleCommit}>Comment</Button>
+                        </div>
+                        <div className="h-[40vh] md:h-auto overflow-y-scroll scroll-none">
+                            {cottage?.comments?.length ? cottage.comments.map((comment) => (
+                                <div className="flex flex-col space-y-2" key={comment.id}>
+                                    <div className="user flex gap-x-2 items-center">
+                                        <Avatar>
+                                            <AvatarImage src="https://github.com/shadcn.png" />
+                                            <AvatarFallback>AL</AvatarFallback>
+                                        </Avatar>
+                                        <div className="">
+                                            <p>Alijon</p>
+                                            <span className='flex'><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /><Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" /></span>
+                                        </div>
+                                    </div>
+                                    <p className='text-[16px]'>{comment?.content}</p>
+                                </div>
+                            )) : <p>
+                                Not yet comment
+                            </p>}
+                        </div>
                     </div>
                 </div>
+                <Separator className='mt-10' />
             </div>
-            <Separator className='mt-10' />
-            <RetingCottage onOpenChange={setOpen} open={open} cottageId={cottage.id} userId={userInfo.id} />
-        </div>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="sm:max-w-[425px] rounded-lg">
+                    <DialogHeader className="p-1">
+                        <DialogTitle className="text-lg font-semibold text-start">
+                            Reting qoldiring
+                        </DialogTitle>
+
+                        <div className="flex justify-center items-center">
+                            <Rating defaultValue={rating} onValueChange={(value) => {
+                                setRating(value)
+                                postRating.mutate({
+                                    cottageId: cottage.id,
+                                    rating: value,
+                                    userId: userInfo.id
+                                })
+
+                            }}>
+                                {Array?.from({ length: 5 }).map((_, index) => (
+                                    <RatingButton key={index} />
+                                ))}
+                            </Rating>
+                        </div>
+                        <DialogDescription className="text-muted-foreground">
+                            {t('select_tariff_params')}
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
+        </>
     );
 };
 

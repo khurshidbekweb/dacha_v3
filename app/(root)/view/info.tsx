@@ -1,16 +1,14 @@
 import MainView from '@/section/view/main-view';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import React from 'react';
 
 
 interface PropsView {
-    cottage: cottage,
-    paramsId: string,
+    cottage: newCottage
 }
 
 const Info = ({ cottage }: PropsView) => {
-    
-    return <MainView cottage={cottage}  />;
+    return <MainView cottage={cottage} />;
 };
 
 export default Info;

@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { newCottage } from '@/types';
 import Navbar from '@/app/(root)/_components/navbar';
 import DachaImages from './image/images';
 import BreadCrumbs from '@/components/share/bredcrambs';
@@ -11,10 +10,11 @@ import MainInfo from './info/main-info';
 import CallMobile from './info/coll-mobile';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { cottageUtils } from '@/utils/cottage.utils';
+import { newCottage } from '@/types';
 
 
 interface dachaView {
-    cottage: newCottage,
+    cottage: newCottage
 }
 
 const MainView = ({ cottage }: dachaView) => {
@@ -27,15 +27,19 @@ const MainView = ({ cottage }: dachaView) => {
             queryClient.invalidateQueries({ queryKey: ['view'] })
         }
     })
+    console.log(cottage);
+
     useEffect(() => {
-        viewCottage.mutate({
-            cottageId: cottage.id,
-            event: 'view'
-        })
+        if (cottage) {
+            viewCottage.mutate({
+                cottageId: cottage.id,
+                event: 'view'
+            });
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [cottage]);
 
-
+    if (!cottage) return null
 
     return (
         <>

@@ -12,7 +12,7 @@ import { TariffUtils } from "../utils/tariff.utilis";
 import { OrderUtils } from "../utils/order.utils";
 import { safeLocalStorage } from "@/utils/safeLocalstorge";
 import { QUERY_KEYS } from "./query-key";
-import { comfort, cottage, cottageTop, cottageType, language, order, place, premiumCottage, region, services, tariff, user } from "@/types";
+import { comfort, cottage, cottageTop, cottageType, language, newCottage, order, place, premiumCottage, region, services, tariff, user } from "@/types";
 
 // Type definitions (misol uchun, o'zingizning real typelar bilan to'ldiring)
 
@@ -35,15 +35,6 @@ export const ALL_DATA = {
             queryFn: () => cottageUtils.getCottageByPlace(placeId),
             enabled: !!placeId
         });
-
-        const likedCottages: string[] = JSON.parse(safeLocalStorage.getItem("liked") || "[]");
-        if (cottages.data?.length) {
-            const data = cottages.data.map((e: cottage) => ({
-                ...e,
-                isLiked: likedCottages.includes(e.id),
-            }));
-            return { ...cottages, data };
-        }
         return cottages;
     },
     useCottageFilter: ({ type, place, price }: { type?: string; place?: string; price?: string }): UseQueryResult<cottage[]> & { data?: cottage[] } => {
@@ -93,6 +84,13 @@ export const ALL_DATA = {
             queryKey: [QUERY_KEYS.cottage_suitable_id, id],
             queryFn: () => cottageUtils.getSuitableCottage(id),
             enabled: !!id
+        }),
+
+    useCottageById: (paramsId: string): UseQueryResult<newCottage> =>
+        useQuery({
+            queryKey: [QUERY_KEYS.cottage_suitable_id, paramsId],
+            queryFn: () => cottageUtils.getCottageById(paramsId),
+            enabled: !!paramsId
         }),
 
     useCottageTariffTop: (id: string): UseQueryResult<cottage[]> =>
