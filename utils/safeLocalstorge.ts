@@ -17,4 +17,7 @@ export const safeLocalStorage = {
       localStorage.removeItem(key);
     }
   },
+  clear(): void {
+    localStorage.clear()
+  }
 };
