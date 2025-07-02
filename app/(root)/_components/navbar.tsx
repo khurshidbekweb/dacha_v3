@@ -18,7 +18,6 @@ const Navbar = () => {
     const { t } = useTranslation()
     const user: user = JSON.parse(safeLocalStorage.getItem('user')!)
 
-
     return (
         <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14 z-50 '>
             <div className="flex justify-between items-center h-[60px]">
