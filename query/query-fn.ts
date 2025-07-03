@@ -86,9 +86,9 @@ export const ALL_DATA = {
             enabled: !!id
         }),
 
-    useCottageById: (paramsId: string): UseQueryResult<newCottage> =>
+    useCottageById: (paramsId: string): UseQueryResult<{ message: string, data: newCottage }> =>
         useQuery({
-            queryKey: [QUERY_KEYS.cottage_suitable_id, paramsId],
+            queryKey: [QUERY_KEYS.cottage_by_id, paramsId],
             queryFn: () => cottageUtils.getCottageById(paramsId),
             enabled: !!paramsId
         }),
@@ -98,12 +98,6 @@ export const ALL_DATA = {
             queryKey: [QUERY_KEYS.cottage_by_isTop, id],
             queryFn: () => cottageUtils.getCottageTariffTop(id),
         }),
-
-    useCottageBySingle: (id: string) => useQuery({
-        queryKey: [QUERY_KEYS.cottage_by_id],
-        queryFn: () => cottageUtils.getCottageById(id),
-        enabled: !id
-    }),
 
     useCottageRecommended: (): UseQueryResult<premiumCottage[]> =>
         useQuery({

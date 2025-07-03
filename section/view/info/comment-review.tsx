@@ -71,7 +71,7 @@ const CommentReview = ({ cottage }: commentType) => {
                             </div>
                             <Button className='' onClick={handleCommit}>Comment</Button>
                         </div>
-                        <div className="h-[40vh] md:h-auto overflow-y-scroll scroll-none">
+                        <div className={`${cottage.comments.length > 3 ? 'h-[40vh]' : "h-[10vh]"}  md:h-auto overflow-y-scroll scroll-none`}>
                             {cottage?.comments?.length ? cottage.comments.map((comment) => (
                                 <div className="flex flex-col space-y-2" key={comment.id}>
                                     <div className="user flex gap-x-2 items-center">

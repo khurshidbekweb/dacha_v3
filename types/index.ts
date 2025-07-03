@@ -204,6 +204,8 @@ export interface comments {
   content: string
   cottageId: string
   createdAt: string
-  id: string
+  id: string,
+  user: user,
+  rating: string
   userId: string
 }

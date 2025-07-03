@@ -39,10 +39,9 @@ export async function generateMetadata(
 export default async function View({
     params,
 }: { params: { id: string } }) {
-    const { data: cottage } = await cottageUtils.getCottageById(params.id);
     return (
         <Info
-            cottage={cottage}
+            paramsId={params?.id}
         />
     );
 }

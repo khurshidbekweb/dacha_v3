@@ -25,7 +25,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
     return (
         <>
             <div className="flex flex-col space-y-2 items-start justify-start px-3 md:hidden">
-                <h2 className='text-2xl font-medium'>{cottage.name}</h2>
+                <h2 className='text-2xl font-medium'>{cottage?.name}</h2>
                 <p className='text-[16px] font-normal text-gray-500 flex gap-x-1 items-center'><MapPin size={24} strokeWidth={1.75} /> {cottage.region.name}, {cottage.place.name}</p>
                 <div className="flex items-center">
                     <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
