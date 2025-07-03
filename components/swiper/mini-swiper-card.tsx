@@ -11,13 +11,13 @@ import {
     type CarouselApi,
 } from "@/components/ui/carousel"
 import Image from "next/image"
-import { cottage, } from "@/types"
+import { newCottage, } from "@/types"
 import { IMG_BASE_URL } from "@/constants"
 import { Eye } from "lucide-react"
 
 
 interface swiperImage {
-    dacha: cottage
+    dacha: newCottage
 }
 
 export function CardSwiperMini({ dacha }: swiperImage) {

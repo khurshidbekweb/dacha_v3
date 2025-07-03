@@ -122,7 +122,7 @@ export interface order {
 }
 
 export interface premiumCottage {
-  cottage: cottage,
+  cottage: newCottage,
   cottageId: string
   createdAt: string
   expireAt: string

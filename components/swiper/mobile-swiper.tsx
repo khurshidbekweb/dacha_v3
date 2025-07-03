@@ -7,11 +7,11 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { cottage } from "@/types"
+import { newCottage } from "@/types"
 import { DachaCard } from "@/components/card/dacha-card"
 
 interface swiperProps {
-    cottages: cottage[]
+    cottages: newCottage[]
 }
 
 export function MobileSwiper({ cottages }: swiperProps) {

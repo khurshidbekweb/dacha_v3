@@ -53,7 +53,7 @@ export function MiniPremiumDacha({ dacha }: premiumCottageProps) {
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                             <span>{dacha?.cottage?.rating}</span>
                             <span className="mx-1">●</span>
-                            <span>0 {t('reviews')}</span>
+                            <span className="underline">{dacha.cottage.comments.length} {t('reviews')}</span>
                         </div>
                     </div>
                     <p className="text-lg font-semibold text-primary">{dachaOnly.price.toLocaleString()} so`m</p>

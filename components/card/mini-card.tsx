@@ -1,6 +1,6 @@
 import { MapPin, Users, DoorOpen, Star, Heart } from "lucide-react";
 import { useLikeStore } from "@/store/like-card";
-import { cottage } from "@/types";
+import { newCottage } from "@/types";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { CardSwiperMini } from "../swiper/mini-swiper-card";
@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 interface DachaProps {
-    dacha: cottage
+    dacha: newCottage
 }
 
 export function DachaCardMini({ dacha }: DachaProps) {
@@ -40,11 +40,11 @@ export function DachaCardMini({ dacha }: DachaProps) {
                         <div className="flex gap-4 text-sm mb-3 text-[13px] md:text-sm">
                             <div className="flex items-center">
                                 <Users className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>8 {t('guest_capacity')}</span>
+                                <span>{dacha?.maxGuests ? dacha?.maxGuests : 8} {t('guest_capacity')}</span>
                             </div>
                             <div className="flex items-center">
                                 <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>4 {t('room_count')}</span>
+                                <span>{dacha?.numberOfRooms ? dacha?.numberOfRooms : 4} {t('room_count')}</span>
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@ export function DachaCardMini({ dacha }: DachaProps) {
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                             <span>{dacha?.rating}</span>
                             <span className="mx-1">●</span>
-                            <span>0 {t('reviews')}</span>
+                            <span className="underline">{dacha.comments.length} {t('reviews')}</span>
                         </div>
                     </div>
 

@@ -1,12 +1,12 @@
 import { MapPin, Users, DoorOpen, Star, } from "lucide-react";
 import { CardSwiper } from "@/components/swiper/swiper-card";
-import { cottage } from "@/types";
+import { newCottage } from "@/types";
 import Link from "next/link";
 import CottageEdit from "@/section/profile/dacha-edit/dacha-edit";
 import { useTranslation } from "react-i18next";
 
 interface DachaProps {
-    dacha: cottage
+    dacha: newCottage
 }
 
 export function UserDachaCard({ dacha }: DachaProps) {
@@ -31,7 +31,7 @@ export function UserDachaCard({ dacha }: DachaProps) {
                         <div className="flex gap-4 text-sm mb-3">
                             <div className="flex items-center">
                                 <Users className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>8 {t('guest_capacity')}</span>
+                                <span>{8} {t('guest_capacity')}</span>
                             </div>
                             <div className="flex items-center">
                                 <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
@@ -44,7 +44,7 @@ export function UserDachaCard({ dacha }: DachaProps) {
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                             <span>{dacha?.rating}</span>
                             <span className="mx-1">●</span>
-                            <span>0 {t('reviews')}</span>
+                            <span className="underline">{dacha.comments.length} {t('reviews')}</span>
                         </div>
 
                     </div>

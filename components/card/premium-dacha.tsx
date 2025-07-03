@@ -56,7 +56,7 @@ export function PremiumDachaCard({ dacha }: premiumCottageProps) {
                                 <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                                 <span>{dacha?.cottage?.rating}</span>
                                 <span className="mx-1">●</span>
-                                <span>0 {t('reviews')}</span>
+                                <span className="underline">{dacha.cottage.comments.length} {t('reviews')}</span>
                             </div>
                             <div className="flex items-center gap-x-5">
                                 <span className="flex items-center gap-x-1 text-[14px]"><Eye size={16} /> {view.length}</span>
