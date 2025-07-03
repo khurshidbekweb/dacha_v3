@@ -31,7 +31,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                     <p>3.5</p>
                     <Dot size={28} strokeWidth={1.75} />
-                    <span className='text-[16px] underline'>0 {t('reviews')}</span>
+                    <span className='text-[16px] underline'>{cottage.comments.length} {t('reviews')}</span>
                 </div>
                 <Separator className='my-2' />
             </div>

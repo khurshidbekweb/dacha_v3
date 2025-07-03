@@ -1,14 +1,14 @@
 import { MapPin, Users, DoorOpen, Star, Heart } from "lucide-react";
 import { CardSwiper } from "@/components/swiper/swiper-card";
 import { useLikeStore } from "@/store/like-card";
-import { cottage } from "@/types";
+import { newCottage } from "@/types";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 interface DachaProps {
-    dacha: cottage
+    dacha: newCottage
 }
 
 export function DachaCard({ dacha }: DachaProps) {
@@ -53,7 +53,7 @@ export function DachaCard({ dacha }: DachaProps) {
                             <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
                             <span>{dacha?.rating}</span>
                             <span className="mx-1">●</span>
-                            <span>0 {t('reviews')}</span>
+                            <span>{dacha.comments.length} {t('reviews')}</span>
                         </div>
                     </div>
 

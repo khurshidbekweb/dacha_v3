@@ -47,7 +47,7 @@ const MainView = ({ cottage }: dachaView) => {
                 <Navbar />
                 <BreadCrumbs data={[{ title: t('home'), slug: '' }, { title: t('announcement'), slug: 'cottage' }]} page={cottage.name} />
             </div>
-            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-32'>
+            <div className='max-w-[1540px] mx-auto md:px-10 xl:px-32 mb-20'>
                 <HeadInfo cottage={cottage} />
                 <DachaImages cottage={cottage} />
                 <MainInfo cottage={cottage} />

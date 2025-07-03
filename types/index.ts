@@ -190,7 +190,7 @@ export interface newCottage {
   longitude: number | string;
   comforts: comfort[];
   images: image[];
-  events: Event[];
+  events: event[];
   orders: order[]; // Empty array, so can be left as `any[]` or defined
   premiumCottages?: string[]; // Typing this depends on your actual structure
   place: place;
