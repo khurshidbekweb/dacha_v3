@@ -15,7 +15,6 @@ interface mainInfo {
 
 const MainInfo = ({ cottage }: mainInfo) => {
     const { t } = useTranslation()
-
     const mapLink =
         cottage?.latitude &&
         cottage?.longitude &&
@@ -33,7 +32,6 @@ const MainInfo = ({ cottage }: mainInfo) => {
                 </div>
                 <Separator className='my-2' />
             </div>
-
             <Separator className='mt-10 md:block hidden' />
             <div className="flex justify-between items-start w-full mt-2 md:mt-10 relative gap-3 px-2 md:px-0">
                 <div className="flex flex-col space-y-3 w-full md:w-[70%]">
