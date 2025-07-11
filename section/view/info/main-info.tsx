@@ -8,7 +8,6 @@ import Link from 'next/link';
 import GoogleMap from './google-map';
 import { useTranslation } from 'react-i18next';
 
-
 interface mainInfo {
     cottage: newCottage
 }
@@ -138,7 +137,6 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             <p className='flex items-center gap-x-1 text-[17px] font-medium'><BadgePercent size={17} /> {t('weekend_days')}: </p>
                             <p className='line-clamp-1 flex gap-x-1 text-[18px] font-medium'>{cottage.priceWeekend.toLocaleString()} {t('currency')} </p>
                         </div>
-
                         <Link className='w-full bg-[#62cf51e7] dark:bg-[#f0a400dc] text-white p-2 py-3 rounded-full flex items-center hover:bg-[#44bd32] dark:hover:bg-[#F0A500] transition-colors justify-center mt-7 gap-x-3 text-center' href={`tel:${cottage?.contactPhone ? cottage?.contactPhone : cottage?.user?.phone}`}><PhoneOutgoing size={20} /> {t('call_now')} </Link>
                     </div>
                 </div>
