@@ -19,7 +19,7 @@ export async function generateMetadata(
             description: cottage?.description,
             images: [
                 {
-                    url: mainImage ? `${IMG_BASE_URL}${mainImage.image}` : 'https://your-site.com/default.jpg',
+                    url: mainImage ? `${IMG_BASE_URL}${mainImage?.image}` : 'https://your-site.com/default.jpg',
                     width: 800,
                     height: 600,
                     alt: cottage?.name || 'Dacha rasmi',
@@ -41,7 +41,7 @@ export default async function View({
 }: { params: { id: string } }) {
     return (
         <Info
-            paramsId={params?.id}
+            paramsId={params.id}
         />
     );
 }

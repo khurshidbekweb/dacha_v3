@@ -8,7 +8,6 @@ import Link from 'next/link';
 import GoogleMap from './google-map';
 import { useTranslation } from 'react-i18next';
 
-import CommentReview from './comment-review';
 
 
 interface mainInfo {
@@ -108,7 +107,7 @@ const MainInfo = ({ cottage }: mainInfo) => {
                             </div>
                         </div>
                     </div>
-                    <CommentReview cottage={cottage} />
+                    {/* <CommentReview cottage={cottage} /> */}
                 </div>
                 <div className="sticky w-full flex-1 border p-2 top-10 bottom-5 rounded-lg hidden md:block">
                     <h3 className='text-xl font-mediu'>{t('contact_cottage_owner')}</h3>

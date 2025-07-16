@@ -9,8 +9,6 @@ import React from 'react';
 const MobileNov = () => {
     const pathname = usePathname()
     const likeNumber = useLikeStore(state => state.likedCards)
-    console.log(likeNumber);
-
     return (
         <div className='w-full fixed bottom-0 left-0 flex md:hidden justify-between items-center bg-secondary pt-3 pb-5  px-3 rounded-t-3xl'>
             <Link href={'/'} className={`flex flex-col items-center justify-center ${pathname === '/' ? 'text-[#008F8C]' : ''}`}>

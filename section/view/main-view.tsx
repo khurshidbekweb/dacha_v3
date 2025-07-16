@@ -27,8 +27,6 @@ const MainView = ({ cottage }: dachaView) => {
             queryClient.invalidateQueries({ queryKey: ['view'] })
         }
     })
-    console.log(cottage);
-
     useEffect(() => {
         if (cottage) {
             viewCottage.mutate({

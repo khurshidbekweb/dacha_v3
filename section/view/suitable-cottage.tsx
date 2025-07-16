@@ -1,10 +1,10 @@
 import { DachaCard } from '@/components/card/dacha-card';
 import { DachaCardMini } from '@/components/card/mini-card';
-import { cottage } from '@/types';
+import { newCottage } from '@/types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 interface suitableCottage {
-    cottages: cottage[]
+    cottages: newCottage[]
 }
 
 const SuitableCottage = ({ cottages }: suitableCottage) => {
