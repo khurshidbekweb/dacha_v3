@@ -9,7 +9,6 @@ import GoogleMap from './google-map';
 import { useTranslation } from 'react-i18next';
 
 
-
 interface mainInfo {
     cottage: newCottage
 }
