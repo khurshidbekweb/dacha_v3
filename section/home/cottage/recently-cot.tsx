@@ -11,7 +11,8 @@ import { useTranslation } from 'react-i18next';
 const RecentlyCot = () => {
     const { t } = useTranslation()
     const { data: cottages, isLoading } = ALL_DATA.useCottage()
-    const recentleCottage = cottages?.filter(dacha => dacha.cottageType[0].id === 'c4c301b1-4719-499e-bde2-2c36715fae9e').slice(0, 8)
+    const recentleCottage = cottages?.data?.filter(dacha => dacha.cottageType[0].id === 'c4c301b1-4719-499e-bde2-2c36715fae9e').slice(0, 8)
+
     return (
         <div className='mx-auto max-w-[1540px] px-2 md:px-5 xl:px-14'>
             <h2 className='text-2xl md:text-3xl font-semibold'>{t('resently_cottage')}</h2>

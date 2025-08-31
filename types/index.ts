@@ -45,6 +45,7 @@ export interface cottageTop {
   serviceCode: 'top' | 'recommended'
 }
 
+
 export interface image {
   id: string,
   cottageId: string,
@@ -198,6 +199,13 @@ export interface newCottage {
   status: "active" | string;
   user: user,
   comments: comments[]
+}
+
+export interface dataCottage {
+  data: newCottage[],
+  limit: number,
+  page: number,
+  totalCount: number
 }
 
 export interface comments {

@@ -12,14 +12,14 @@ import { TariffUtils } from "../utils/tariff.utilis";
 import { OrderUtils } from "../utils/order.utils";
 import { safeLocalStorage } from "@/utils/safeLocalstorge";
 import { QUERY_KEYS } from "./query-key";
-import { comfort, cottage, cottageTop, cottageType, language, newCottage, order, place, premiumCottage, region, services, tariff, user } from "@/types";
+import { comfort, cottage, cottageTop, cottageType, dataCottage, language, newCottage, order, place, premiumCottage, region, services, tariff, user } from "@/types";
 
 // Type definitions (misol uchun, o'zingizning real typelar bilan to'ldiring)
 
 const token = safeLocalStorage.getItem('accessToken')
 
 export const ALL_DATA = {
-    useCottage: (): UseQueryResult<cottage[]> =>
+    useCottage: (): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottages],
             queryFn: cottageUtils.getCottage,
@@ -29,7 +29,7 @@ export const ALL_DATA = {
             queryKey: [QUERY_KEYS.cottageTop],
             queryFn: cottageUtils.getCottageTop,
         }),
-    useCottageByPlace: (placeId: string): UseQueryResult<cottage[]> & { data?: cottage[] } => {
+    useCottageByPlace: (placeId: string): UseQueryResult<dataCottage> & { data?: newCottage[] } => {
         const cottages = useQuery({
             queryKey: [QUERY_KEYS.cottages_by_place],
             queryFn: () => cottageUtils.getCottageByPlace(placeId),
@@ -37,7 +37,7 @@ export const ALL_DATA = {
         });
         return cottages;
     },
-    useCottageFilter: ({ type, place, price }: { type?: string; place?: string; price?: string }): UseQueryResult<cottage[]> & { data?: cottage[] } => {
+    useCottageFilter: ({ type, place, price }: { type?: string; place?: string; price?: string }): UseQueryResult<dataCottage> & { data?: cottage[] } => {
         const filters = useQuery({
             queryKey: [QUERY_KEYS.cottage_by_filter, type, place, price],
             queryFn: () => cottageUtils.getCottageFilter({ type, place, price }),
@@ -53,33 +53,33 @@ export const ALL_DATA = {
         }
         return filters;
     },
-    useCottageByType: (type: string): UseQueryResult<cottage[]> =>
+    useCottageByType: (type: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottageType_by_Id],
             queryFn: () => cottageUtils.getCottageType(type),
         }),
 
-    useCottageUser: (): UseQueryResult<cottage[]> =>
+    useCottageUser: (): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottages],
             queryFn: cottageUtils.getCottageUser,
             enabled: !!token
         }),
 
-    useCottageAllUserId: (userId: string): UseQueryResult<cottage[]> =>
+    useCottageAllUserId: (userId: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottageUserAllId],
             queryFn: () => cottageUtils.getCottageUserId(userId),
         }),
 
-    useSearchCottage: (search: string): UseQueryResult<cottage[]> =>
+    useSearchCottage: (search: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: ["search_cottage", search],
             queryFn: () => cottageUtils.getSearchCottage(search),
             enabled: !!search,
         }),
 
-    useSuitableCottage: (id: string): UseQueryResult<cottage[]> =>
+    useSuitableCottage: (id: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottage_suitable_id, id],
             queryFn: () => cottageUtils.getSuitableCottage(id),
@@ -93,7 +93,7 @@ export const ALL_DATA = {
             enabled: !!paramsId
         }),
 
-    useCottageTariffTop: (id: string): UseQueryResult<cottage[]> =>
+    useCottageTariffTop: (id: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottage_by_isTop, id],
             queryFn: () => cottageUtils.getCottageTariffTop(id),
@@ -147,7 +147,7 @@ export const ALL_DATA = {
             queryFn: userUtils.getSingleUser,
         }),
 
-    useCottageUserById: (userID: string): UseQueryResult<cottage[]> =>
+    useCottageUserById: (userID: string): UseQueryResult<dataCottage> =>
         useQuery({
             queryKey: [QUERY_KEYS.userCottageUser],
             queryFn: () => userUtils.getCottageUserById(userID),
