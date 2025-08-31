@@ -30,6 +30,7 @@ export const HomePage = () => {
             <div className='mt-5 mb-16 md:mt-16'>
                 <Cottage />
             </div>
+
             <MobileNov />
         </div>
     );

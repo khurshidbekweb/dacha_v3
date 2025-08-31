@@ -1,3 +1,4 @@
+
 export interface ChildProps {
   children: React.ReactNode;
 }
@@ -216,4 +217,9 @@ export interface comments {
   user: user,
   rating: string
   userId: string
+}
+
+export interface pagaLimitPage {
+  pageParams: number[],
+  pages: dataCottage[]
 }

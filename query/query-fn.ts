@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useInfiniteQuery, UseInfiniteQueryResult, useQuery, UseQueryResult } from "@tanstack/react-query";
 import { cottageUtils } from "../utils/cottage.utils";
 import { languageUtils } from "../utils/language.utils";
 import { placeUtils } from "../utils/place.utils";
@@ -12,17 +12,27 @@ import { TariffUtils } from "../utils/tariff.utilis";
 import { OrderUtils } from "../utils/order.utils";
 import { safeLocalStorage } from "@/utils/safeLocalstorge";
 import { QUERY_KEYS } from "./query-key";
-import { comfort, cottage, cottageTop, cottageType, dataCottage, language, newCottage, order, place, premiumCottage, region, services, tariff, user } from "@/types";
+import { comfort, cottage, cottageTop, cottageType, dataCottage, language, newCottage, order, pagaLimitPage, place, premiumCottage, region, services, tariff, user } from "@/types";
 
 // Type definitions (misol uchun, o'zingizning real typelar bilan to'ldiring)
 
 const token = safeLocalStorage.getItem('accessToken')
 
 export const ALL_DATA = {
-    useCottage: (): UseQueryResult<dataCottage> =>
-        useQuery({
-            queryKey: [QUERY_KEYS.cottages],
-            queryFn: cottageUtils.getCottage,
+    useCottages: (
+        limit: number
+    ): UseInfiniteQueryResult<pagaLimitPage, Error> =>
+        useInfiniteQuery<dataCottage, Error, pagaLimitPage, [string, number], number>({
+            queryKey: [QUERY_KEYS.cottages, limit],
+            queryFn: ({ pageParam = 1 }) =>
+                cottageUtils.getCottage(pageParam as number, limit),
+            initialPageParam: 1,
+            getNextPageParam: (lastPage) => {
+                const { page, totalCount, limit } = lastPage;
+                const maxPage = Math.ceil(totalCount / limit);
+                if (page < maxPage) return page + 1;
+                return undefined;
+            }
         }),
     useCottageTop: (): UseQueryResult<cottageTop[]> =>
         useQuery({

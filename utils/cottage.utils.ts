@@ -91,8 +91,9 @@ type PatchCottageImagePayload = {
 type FilterValue = string | number | boolean | ReadonlyArray<string | number | boolean> | null | undefined | string;
 
 export const cottageUtils = {
-    getCottage: async () => {
+    getCottage: async (page: number, limit: number) => {
         const { data } = await custimAxios.get('/cottage', {
+            params: { page, limit },
             headers: {
                 'accept-language': safeLocalStorage.getItem('language'),
             },

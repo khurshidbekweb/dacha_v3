@@ -155,5 +155,7 @@
 	"submit_comment": "Sharhni yuborish",
 	"no_comment": "Hozircha sharhlar mavjud emas!",
 	"rating_": "E'lonni baholang",
-  "rating_test":"Sizning fikringiz biz uchun muhim"
+	"rating_test": "Sizning fikringiz biz uchun muhim",
+	"loading": "Loading...",
+	"see_more": "Ko'proq ko'rish"
 }
