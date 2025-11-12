@@ -1,5 +1,6 @@
 import custimAxios from '@/config/axios.config'
 import { safeLocalStorage } from './safeLocalstorge'
+import { filterCottage } from '@/section/cottage/cottage-page'
 
 type FilterType = {
     type?: string
@@ -88,7 +89,6 @@ type PatchCottageImagePayload = {
     image: File
 }
 
-type FilterValue = string | number | boolean | ReadonlyArray<string | number | boolean> | null | undefined | string;
 
 export const cottageUtils = {
     getCottage: async (page: number, limit: number) => {
@@ -203,7 +203,7 @@ export const cottageUtils = {
         )
         return data
     },
-    getFilter: async (filter: Record<string, FilterValue>) => {
+    getFilter: async (filter: filterCottage) => {
         const queryParams = new URLSearchParams()
 
         Object.entries(filter).forEach(([key, value]) => {
