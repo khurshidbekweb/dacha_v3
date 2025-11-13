@@ -69,7 +69,7 @@ export const ALL_DATA = {
             queryFn: () => cottageUtils.getCottageType(type),
         }),
 
-    useCottageUser: (): UseQueryResult<dataCottage> =>
+    useCottageUser: (): UseQueryResult<newCottage[]> =>
         useQuery({
             queryKey: [QUERY_KEYS.cottages],
             queryFn: cottageUtils.getCottageUser,

@@ -37,7 +37,7 @@ const MobileMenu = () => {
                             <Link
                                 key={link.id}
                                 href={link.path}
-                                className={`hover:bg-[#44bd32] px-4 py-3 dark:hover:bg-[#F0A500] hover:text-white flex items-center gap-x-2 rounded-md transition-colors ${pathname == link.path ? 'bg-color px-2 p-1 rounded-md text-white' : ''}`}
+                                className={`hover:bg-[#44bd32] px-4 py-3 dark:hover:bg-[#F0A500] hover:text-white flex items-center gap-x-2 rounded-md transition-colors ${pathname == link.path ? 'bg-color px-2 p-1 rounded-md' : ''}`}
                             >
                                 <Icon size={25} />
                                 <span className="font-medium">{t(`${link.name}`)}</span>

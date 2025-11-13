@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { cottage, tariff } from "@/types";
+import { newCottage, tariff } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { paymiUtils } from "@/utils/paymi.utils";
 import { toast } from "sonner";
@@ -118,7 +118,7 @@ export function ActivateTariffDialog({ open, onOpenChange, tariff, }: propsActiv
                         >
                             <option value="">{t('choose_ad')}</option>
                             {userCottage.data?.length &&
-                                userCottage.data.filter((dacha) => dacha.cottageStatus === "confirmed").map((el: cottage) => (
+                                userCottage.data.filter((dacha) => dacha.cottageStatus === "confirmed").map((el: newCottage) => (
                                     <option key={el.id} value={el.id}>
                                         {el.name}
                                     </option>

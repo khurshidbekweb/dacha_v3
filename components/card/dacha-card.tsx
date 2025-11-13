@@ -40,11 +40,11 @@ export function DachaCard({ dacha }: DachaProps) {
                         <div className="flex gap-4 text-sm mb-3">
                             <div className="flex items-center">
                                 <Users className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>8 {t('guest_capacity')}</span>
+                                <span>{dacha.maxGuests || 8} {t('guest_capacity')}</span>
                             </div>
                             <div className="flex items-center">
                                 <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>4 {t('room_count')}</span>
+                                <span>{dacha.numberOfRooms || 4} {t('room_count')}</span>
                             </div>
                         </div>
 

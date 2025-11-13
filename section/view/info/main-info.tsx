@@ -39,11 +39,12 @@ const MainInfo = ({ cottage }: mainInfo) => {
                     <div className="about-cottage flex flex-col space-y-2">
                         <h3 className='text-2xl md:text-3xl font-mediu'>{t('about_cottage')}</h3>
                         <p className='text-base md:text-lg whitespace-pre-wrap break-words'>{cottage.description}</p>
-                        <div className="flex flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
-                            <span className='flex gap-x-2 items-center text-[16px] md:text-xl'><UsersRound size={22} strokeWidth={1.75} /> {t('guests')}</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><DoorOpen size={22} strokeWidth={1.75} /> {t('bedrooms')}</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><BedSingle size={22} strokeWidth={1.75} /> {t('beds')}</span>
-                            <span className='flex gap-x-2 items-center md:text-xl'><BedDouble size={22} strokeWidth={1.75} /> {t('double_bed')}</span>
+
+                        <div className="flex mt-5  flex-col md:flex-row justify-start items-strart space-y-2 md:space-y-0 md:justify-between md:items-center">
+                            <span className='flex gap-x-2 items-center text-[16px] md:text-[18px]'><UsersRound size={22} strokeWidth={1.75} /> {t('guests')}: {cottage?.maxGuests} ta</span>
+                            <span className='flex gap-x-2 items-center md:text-[18px]'><DoorOpen size={22} strokeWidth={1.75} /> {t('bedrooms')}: {cottage?.numberOfRooms} ta</span>
+                            <span className='flex gap-x-2 items-center md:text-[18px]'><BedSingle size={22} strokeWidth={1.75} /> {t('beds')}: {cottage?.singleBedCount} ta</span>
+                            <span className='flex gap-x-2 items-center md:text-[18px]'><BedDouble size={22} strokeWidth={1.75} /> {t('double_bed')}: {cottage?.doubleBedCount} ta</span>
                         </div>
                         <Separator className='mt-5 md:mt-10' />
                     </div>
@@ -51,9 +52,9 @@ const MainInfo = ({ cottage }: mainInfo) => {
                         <h3 className='text-2xl md:text-3xl font-mediu'>{t('comforts')}</h3>
                         <div className="grid grid-cols-3 gap-2 mt-5">
                             {cottage.comforts.map(comfort => (
-                                <span className="flex gap-x-2 items-center" key={comfort.id}>
-                                    <Image className=' ' width={31} height={30} src={`${IMG_BASE_URL}${comfort.image}`} alt={cottage.name} />
-                                    <p className='line-clamp-1 text-[16px] md:text-xl font-normal'>{comfort.name}</p>
+                                <span className="flex flex-col justify-center gap-x-2 items-center border rounded-lg p-1" key={comfort.id}>
+                                    <Image priority className='w-[25px] h-[25px] md:w-[35px] md:h-[35px]' width={31} height={30} src={`${IMG_BASE_URL}${comfort.image}`} alt={cottage.name} />
+                                    <p className='line-clamp-1 text-[12px] md:text-[14px] text-center font-normal'>{comfort.name}</p>
                                 </span>
                             ))}
                         </div>

@@ -1,9 +1,10 @@
-import { MapPin, Users, DoorOpen, Star, } from "lucide-react";
+import { MapPin, Users, DoorOpen, Star } from "lucide-react";
 import { CardSwiper } from "@/components/swiper/swiper-card";
 import { newCottage } from "@/types";
 import Link from "next/link";
 import CottageEdit from "@/section/profile/dacha-edit/dacha-edit";
 import { useTranslation } from "react-i18next";
+import ActiveTariff from "@/section/profile/mobile/active-tariff";
 
 interface DachaProps {
     dacha: newCottage
@@ -12,7 +13,7 @@ interface DachaProps {
 export function UserDachaCard({ dacha }: DachaProps) {
     const { t } = useTranslation()
     return (
-        <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id}>
+        <div className="max-w-[350px]  md:max-w-[320px] overflow-hidden transition-shadow p-1 relative " key={dacha.id} >
             <div className="">
                 <Link href={`/view/${dacha.id}`} className="w-full pointer-events-none">
                     <CardSwiper dacha={dacha} />
@@ -31,11 +32,11 @@ export function UserDachaCard({ dacha }: DachaProps) {
                         <div className="flex gap-4 text-sm mb-3">
                             <div className="flex items-center">
                                 <Users className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>{8} {t('guest_capacity')}</span>
+                                <span>{dacha.maxGuests} {t('guest_capacity')}</span>
                             </div>
                             <div className="flex items-center">
                                 <DoorOpen className="w-4 h-4 mr-1 text-gray-600" />
-                                <span>4 {t('room_count')}</span>
+                                <span>{dacha.numberOfRooms} {t('room_count')}</span>
                             </div>
                         </div>
 
@@ -48,13 +49,14 @@ export function UserDachaCard({ dacha }: DachaProps) {
                         </div>
 
                     </div>
-
                     <div className="p-2 pt-0">
                         {dacha.cottageType[0].id === 'c4c301b1-4719-499e-bde2-2c36715fae9e' ?
                             <p className="text-lg font-semibold text-primary">{dacha.price.toLocaleString()} so`m</p>
                             :
                             <p className="w-full py-2 text-xl font-semibold text-center bg-primary text-white dark:bg-amber-500 rounded-lg">{dacha.cottageType[0].name}</p>}
                     </div>
+                    <ActiveTariff dachaId={dacha.id} />
+
                 </div>
                 <CottageEdit cottage={dacha} />
             </div>

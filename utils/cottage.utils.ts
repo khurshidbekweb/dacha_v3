@@ -204,21 +204,25 @@ export const cottageUtils = {
         return data
     },
     getFilter: async (filter: filterCottage) => {
-        const queryParams = new URLSearchParams()
+        const queryParams = new URLSearchParams();
 
         Object.entries(filter).forEach(([key, value]) => {
             if (Array.isArray(value) && value.length > 0) {
-                value.forEach(item => {
-                    if (typeof item === 'string') {
-                        queryParams.append(key, item)
-                    } else if (typeof item === 'object' && item.id) {
-                        queryParams.append(key, item.id)
-                    }
-                })
+                // arrayni vergul bilan ajratamiz, backend shunday format kutyapti
+                const joined = value
+                    .map(item => (typeof item === 'object' ? item.id : item))
+                    .join(',');
+                queryParams.append(key, joined);
             } else if (typeof value === 'string' && value.trim() !== '') {
-                queryParams.append(key, value)
+                queryParams.append(key, value);
+            } else if (typeof value === 'boolean') {
+                // booleanlarni ham qo‘shamiz (true/false)
+                queryParams.append(key, String(value));
+            } else if (typeof value === 'number') {
+                // son qiymatlar ham bo‘lishi mumkin
+                queryParams.append(key, String(value));
             }
-        })
+        });
 
         const { data } = await custimAxios.get(
             `cottage/filter/?${queryParams.toString()}`,
@@ -227,9 +231,9 @@ export const cottageUtils = {
                     'accept-language': safeLocalStorage.getItem('language'),
                 },
             }
-        )
+        );
 
-        return data
+        return data;
     },
 
     getCottageById: async (id: string) => {

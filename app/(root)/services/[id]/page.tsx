@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 const Tariff = () => {
     const { id } = useParams()
     const { t } = useTranslation()
-    const { isLoading, data: tariffs, } = ALL_DATA.useTarifId(id);
+    const { isLoading, data: tariffs, } = ALL_DATA.useTarifId(id as string);
     return (
         <>
             <Navbar />
